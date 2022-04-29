@@ -1,55 +1,20 @@
 #include "gd32vf103.h"
 #include "delay.h"
 #include "pwm.h"
-#include "gd32v_mpu6500_if.h"
-#include "PID.h"
-#include "cordic-math.h"
 
 void init_ADC_B0();
 void initCMG(void);
 
 
 int main(void){
-    initCMG();
-    int prev_time=0,current_time=0, delta_Time=0,adcr;
-    int32_t gyroX,gyroY,accX,accY,roll=0,pitch=0;
-    mpu_vector_t vecA, vecG;
+    initMotorA();
+    init_ADC_B0();
+    int adcr;
 
     while(1){
-        
         adcr = ADC_RDATA(ADC0);
         adcr = (adcr*1000)/4096;
-        
-       
-        
-        prev_time = current_time;
-        current_time = millis();
-        delta_Time = current_time - prev_time;
-        
-        mpu6500_getGyroAccel(&vecG,&vecA);
-        
-        accX = cordic_atan(vecA.x, vecA.z);
-        accY = cordic_atan(-vecA.y, vecA.z);
-
-        if(accX>=46080){
-            accX-=92160;    //subtract 360 degrees
-        }
-        if(accY>=46080){
-            accY-=92160;    //subtract 360 degrees
-        }
-
-        gyroX = -(delta_Time * (int)vecG.y << 16)/(4194*1000);   // Turns into fixed point 8 <<
-        gyroY = -(delta_Time * (int)vecG.x << 16)/(4194*1000);
-
-        //Complementary Filter
-        roll = ((0.99*(gyroX+roll)) + (0.01*accX));
-        pitch = ((0.99*(gyroY+pitch)) + (0.01*accY));  
-        
-        //MoveServoB(adcr);
-        MoveServoA(-pitch*2);
-        //MoveServoB(pitch-1500);
-        //SetMotorB(adcr);
-        //SetMotorA(adcr);
+        SetServoA(adcr);
     }
 }
 
@@ -101,15 +66,4 @@ void init_ADC_B0(){
     adc_software_trigger_enable(ADC0, ADC_REGULAR_CHANNEL);
 }
 
-void initCMG(void){
-    InitPWM();
-    initServoA();
-    /* Initialize pins for I2C */
-    rcu_periph_clock_enable(RCU_GPIOB);
-    rcu_periph_clock_enable(RCU_I2C0);
-    gpio_init(GPIOB, GPIO_MODE_AF_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_6 | GPIO_PIN_7);
-    
-    mpu6500_install(I2C0);
-    init_ADC_B0();
-    motorStartupSeq(400);
-}
+
