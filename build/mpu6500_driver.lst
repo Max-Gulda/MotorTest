@@ -1,0 +1,1826 @@
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 1
+
+
+   1              		.file	"mpu6500_driver.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.read_mpu,"ax",@progbits
+  10              		.align	1
+  11              		.globl	read_mpu
+  13              	read_mpu:
+  14              	.LFB3:
+  15              		.file 1 "lib/mpu/src/mpu6500_driver.c"
+   1:lib/mpu/src/mpu6500_driver.c **** #include "mpu6500_driver.h"
+   2:lib/mpu/src/mpu6500_driver.c **** #include "stdint.h"
+   3:lib/mpu/src/mpu6500_driver.c **** 
+   4:lib/mpu/src/mpu6500_driver.c **** typedef struct{
+   5:lib/mpu/src/mpu6500_driver.c **** 	void (*read)(void* pHandle, uint8_t addr, uint8_t reg, uint8_t size, uint8_t* pData);
+   6:lib/mpu/src/mpu6500_driver.c **** 	void (*write)(void* pHandle, uint8_t addr, uint8_t reg, uint8_t size, uint8_t* pData);
+   7:lib/mpu/src/mpu6500_driver.c **** 	void (*delay)(int millis);
+   8:lib/mpu/src/mpu6500_driver.c **** 	void* pHandle;
+   9:lib/mpu/src/mpu6500_driver.c **** }mpu6500_comms_t;
+  10:lib/mpu/src/mpu6500_driver.c **** 
+  11:lib/mpu/src/mpu6500_driver.c **** mpu6500_comms_t cb;
+  12:lib/mpu/src/mpu6500_driver.c **** 
+  13:lib/mpu/src/mpu6500_driver.c **** void read_mpu(uint8_t reg, uint8_t size, uint8_t* data){
+  16              		.loc 1 13 56
+  17              		.cfi_startproc
+  18              	.LVL0:
+  14:lib/mpu/src/mpu6500_driver.c **** 	cb.read(cb.pHandle, MPU6500_ADDR, reg, size, data);
+  19              		.loc 1 14 2
+  20 0000 B7070000 		lui	a5,%hi(cb)
+  21 0004 93870700 		addi	a5,a5,%lo(cb)
+  22 0008 3287     		mv	a4,a2
+  23 000a 03A30700 		lw	t1,0(a5)
+  24 000e 2A86     		mv	a2,a0
+  25              	.LVL1:
+  26 0010 C847     		lw	a0,12(a5)
+  27              	.LVL2:
+  28 0012 AE86     		mv	a3,a1
+  29 0014 93058006 		li	a1,104
+  30              	.LVL3:
+  31 0018 0283     		jr	t1
+  32              	.LVL4:
+  33              		.cfi_endproc
+  34              	.LFE3:
+  36              		.section	.text.write_mpu,"ax",@progbits
+  37              		.align	1
+  38              		.globl	write_mpu
+  40              	write_mpu:
+  41              	.LFB4:
+  15:lib/mpu/src/mpu6500_driver.c **** }
+  16:lib/mpu/src/mpu6500_driver.c **** 
+  17:lib/mpu/src/mpu6500_driver.c **** void write_mpu(uint8_t reg, uint8_t size, uint8_t* data){
+  42              		.loc 1 17 57
+  43              		.cfi_startproc
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 2
+
+
+  44              	.LVL5:
+  18:lib/mpu/src/mpu6500_driver.c **** 	cb.write(cb.pHandle, MPU6500_ADDR, reg, size, data);
+  45              		.loc 1 18 2
+  46 0000 B7070000 		lui	a5,%hi(cb)
+  47 0004 93870700 		addi	a5,a5,%lo(cb)
+  48 0008 3287     		mv	a4,a2
+  49 000a 03A34700 		lw	t1,4(a5)
+  50 000e 2A86     		mv	a2,a0
+  51              	.LVL6:
+  52 0010 C847     		lw	a0,12(a5)
+  53              	.LVL7:
+  54 0012 AE86     		mv	a3,a1
+  55 0014 93058006 		li	a1,104
+  56              	.LVL8:
+  57 0018 0283     		jr	t1
+  58              	.LVL9:
+  59              		.cfi_endproc
+  60              	.LFE4:
+  62              		.section	.text.flip_bytes,"ax",@progbits
+  63              		.align	1
+  64              		.globl	flip_bytes
+  66              	flip_bytes:
+  67              	.LFB5:
+  19:lib/mpu/src/mpu6500_driver.c **** }
+  20:lib/mpu/src/mpu6500_driver.c **** 
+  21:lib/mpu/src/mpu6500_driver.c **** int16_t flip_bytes(int16_t bt){
+  68              		.loc 1 21 31
+  69              		.cfi_startproc
+  70              	.LVL10:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t* pByte = (uint8_t*)&bt;
+  71              		.loc 1 22 2
+  23:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+  25:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+  72              		.loc 1 25 11 is_stmt 0
+  73 0000 93170501 		slli	a5,a0,16
+  74 0004 C183     		srli	a5,a5,16
+  75 0006 2205     		slli	a0,a0,8
+  76              	.LVL11:
+  77 0008 A183     		srli	a5,a5,8
+  78 000a 5D8D     		or	a0,a0,a5
+  21:lib/mpu/src/mpu6500_driver.c **** 	uint8_t* pByte = (uint8_t*)&bt;
+  79              		.loc 1 21 31
+  80 000c 4111     		addi	sp,sp,-16
+  81              	.LCFI0:
+  82              		.cfi_def_cfa_offset 16
+  83              	.LVL12:
+  23:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+  84              		.loc 1 23 2 is_stmt 1
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+  85              		.loc 1 24 2
+  86              		.loc 1 25 2
+  26:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+  87              		.loc 1 26 2
+  27:lib/mpu/src/mpu6500_driver.c **** }
+  88              		.loc 1 27 1 is_stmt 0
+  89 000e 4205     		slli	a0,a0,16
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 3
+
+
+  90 0010 4185     		srai	a0,a0,16
+  91 0012 4101     		addi	sp,sp,16
+  92              	.LCFI1:
+  93              		.cfi_def_cfa_offset 0
+  94              	.LVL13:
+  95 0014 8280     		jr	ra
+  96              		.cfi_endproc
+  97              	.LFE5:
+  99              		.section	.text.mpu6500_init,"ax",@progbits
+ 100              		.align	1
+ 101              		.globl	mpu6500_init
+ 103              	mpu6500_init:
+ 104              	.LFB6:
+  28:lib/mpu/src/mpu6500_driver.c **** 
+  29:lib/mpu/src/mpu6500_driver.c **** int mpu6500_init(void (*read_cb)(void* pHandle, uint8_t addr, uint8_t reg, uint8_t size, uint8_t* p
+  30:lib/mpu/src/mpu6500_driver.c **** 				 void (*write_cb)(void* pHandle, uint8_t addr, uint8_t reg, uint8_t size, uint8_t* pData),
+  31:lib/mpu/src/mpu6500_driver.c **** 				 void (*delay_cb)(int millis),
+  32:lib/mpu/src/mpu6500_driver.c **** 				 void* pHandle){
+ 105              		.loc 1 32 20 is_stmt 1
+ 106              		.cfi_startproc
+ 107              	.LVL14:
+  33:lib/mpu/src/mpu6500_driver.c **** 	uint8_t read_buffer[4];
+ 108              		.loc 1 33 2
+  34:lib/mpu/src/mpu6500_driver.c **** 	uint8_t write_buffer[4];
+ 109              		.loc 1 34 2
+  35:lib/mpu/src/mpu6500_driver.c **** 	cb.read = read_cb;
+ 110              		.loc 1 35 2
+  32:lib/mpu/src/mpu6500_driver.c **** 	uint8_t read_buffer[4];
+ 111              		.loc 1 32 20 is_stmt 0
+ 112 0000 0111     		addi	sp,sp,-32
+ 113              	.LCFI2:
+ 114              		.cfi_def_cfa_offset 32
+ 115 0002 22CC     		sw	s0,24(sp)
+ 116              		.cfi_offset 8, -8
+ 117              		.loc 1 35 10
+ 118 0004 37040000 		lui	s0,%hi(cb)
+ 119 0008 13040400 		addi	s0,s0,%lo(cb)
+  32:lib/mpu/src/mpu6500_driver.c **** 	uint8_t read_buffer[4];
+ 120              		.loc 1 32 20
+ 121 000c AA87     		mv	a5,a0
+  36:lib/mpu/src/mpu6500_driver.c **** 	cb.write = write_cb;
+ 122              		.loc 1 36 11
+ 123 000e 4CC0     		sw	a1,4(s0)
+  32:lib/mpu/src/mpu6500_driver.c **** 	uint8_t read_buffer[4];
+ 124              		.loc 1 32 20
+ 125 0010 3685     		mv	a0,a3
+ 126              	.LVL15:
+  37:lib/mpu/src/mpu6500_driver.c **** 	cb.delay = delay_cb;
+ 127              		.loc 1 37 11
+ 128 0012 10C4     		sw	a2,8(s0)
+  35:lib/mpu/src/mpu6500_driver.c **** 	cb.write = write_cb;
+ 129              		.loc 1 35 10
+ 130 0014 1CC0     		sw	a5,0(s0)
+  36:lib/mpu/src/mpu6500_driver.c **** 	cb.write = write_cb;
+ 131              		.loc 1 36 2 is_stmt 1
+ 132              		.loc 1 37 2
+  38:lib/mpu/src/mpu6500_driver.c **** 	cb.pHandle = pHandle;
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 4
+
+
+ 133              		.loc 1 38 2
+ 134              		.loc 1 38 13 is_stmt 0
+ 135 0016 54C4     		sw	a3,12(s0)
+  39:lib/mpu/src/mpu6500_driver.c **** 
+  40:lib/mpu/src/mpu6500_driver.c **** 
+  41:lib/mpu/src/mpu6500_driver.c **** 
+  42:lib/mpu/src/mpu6500_driver.c **** 	read_mpu(MPU6500_WHO_AM_I, 1, read_buffer);
+ 136              		.loc 1 42 2 is_stmt 1
+ 137              	.LVL16:
+ 138              	.LBB40:
+ 139              	.LBB41:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 140              		.loc 1 14 2
+ 141 0018 3800     		addi	a4,sp,8
+ 142              	.LVL17:
+ 143              	.LBE41:
+ 144              	.LBE40:
+  32:lib/mpu/src/mpu6500_driver.c **** 	uint8_t read_buffer[4];
+ 145              		.loc 1 32 20 is_stmt 0
+ 146 001a 06CE     		sw	ra,28(sp)
+ 147 001c 26CA     		sw	s1,20(sp)
+ 148              		.cfi_offset 1, -4
+ 149              		.cfi_offset 9, -12
+ 150              	.LBB43:
+ 151              	.LBB42:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 152              		.loc 1 14 2
+ 153 001e 8546     		li	a3,1
+ 154              	.LVL18:
+ 155 0020 13065007 		li	a2,117
+ 156              	.LVL19:
+ 157 0024 93058006 		li	a1,104
+ 158              	.LVL20:
+ 159 0028 8297     		jalr	a5
+ 160              	.LVL21:
+ 161              	.LBE42:
+ 162              	.LBE43:
+  43:lib/mpu/src/mpu6500_driver.c **** 	if(read_buffer[0] != MPU6500_WHO_AM_I_ID) return -1;
+ 163              		.loc 1 43 2 is_stmt 1
+ 164              		.loc 1 43 4 is_stmt 0
+ 165 002a 03478100 		lbu	a4,8(sp)
+ 166 002e 93070007 		li	a5,112
+ 167              		.loc 1 43 51
+ 168 0032 7D55     		li	a0,-1
+ 169              		.loc 1 43 4
+ 170 0034 6313F710 		bne	a4,a5,.L6
+  44:lib/mpu/src/mpu6500_driver.c **** 
+  45:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_DEVICE_RESET;
+ 171              		.loc 1 45 2 is_stmt 1
+ 172              	.LBB44:
+ 173              	.LBB45:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 174              		.loc 1 18 2 is_stmt 0
+ 175 0038 4844     		lw	a0,12(s0)
+ 176 003a 5C40     		lw	a5,4(s0)
+ 177              	.LBE45:
+ 178              	.LBE44:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 5
+
+
+ 179              		.loc 1 45 18
+ 180 003c 130800F8 		li	a6,-128
+ 181              	.LBB48:
+ 182              	.LBB46:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 183              		.loc 1 18 2
+ 184 0040 7800     		addi	a4,sp,12
+ 185 0042 8546     		li	a3,1
+ 186 0044 1306B006 		li	a2,107
+ 187 0048 93058006 		li	a1,104
+ 188              	.LBE46:
+ 189              	.LBE48:
+ 190              		.loc 1 45 18
+ 191 004c 23060101 		sb	a6,12(sp)
+  46:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_PWR_MGMT_1, 1, write_buffer);
+ 192              		.loc 1 46 2 is_stmt 1
+ 193              	.LVL22:
+ 194              	.LBB49:
+ 195              	.LBB47:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 196              		.loc 1 18 2
+ 197 0050 8297     		jalr	a5
+ 198              	.LVL23:
+ 199              	.LBE47:
+ 200              	.LBE49:
+  47:lib/mpu/src/mpu6500_driver.c **** 
+  48:lib/mpu/src/mpu6500_driver.c **** 	cb.delay(100);
+ 201              		.loc 1 48 2
+ 202 0052 1C44     		lw	a5,8(s0)
+ 203 0054 13054006 		li	a0,100
+ 204 0058 8297     		jalr	a5
+ 205              	.LVL24:
+  49:lib/mpu/src/mpu6500_driver.c **** 
+  50:lib/mpu/src/mpu6500_driver.c **** 	while(read_buffer[0] & MPU6500_DEVICE_RESET) read_mpu(MPU6500_PWR_MGMT_1, 1, read_buffer);
+ 206              		.loc 1 50 2
+ 207              		.loc 1 50 7 is_stmt 0
+ 208 005a 83078100 		lb	a5,8(sp)
+ 209 005e 63DF0700 		bge	a5,zero,.L8
+ 210              	.L9:
+ 211              		.loc 1 50 47 is_stmt 1
+ 212              	.LVL25:
+ 213              	.LBB50:
+ 214              	.LBB51:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 215              		.loc 1 14 2
+ 216 0062 1C40     		lw	a5,0(s0)
+ 217 0064 4844     		lw	a0,12(s0)
+ 218 0066 3800     		addi	a4,sp,8
+ 219              	.LVL26:
+ 220 0068 8546     		li	a3,1
+ 221 006a 1306B006 		li	a2,107
+ 222 006e 93058006 		li	a1,104
+ 223 0072 8297     		jalr	a5
+ 224              	.LVL27:
+ 225              	.LBE51:
+ 226              	.LBE50:
+ 227              		.loc 1 50 7 is_stmt 0
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 6
+
+
+ 228 0074 83078100 		lb	a5,8(sp)
+ 229 0078 E3C507FE 		blt	a5,zero,.L9
+ 230              	.LVL28:
+ 231              	.L8:
+  51:lib/mpu/src/mpu6500_driver.c **** 
+  52:lib/mpu/src/mpu6500_driver.c **** 	cb.delay(100);
+ 232              		.loc 1 52 2 is_stmt 1
+ 233 007c 1C44     		lw	a5,8(s0)
+ 234 007e 13054006 		li	a0,100
+  53:lib/mpu/src/mpu6500_driver.c **** 
+  54:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_TEMP_DIS | 0x01; //select PLL
+  55:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_PWR_MGMT_1, 1, write_buffer);
+  56:lib/mpu/src/mpu6500_driver.c **** 
+  57:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = 0x00;
+  58:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_SMPLRT_DIV, 1, write_buffer);
+  59:lib/mpu/src/mpu6500_driver.c **** 
+  60:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_G_DLPF_92HZ;
+ 235              		.loc 1 60 18 is_stmt 0
+ 236 0082 8944     		li	s1,2
+  52:lib/mpu/src/mpu6500_driver.c **** 
+ 237              		.loc 1 52 2
+ 238 0084 8297     		jalr	a5
+ 239              	.LVL29:
+  54:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_PWR_MGMT_1, 1, write_buffer);
+ 240              		.loc 1 54 2 is_stmt 1
+ 241              	.LBB52:
+ 242              	.LBB53:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 243              		.loc 1 18 2 is_stmt 0
+ 244 0086 4844     		lw	a0,12(s0)
+ 245 0088 5C40     		lw	a5,4(s0)
+ 246              	.LBE53:
+ 247              	.LBE52:
+  54:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_PWR_MGMT_1, 1, write_buffer);
+ 248              		.loc 1 54 18
+ 249 008a 2548     		li	a6,9
+ 250 008c 23060101 		sb	a6,12(sp)
+  55:lib/mpu/src/mpu6500_driver.c **** 
+ 251              		.loc 1 55 2 is_stmt 1
+ 252              	.LVL30:
+ 253              	.LBB55:
+ 254              	.LBB54:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 255              		.loc 1 18 2
+ 256 0090 7800     		addi	a4,sp,12
+ 257              	.LVL31:
+ 258 0092 8546     		li	a3,1
+ 259 0094 1306B006 		li	a2,107
+ 260 0098 93058006 		li	a1,104
+ 261 009c 8297     		jalr	a5
+ 262              	.LVL32:
+ 263              	.LBE54:
+ 264              	.LBE55:
+  57:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_SMPLRT_DIV, 1, write_buffer);
+ 265              		.loc 1 57 2
+ 266              	.LBB56:
+ 267              	.LBB57:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 7
+
+
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 268              		.loc 1 18 2 is_stmt 0
+ 269 009e 4844     		lw	a0,12(s0)
+ 270 00a0 5C40     		lw	a5,4(s0)
+ 271 00a2 7800     		addi	a4,sp,12
+ 272 00a4 8546     		li	a3,1
+ 273 00a6 6546     		li	a2,25
+ 274 00a8 93058006 		li	a1,104
+ 275              	.LBE57:
+ 276              	.LBE56:
+  57:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_SMPLRT_DIV, 1, write_buffer);
+ 277              		.loc 1 57 18
+ 278 00ac 23060100 		sb	zero,12(sp)
+  58:lib/mpu/src/mpu6500_driver.c **** 
+ 279              		.loc 1 58 2 is_stmt 1
+ 280              	.LVL33:
+ 281              	.LBB59:
+ 282              	.LBB58:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 283              		.loc 1 18 2
+ 284 00b0 8297     		jalr	a5
+ 285              	.LVL34:
+ 286              	.LBE58:
+ 287              	.LBE59:
+ 288              		.loc 1 60 2
+ 289              	.LBB60:
+ 290              	.LBB61:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 291              		.loc 1 18 2 is_stmt 0
+ 292 00b2 4844     		lw	a0,12(s0)
+ 293 00b4 5C40     		lw	a5,4(s0)
+ 294 00b6 7800     		addi	a4,sp,12
+ 295 00b8 8546     		li	a3,1
+ 296 00ba 6946     		li	a2,26
+ 297 00bc 93058006 		li	a1,104
+ 298              	.LBE61:
+ 299              	.LBE60:
+ 300              		.loc 1 60 18
+ 301 00c0 23069100 		sb	s1,12(sp)
+  61:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_CONFIG, 1, write_buffer);
+ 302              		.loc 1 61 2 is_stmt 1
+ 303              	.LVL35:
+ 304              	.LBB63:
+ 305              	.LBB62:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 306              		.loc 1 18 2
+ 307 00c4 8297     		jalr	a5
+ 308              	.LVL36:
+ 309              	.LBE62:
+ 310              	.LBE63:
+  62:lib/mpu/src/mpu6500_driver.c **** 
+  63:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_GYRO_FS_2000DPS;
+ 311              		.loc 1 63 2
+ 312              	.LBB64:
+ 313              	.LBB65:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 314              		.loc 1 18 2 is_stmt 0
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 8
+
+
+ 315 00c6 4844     		lw	a0,12(s0)
+ 316 00c8 5C40     		lw	a5,4(s0)
+ 317              	.LBE65:
+ 318              	.LBE64:
+ 319              		.loc 1 63 18
+ 320 00ca 6148     		li	a6,24
+ 321              	.LBB68:
+ 322              	.LBB66:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 323              		.loc 1 18 2
+ 324 00cc 7800     		addi	a4,sp,12
+ 325 00ce 8546     		li	a3,1
+ 326 00d0 6D46     		li	a2,27
+ 327 00d2 93058006 		li	a1,104
+ 328              	.LBE66:
+ 329              	.LBE68:
+ 330              		.loc 1 63 18
+ 331 00d6 23060101 		sb	a6,12(sp)
+  64:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_GYRO_CONFIG, 1, write_buffer);
+ 332              		.loc 1 64 2 is_stmt 1
+ 333              	.LVL37:
+ 334              	.LBB69:
+ 335              	.LBB67:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 336              		.loc 1 18 2
+ 337 00da 8297     		jalr	a5
+ 338              	.LVL38:
+ 339              	.LBE67:
+ 340              	.LBE69:
+  65:lib/mpu/src/mpu6500_driver.c **** 
+  66:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_ACCEL_FS_8G;
+ 341              		.loc 1 66 2
+ 342              	.LBB70:
+ 343              	.LBB71:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 344              		.loc 1 18 2 is_stmt 0
+ 345 00dc 4844     		lw	a0,12(s0)
+ 346 00de 5C40     		lw	a5,4(s0)
+ 347              	.LBE71:
+ 348              	.LBE70:
+ 349              		.loc 1 66 18
+ 350 00e0 4148     		li	a6,16
+ 351 00e2 23060101 		sb	a6,12(sp)
+  67:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_ACCEL_CONFIG, 1, write_buffer);
+ 352              		.loc 1 67 2 is_stmt 1
+ 353              	.LVL39:
+ 354              	.LBB73:
+ 355              	.LBB72:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 356              		.loc 1 18 2
+ 357 00e6 7800     		addi	a4,sp,12
+ 358              	.LVL40:
+ 359 00e8 8546     		li	a3,1
+ 360 00ea 7146     		li	a2,28
+ 361 00ec 93058006 		li	a1,104
+ 362 00f0 8297     		jalr	a5
+ 363              	.LVL41:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 9
+
+
+ 364              	.LBE72:
+ 365              	.LBE73:
+  68:lib/mpu/src/mpu6500_driver.c **** 	
+  69:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_A_DPLF_92HZ;
+ 366              		.loc 1 69 2
+ 367              	.LBB74:
+ 368              	.LBB75:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 369              		.loc 1 18 2 is_stmt 0
+ 370 00f2 4844     		lw	a0,12(s0)
+ 371 00f4 5C40     		lw	a5,4(s0)
+ 372 00f6 7800     		addi	a4,sp,12
+ 373 00f8 8546     		li	a3,1
+ 374 00fa 7546     		li	a2,29
+ 375 00fc 93058006 		li	a1,104
+ 376              	.LBE75:
+ 377              	.LBE74:
+ 378              		.loc 1 69 18
+ 379 0100 23069100 		sb	s1,12(sp)
+  70:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_ACCEL_CONFIG2, 1, write_buffer);
+ 380              		.loc 1 70 2 is_stmt 1
+ 381              	.LVL42:
+ 382              	.LBB77:
+ 383              	.LBB76:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 384              		.loc 1 18 2
+ 385 0104 8297     		jalr	a5
+ 386              	.LVL43:
+ 387              	.LBE76:
+ 388              	.LBE77:
+  71:lib/mpu/src/mpu6500_driver.c **** 
+  72:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_LATCH_INT_EN | MPU6500_INT_ANYRD_2CLEAR | MPU6500_INT_BYPASS_EN;
+ 389              		.loc 1 72 2
+ 390              	.LBB78:
+ 391              	.LBB79:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 392              		.loc 1 18 2 is_stmt 0
+ 393 0106 4844     		lw	a0,12(s0)
+ 394 0108 5C40     		lw	a5,4(s0)
+ 395              	.LBE79:
+ 396              	.LBE78:
+ 397              		.loc 1 72 18
+ 398 010a 13082003 		li	a6,50
+ 399              	.LBB82:
+ 400              	.LBB80:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 401              		.loc 1 18 2
+ 402 010e 7800     		addi	a4,sp,12
+ 403 0110 8546     		li	a3,1
+ 404 0112 13067003 		li	a2,55
+ 405 0116 93058006 		li	a1,104
+ 406              	.LBE80:
+ 407              	.LBE82:
+ 408              		.loc 1 72 18
+ 409 011a 23060101 		sb	a6,12(sp)
+  73:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_INT_PIN_CFG, 1, write_buffer);
+ 410              		.loc 1 73 2 is_stmt 1
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 10
+
+
+ 411              	.LVL44:
+ 412              	.LBB83:
+ 413              	.LBB81:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 414              		.loc 1 18 2
+ 415 011e 8297     		jalr	a5
+ 416              	.LVL45:
+ 417              	.LBE81:
+ 418              	.LBE83:
+  74:lib/mpu/src/mpu6500_driver.c **** 
+  75:lib/mpu/src/mpu6500_driver.c **** 	write_buffer[0] = MPU6500_INT_RAW_RDY_EN;
+ 419              		.loc 1 75 2
+ 420              	.LBB84:
+ 421              	.LBB85:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 422              		.loc 1 18 2 is_stmt 0
+ 423 0120 4844     		lw	a0,12(s0)
+ 424 0122 5C40     		lw	a5,4(s0)
+ 425              	.LBE85:
+ 426              	.LBE84:
+ 427              		.loc 1 75 18
+ 428 0124 0547     		li	a4,1
+ 429 0126 2306E100 		sb	a4,12(sp)
+  76:lib/mpu/src/mpu6500_driver.c **** 	write_mpu(MPU6500_INT_ENABLE, 1, write_buffer);
+ 430              		.loc 1 76 2 is_stmt 1
+ 431              	.LVL46:
+ 432              	.LBB87:
+ 433              	.LBB86:
+  18:lib/mpu/src/mpu6500_driver.c **** }
+ 434              		.loc 1 18 2
+ 435 012a 8546     		li	a3,1
+ 436 012c 7800     		addi	a4,sp,12
+ 437              	.LVL47:
+ 438 012e 13068003 		li	a2,56
+ 439 0132 93058006 		li	a1,104
+ 440 0136 8297     		jalr	a5
+ 441              	.LVL48:
+ 442              	.LBE86:
+ 443              	.LBE87:
+  77:lib/mpu/src/mpu6500_driver.c **** 
+  78:lib/mpu/src/mpu6500_driver.c **** 	return 1;
+ 444              		.loc 1 78 2
+ 445              		.loc 1 78 9 is_stmt 0
+ 446 0138 0545     		li	a0,1
+ 447              	.L6:
+  79:lib/mpu/src/mpu6500_driver.c **** 
+  80:lib/mpu/src/mpu6500_driver.c **** }
+ 448              		.loc 1 80 1
+ 449 013a F240     		lw	ra,28(sp)
+ 450              		.cfi_restore 1
+ 451 013c 6244     		lw	s0,24(sp)
+ 452              		.cfi_restore 8
+ 453 013e D244     		lw	s1,20(sp)
+ 454              		.cfi_restore 9
+ 455 0140 0561     		addi	sp,sp,32
+ 456              	.LCFI3:
+ 457              		.cfi_def_cfa_offset 0
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 11
+
+
+ 458 0142 8280     		jr	ra
+ 459              		.cfi_endproc
+ 460              	.LFE6:
+ 462              		.globl	__floatsisf
+ 463              		.section	.text.mpu6500_getAccel,"ax",@progbits
+ 464              		.align	1
+ 465              		.globl	mpu6500_getAccel
+ 467              	mpu6500_getAccel:
+ 468              	.LFB7:
+  81:lib/mpu/src/mpu6500_driver.c **** 
+  82:lib/mpu/src/mpu6500_driver.c **** int mpu6500_getAccel(mpu_vector_t* pAccel){
+ 469              		.loc 1 82 43 is_stmt 1
+ 470              		.cfi_startproc
+ 471              	.LVL49:
+  83:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t accel;
+ 472              		.loc 1 83 2
+  84:lib/mpu/src/mpu6500_driver.c **** 	read_mpu(MPU6500_ACCEL_XOUT_H, 6, (uint8_t*) &accel);
+ 473              		.loc 1 84 2
+ 474              	.LBB88:
+ 475              	.LBB89:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 476              		.loc 1 14 2 is_stmt 0
+ 477 0000 B7070000 		lui	a5,%hi(cb)
+ 478              	.LBE89:
+ 479              	.LBE88:
+  82:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t accel;
+ 480              		.loc 1 82 43
+ 481 0004 0111     		addi	sp,sp,-32
+ 482              	.LCFI4:
+ 483              		.cfi_def_cfa_offset 32
+ 484              	.LVL50:
+ 485              	.LBB94:
+ 486              	.LBB90:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 487              		.loc 1 14 2 is_stmt 1
+ 488 0006 93870700 		addi	a5,a5,%lo(cb)
+ 489              	.LBE90:
+ 490              	.LBE94:
+  82:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t accel;
+ 491              		.loc 1 82 43 is_stmt 0
+ 492 000a 22CC     		sw	s0,24(sp)
+ 493              	.LBB95:
+ 494              	.LBB91:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 495              		.loc 1 14 2
+ 496 000c 03A80700 		lw	a6,0(a5)
+ 497              		.cfi_offset 8, -8
+ 498              	.LBE91:
+ 499              	.LBE95:
+  82:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t accel;
+ 500              		.loc 1 82 43
+ 501 0010 2A84     		mv	s0,a0
+ 502              	.LBB96:
+ 503              	.LBB92:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 504              		.loc 1 14 2
+ 505 0012 C847     		lw	a0,12(a5)
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 12
+
+
+ 506              	.LVL51:
+ 507              	.LBE92:
+ 508              	.LBE96:
+  82:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t accel;
+ 509              		.loc 1 82 43
+ 510 0014 06CE     		sw	ra,28(sp)
+ 511              		.cfi_offset 1, -4
+ 512              	.LBB97:
+ 513              	.LBB93:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 514              		.loc 1 14 2
+ 515 0016 9946     		li	a3,6
+ 516 0018 1306B003 		li	a2,59
+ 517 001c 93058006 		li	a1,104
+ 518 0020 3800     		addi	a4,sp,8
+ 519              	.LVL52:
+ 520 0022 0298     		jalr	a6
+ 521              	.LVL53:
+ 522              	.LBE93:
+ 523              	.LBE97:
+  85:lib/mpu/src/mpu6500_driver.c **** 	pAccel->x = (float) flip_bytes(accel.x);
+ 524              		.loc 1 85 2 is_stmt 1
+ 525              		.loc 1 85 22 is_stmt 0
+ 526 0024 83178100 		lh	a5,8(sp)
+ 527              	.LVL54:
+ 528              	.LBB98:
+ 529              	.LBB99:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+ 530              		.loc 1 22 2 is_stmt 1
+  23:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+ 531              		.loc 1 23 2
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 532              		.loc 1 24 2
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 533              		.loc 1 25 11 is_stmt 0
+ 534 0028 13D78700 		srli	a4,a5,8
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 535              		.loc 1 24 11
+ 536 002c A303F100 		sb	a5,7(sp)
+ 537              	.LVL55:
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 538              		.loc 1 25 2 is_stmt 1
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 539              		.loc 1 25 11 is_stmt 0
+ 540 0030 2303E100 		sb	a4,6(sp)
+  26:lib/mpu/src/mpu6500_driver.c **** }
+ 541              		.loc 1 26 2 is_stmt 1
+ 542              	.LVL56:
+ 543              	.LBE99:
+ 544              	.LBE98:
+ 545              		.loc 1 85 14 is_stmt 0
+ 546 0034 03156100 		lh	a0,6(sp)
+ 547 0038 97000000 		call	__floatsisf
+ 547      E7800000 
+ 548              	.LVL57:
+  86:lib/mpu/src/mpu6500_driver.c **** 	pAccel->y = (float) flip_bytes(accel.y);
+ 549              		.loc 1 86 22
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 13
+
+
+ 550 0040 8317A100 		lh	a5,10(sp)
+  85:lib/mpu/src/mpu6500_driver.c **** 	pAccel->y = (float) flip_bytes(accel.y);
+ 551              		.loc 1 85 14
+ 552 0044 08C0     		sw	a0,0(s0)
+ 553              		.loc 1 86 2 is_stmt 1
+ 554              	.LVL58:
+ 555              	.LBB100:
+ 556              	.LBB101:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+ 557              		.loc 1 22 2
+  23:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+ 558              		.loc 1 23 2
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 559              		.loc 1 24 2
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 560              		.loc 1 25 11 is_stmt 0
+ 561 0046 13D78700 		srli	a4,a5,8
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 562              		.loc 1 24 11
+ 563 004a A303F100 		sb	a5,7(sp)
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 564              		.loc 1 25 2 is_stmt 1
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 565              		.loc 1 25 11 is_stmt 0
+ 566 004e 2303E100 		sb	a4,6(sp)
+  26:lib/mpu/src/mpu6500_driver.c **** }
+ 567              		.loc 1 26 2 is_stmt 1
+ 568              	.LVL59:
+ 569              	.LBE101:
+ 570              	.LBE100:
+ 571              		.loc 1 86 14 is_stmt 0
+ 572 0052 03156100 		lh	a0,6(sp)
+ 573 0056 97000000 		call	__floatsisf
+ 573      E7800000 
+ 574              	.LVL60:
+  87:lib/mpu/src/mpu6500_driver.c **** 	pAccel->z = (float) flip_bytes(accel.z);
+ 575              		.loc 1 87 22
+ 576 005e 8317C100 		lh	a5,12(sp)
+  86:lib/mpu/src/mpu6500_driver.c **** 	pAccel->z = (float) flip_bytes(accel.z);
+ 577              		.loc 1 86 14
+ 578 0062 48C0     		sw	a0,4(s0)
+ 579              		.loc 1 87 2 is_stmt 1
+ 580              	.LVL61:
+ 581              	.LBB102:
+ 582              	.LBB103:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+ 583              		.loc 1 22 2
+  23:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+ 584              		.loc 1 23 2
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 585              		.loc 1 24 2
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 586              		.loc 1 25 11 is_stmt 0
+ 587 0064 13D78700 		srli	a4,a5,8
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 588              		.loc 1 24 11
+ 589 0068 A303F100 		sb	a5,7(sp)
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 14
+
+
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 590              		.loc 1 25 2 is_stmt 1
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 591              		.loc 1 25 11 is_stmt 0
+ 592 006c 2303E100 		sb	a4,6(sp)
+  26:lib/mpu/src/mpu6500_driver.c **** }
+ 593              		.loc 1 26 2 is_stmt 1
+ 594              	.LVL62:
+ 595              	.LBE103:
+ 596              	.LBE102:
+ 597              		.loc 1 87 14 is_stmt 0
+ 598 0070 03156100 		lh	a0,6(sp)
+ 599 0074 97000000 		call	__floatsisf
+ 599      E7800000 
+ 600              	.LVL63:
+ 601 007c 08C4     		sw	a0,8(s0)
+  88:lib/mpu/src/mpu6500_driver.c **** 	return 1;
+ 602              		.loc 1 88 2 is_stmt 1
+  89:lib/mpu/src/mpu6500_driver.c **** }
+ 603              		.loc 1 89 1 is_stmt 0
+ 604 007e F240     		lw	ra,28(sp)
+ 605              		.cfi_restore 1
+ 606 0080 6244     		lw	s0,24(sp)
+ 607              		.cfi_restore 8
+ 608              	.LVL64:
+ 609 0082 0545     		li	a0,1
+ 610 0084 0561     		addi	sp,sp,32
+ 611              	.LCFI5:
+ 612              		.cfi_def_cfa_offset 0
+ 613              	.LVL65:
+ 614 0086 8280     		jr	ra
+ 615              		.cfi_endproc
+ 616              	.LFE7:
+ 618              		.section	.text.mpu6500_getGyro,"ax",@progbits
+ 619              		.align	1
+ 620              		.globl	mpu6500_getGyro
+ 622              	mpu6500_getGyro:
+ 623              	.LFB8:
+  90:lib/mpu/src/mpu6500_driver.c **** 
+  91:lib/mpu/src/mpu6500_driver.c **** int mpu6500_getGyro(mpu_vector_t* pGyro){
+ 624              		.loc 1 91 41 is_stmt 1
+ 625              		.cfi_startproc
+ 626              	.LVL66:
+  92:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t gyro;
+ 627              		.loc 1 92 2
+  93:lib/mpu/src/mpu6500_driver.c **** 	read_mpu(MPU6500_GYRO_XOUT_H, 6, (uint8_t*) &gyro);
+ 628              		.loc 1 93 2
+ 629              	.LBB104:
+ 630              	.LBB105:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 631              		.loc 1 14 2 is_stmt 0
+ 632 0000 B7070000 		lui	a5,%hi(cb)
+ 633              	.LBE105:
+ 634              	.LBE104:
+  91:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t gyro;
+ 635              		.loc 1 91 41
+ 636 0004 0111     		addi	sp,sp,-32
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 15
+
+
+ 637              	.LCFI6:
+ 638              		.cfi_def_cfa_offset 32
+ 639              	.LVL67:
+ 640              	.LBB110:
+ 641              	.LBB106:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 642              		.loc 1 14 2 is_stmt 1
+ 643 0006 93870700 		addi	a5,a5,%lo(cb)
+ 644              	.LBE106:
+ 645              	.LBE110:
+  91:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t gyro;
+ 646              		.loc 1 91 41 is_stmt 0
+ 647 000a 22CC     		sw	s0,24(sp)
+ 648              	.LBB111:
+ 649              	.LBB107:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 650              		.loc 1 14 2
+ 651 000c 03A80700 		lw	a6,0(a5)
+ 652              		.cfi_offset 8, -8
+ 653              	.LBE107:
+ 654              	.LBE111:
+  91:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t gyro;
+ 655              		.loc 1 91 41
+ 656 0010 2A84     		mv	s0,a0
+ 657              	.LBB112:
+ 658              	.LBB108:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 659              		.loc 1 14 2
+ 660 0012 C847     		lw	a0,12(a5)
+ 661              	.LVL68:
+ 662              	.LBE108:
+ 663              	.LBE112:
+  91:lib/mpu/src/mpu6500_driver.c **** 	mpu_raw_vector_t gyro;
+ 664              		.loc 1 91 41
+ 665 0014 06CE     		sw	ra,28(sp)
+ 666              		.cfi_offset 1, -4
+ 667              	.LBB113:
+ 668              	.LBB109:
+  14:lib/mpu/src/mpu6500_driver.c **** }
+ 669              		.loc 1 14 2
+ 670 0016 9946     		li	a3,6
+ 671 0018 13063004 		li	a2,67
+ 672 001c 93058006 		li	a1,104
+ 673 0020 3800     		addi	a4,sp,8
+ 674              	.LVL69:
+ 675 0022 0298     		jalr	a6
+ 676              	.LVL70:
+ 677              	.LBE109:
+ 678              	.LBE113:
+  94:lib/mpu/src/mpu6500_driver.c **** 	pGyro->x = (float) flip_bytes(gyro.x);
+ 679              		.loc 1 94 2 is_stmt 1
+ 680              		.loc 1 94 21 is_stmt 0
+ 681 0024 83178100 		lh	a5,8(sp)
+ 682              	.LVL71:
+ 683              	.LBB114:
+ 684              	.LBB115:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 16
+
+
+ 685              		.loc 1 22 2 is_stmt 1
+  23:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+ 686              		.loc 1 23 2
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 687              		.loc 1 24 2
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 688              		.loc 1 25 11 is_stmt 0
+ 689 0028 13D78700 		srli	a4,a5,8
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 690              		.loc 1 24 11
+ 691 002c A303F100 		sb	a5,7(sp)
+ 692              	.LVL72:
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 693              		.loc 1 25 2 is_stmt 1
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 694              		.loc 1 25 11 is_stmt 0
+ 695 0030 2303E100 		sb	a4,6(sp)
+  26:lib/mpu/src/mpu6500_driver.c **** }
+ 696              		.loc 1 26 2 is_stmt 1
+ 697              	.LVL73:
+ 698              	.LBE115:
+ 699              	.LBE114:
+ 700              		.loc 1 94 13 is_stmt 0
+ 701 0034 03156100 		lh	a0,6(sp)
+ 702 0038 97000000 		call	__floatsisf
+ 702      E7800000 
+ 703              	.LVL74:
+  95:lib/mpu/src/mpu6500_driver.c **** 	pGyro->y = (float) flip_bytes(gyro.y);
+ 704              		.loc 1 95 21
+ 705 0040 8317A100 		lh	a5,10(sp)
+  94:lib/mpu/src/mpu6500_driver.c **** 	pGyro->y = (float) flip_bytes(gyro.y);
+ 706              		.loc 1 94 13
+ 707 0044 08C0     		sw	a0,0(s0)
+ 708              		.loc 1 95 2 is_stmt 1
+ 709              	.LVL75:
+ 710              	.LBB116:
+ 711              	.LBB117:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+ 712              		.loc 1 22 2
+  23:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+ 713              		.loc 1 23 2
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 714              		.loc 1 24 2
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 715              		.loc 1 25 11 is_stmt 0
+ 716 0046 13D78700 		srli	a4,a5,8
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 717              		.loc 1 24 11
+ 718 004a A303F100 		sb	a5,7(sp)
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 719              		.loc 1 25 2 is_stmt 1
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 720              		.loc 1 25 11 is_stmt 0
+ 721 004e 2303E100 		sb	a4,6(sp)
+  26:lib/mpu/src/mpu6500_driver.c **** }
+ 722              		.loc 1 26 2 is_stmt 1
+ 723              	.LVL76:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 17
+
+
+ 724              	.LBE117:
+ 725              	.LBE116:
+ 726              		.loc 1 95 13 is_stmt 0
+ 727 0052 03156100 		lh	a0,6(sp)
+ 728 0056 97000000 		call	__floatsisf
+ 728      E7800000 
+ 729              	.LVL77:
+  96:lib/mpu/src/mpu6500_driver.c **** 	pGyro->z = (float) flip_bytes(gyro.z);
+ 730              		.loc 1 96 21
+ 731 005e 8317C100 		lh	a5,12(sp)
+  95:lib/mpu/src/mpu6500_driver.c **** 	pGyro->z = (float) flip_bytes(gyro.z);
+ 732              		.loc 1 95 13
+ 733 0062 48C0     		sw	a0,4(s0)
+ 734              		.loc 1 96 2 is_stmt 1
+ 735              	.LVL78:
+ 736              	.LBB118:
+ 737              	.LBB119:
+  22:lib/mpu/src/mpu6500_driver.c **** 	uint8_t temp = pByte[1];
+ 738              		.loc 1 22 2
+  23:lib/mpu/src/mpu6500_driver.c **** 	pByte[1] = pByte[0];
+ 739              		.loc 1 23 2
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 740              		.loc 1 24 2
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 741              		.loc 1 25 11 is_stmt 0
+ 742 0064 13D78700 		srli	a4,a5,8
+  24:lib/mpu/src/mpu6500_driver.c **** 	pByte[0] = temp;
+ 743              		.loc 1 24 11
+ 744 0068 A303F100 		sb	a5,7(sp)
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 745              		.loc 1 25 2 is_stmt 1
+  25:lib/mpu/src/mpu6500_driver.c **** 	return bt; 
+ 746              		.loc 1 25 11 is_stmt 0
+ 747 006c 2303E100 		sb	a4,6(sp)
+  26:lib/mpu/src/mpu6500_driver.c **** }
+ 748              		.loc 1 26 2 is_stmt 1
+ 749              	.LVL79:
+ 750              	.LBE119:
+ 751              	.LBE118:
+ 752              		.loc 1 96 13 is_stmt 0
+ 753 0070 03156100 		lh	a0,6(sp)
+ 754 0074 97000000 		call	__floatsisf
+ 754      E7800000 
+ 755              	.LVL80:
+ 756 007c 08C4     		sw	a0,8(s0)
+  97:lib/mpu/src/mpu6500_driver.c **** 	return 1;
+ 757              		.loc 1 97 2 is_stmt 1
+  98:lib/mpu/src/mpu6500_driver.c **** }
+ 758              		.loc 1 98 1 is_stmt 0
+ 759 007e F240     		lw	ra,28(sp)
+ 760              		.cfi_restore 1
+ 761 0080 6244     		lw	s0,24(sp)
+ 762              		.cfi_restore 8
+ 763              	.LVL81:
+ 764 0082 0545     		li	a0,1
+ 765 0084 0561     		addi	sp,sp,32
+ 766              	.LCFI7:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 18
+
+
+ 767              		.cfi_def_cfa_offset 0
+ 768              	.LVL82:
+ 769 0086 8280     		jr	ra
+ 770              		.cfi_endproc
+ 771              	.LFE8:
+ 773              		.section	.text.mpu6500_getGyroAccel,"ax",@progbits
+ 774              		.align	1
+ 775              		.globl	mpu6500_getGyroAccel
+ 777              	mpu6500_getGyroAccel:
+ 778              	.LFB9:
+  99:lib/mpu/src/mpu6500_driver.c **** 
+ 100:lib/mpu/src/mpu6500_driver.c **** int mpu6500_getGyroAccel(mpu_vector_t* pGyro, mpu_vector_t* pAccel){
+ 779              		.loc 1 100 68 is_stmt 1
+ 780              		.cfi_startproc
+ 781              	.LVL83:
+ 101:lib/mpu/src/mpu6500_driver.c **** 	mpu6500_getAccel(pAccel);
+ 782              		.loc 1 101 2
+ 100:lib/mpu/src/mpu6500_driver.c **** 	mpu6500_getAccel(pAccel);
+ 783              		.loc 1 100 68 is_stmt 0
+ 784 0000 4111     		addi	sp,sp,-16
+ 785              	.LCFI8:
+ 786              		.cfi_def_cfa_offset 16
+ 787 0002 22C4     		sw	s0,8(sp)
+ 788              		.cfi_offset 8, -8
+ 789 0004 2A84     		mv	s0,a0
+ 790              		.loc 1 101 2
+ 791 0006 2E85     		mv	a0,a1
+ 792              	.LVL84:
+ 100:lib/mpu/src/mpu6500_driver.c **** 	mpu6500_getAccel(pAccel);
+ 793              		.loc 1 100 68
+ 794 0008 06C6     		sw	ra,12(sp)
+ 795              		.cfi_offset 1, -4
+ 796              		.loc 1 101 2
+ 797 000a 97000000 		call	mpu6500_getAccel
+ 797      E7800000 
+ 798              	.LVL85:
+ 102:lib/mpu/src/mpu6500_driver.c **** 	mpu6500_getGyro(pGyro);
+ 799              		.loc 1 102 2 is_stmt 1
+ 800 0012 2285     		mv	a0,s0
+ 801 0014 97000000 		call	mpu6500_getGyro
+ 801      E7800000 
+ 802              	.LVL86:
+ 103:lib/mpu/src/mpu6500_driver.c **** 	return 1;
+ 803              		.loc 1 103 2
+ 104:lib/mpu/src/mpu6500_driver.c **** }
+ 804              		.loc 1 104 1 is_stmt 0
+ 805 001c B240     		lw	ra,12(sp)
+ 806              		.cfi_restore 1
+ 807 001e 2244     		lw	s0,8(sp)
+ 808              		.cfi_restore 8
+ 809              	.LVL87:
+ 810 0020 0545     		li	a0,1
+ 811 0022 4101     		addi	sp,sp,16
+ 812              	.LCFI9:
+ 813              		.cfi_def_cfa_offset 0
+ 814 0024 8280     		jr	ra
+ 815              		.cfi_endproc
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 19
+
+
+ 816              	.LFE9:
+ 818              		.comm	cb,16,4
+ 819              		.text
+ 820              	.Letext0:
+ 821              		.file 2 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/machine/_de
+ 822              		.file 3 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/lib/gcc/riscv64-unknown-elf/8.3.0/inclu
+ 823              		.file 4 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/_types.
+ 824              		.file 5 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/reent.h
+ 825              		.file 6 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/lock.h"
+ 826              		.file 7 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/_stdint
+ 827              		.file 8 "lib/mpu/include/mpu6500_driver.h"
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 mpu6500_driver.c
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:13     .text.read_mpu:0000000000000000 read_mpu
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:17     .text.read_mpu:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:19     .text.read_mpu:0000000000000000 .L0 
+                            *COM*:0000000000000010 cb
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:20     .text.read_mpu:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:33     .text.read_mpu:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:40     .text.write_mpu:0000000000000000 write_mpu
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:43     .text.write_mpu:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:45     .text.write_mpu:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:46     .text.write_mpu:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:59     .text.write_mpu:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:66     .text.flip_bytes:0000000000000000 flip_bytes
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:69     .text.flip_bytes:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:71     .text.flip_bytes:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:72     .text.flip_bytes:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:73     .text.flip_bytes:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:80     .text.flip_bytes:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:82     .text.flip_bytes:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:85     .text.flip_bytes:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:86     .text.flip_bytes:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:87     .text.flip_bytes:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:88     .text.flip_bytes:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:89     .text.flip_bytes:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:93     .text.flip_bytes:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:96     .text.flip_bytes:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:103    .text.mpu6500_init:0000000000000000 mpu6500_init
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:106    .text.mpu6500_init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:108    .text.mpu6500_init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:109    .text.mpu6500_init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:110    .text.mpu6500_init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:111    .text.mpu6500_init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:112    .text.mpu6500_init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:114    .text.mpu6500_init:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:116    .text.mpu6500_init:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:118    .text.mpu6500_init:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:121    .text.mpu6500_init:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:123    .text.mpu6500_init:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:125    .text.mpu6500_init:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:128    .text.mpu6500_init:0000000000000012 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:130    .text.mpu6500_init:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:132    .text.mpu6500_init:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:133    .text.mpu6500_init:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:134    .text.mpu6500_init:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:135    .text.mpu6500_init:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:140    .text.mpu6500_init:0000000000000018 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:141    .text.mpu6500_init:0000000000000018 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:146    .text.mpu6500_init:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:148    .text.mpu6500_init:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:149    .text.mpu6500_init:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:153    .text.mpu6500_init:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:164    .text.mpu6500_init:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:165    .text.mpu6500_init:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:168    .text.mpu6500_init:0000000000000032 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:170    .text.mpu6500_init:0000000000000034 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:174    .text.mpu6500_init:0000000000000038 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 21
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:175    .text.mpu6500_init:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:180    .text.mpu6500_init:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:184    .text.mpu6500_init:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:191    .text.mpu6500_init:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:196    .text.mpu6500_init:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:197    .text.mpu6500_init:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:202    .text.mpu6500_init:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:207    .text.mpu6500_init:000000000000005a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:208    .text.mpu6500_init:000000000000005a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:215    .text.mpu6500_init:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:216    .text.mpu6500_init:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:228    .text.mpu6500_init:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:233    .text.mpu6500_init:000000000000007c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:236    .text.mpu6500_init:0000000000000082 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:238    .text.mpu6500_init:0000000000000084 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:243    .text.mpu6500_init:0000000000000086 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:244    .text.mpu6500_init:0000000000000086 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:249    .text.mpu6500_init:000000000000008a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:255    .text.mpu6500_init:0000000000000090 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:256    .text.mpu6500_init:0000000000000090 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:268    .text.mpu6500_init:000000000000009e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:269    .text.mpu6500_init:000000000000009e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:278    .text.mpu6500_init:00000000000000ac .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:283    .text.mpu6500_init:00000000000000b0 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:284    .text.mpu6500_init:00000000000000b0 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:291    .text.mpu6500_init:00000000000000b2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:292    .text.mpu6500_init:00000000000000b2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:301    .text.mpu6500_init:00000000000000c0 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:306    .text.mpu6500_init:00000000000000c4 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:307    .text.mpu6500_init:00000000000000c4 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:314    .text.mpu6500_init:00000000000000c6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:315    .text.mpu6500_init:00000000000000c6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:320    .text.mpu6500_init:00000000000000ca .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:324    .text.mpu6500_init:00000000000000cc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:331    .text.mpu6500_init:00000000000000d6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:336    .text.mpu6500_init:00000000000000da .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:337    .text.mpu6500_init:00000000000000da .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:344    .text.mpu6500_init:00000000000000dc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:345    .text.mpu6500_init:00000000000000dc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:350    .text.mpu6500_init:00000000000000e0 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:356    .text.mpu6500_init:00000000000000e6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:357    .text.mpu6500_init:00000000000000e6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:369    .text.mpu6500_init:00000000000000f2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:370    .text.mpu6500_init:00000000000000f2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:379    .text.mpu6500_init:0000000000000100 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:384    .text.mpu6500_init:0000000000000104 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:385    .text.mpu6500_init:0000000000000104 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:392    .text.mpu6500_init:0000000000000106 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:393    .text.mpu6500_init:0000000000000106 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:398    .text.mpu6500_init:000000000000010a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:402    .text.mpu6500_init:000000000000010e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:409    .text.mpu6500_init:000000000000011a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:414    .text.mpu6500_init:000000000000011e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:415    .text.mpu6500_init:000000000000011e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:422    .text.mpu6500_init:0000000000000120 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:423    .text.mpu6500_init:0000000000000120 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:428    .text.mpu6500_init:0000000000000124 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 22
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:434    .text.mpu6500_init:000000000000012a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:435    .text.mpu6500_init:000000000000012a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:445    .text.mpu6500_init:0000000000000138 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:446    .text.mpu6500_init:0000000000000138 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:449    .text.mpu6500_init:000000000000013a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:450    .text.mpu6500_init:000000000000013c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:452    .text.mpu6500_init:000000000000013e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:454    .text.mpu6500_init:0000000000000140 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:457    .text.mpu6500_init:0000000000000142 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:459    .text.mpu6500_init:0000000000000144 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:467    .text.mpu6500_getAccel:0000000000000000 mpu6500_getAccel
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:470    .text.mpu6500_getAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:472    .text.mpu6500_getAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:473    .text.mpu6500_getAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:476    .text.mpu6500_getAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:477    .text.mpu6500_getAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:481    .text.mpu6500_getAccel:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:483    .text.mpu6500_getAccel:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:488    .text.mpu6500_getAccel:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:492    .text.mpu6500_getAccel:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:496    .text.mpu6500_getAccel:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:497    .text.mpu6500_getAccel:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:501    .text.mpu6500_getAccel:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:505    .text.mpu6500_getAccel:0000000000000012 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:510    .text.mpu6500_getAccel:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:511    .text.mpu6500_getAccel:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:515    .text.mpu6500_getAccel:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:525    .text.mpu6500_getAccel:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:526    .text.mpu6500_getAccel:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:531    .text.mpu6500_getAccel:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:532    .text.mpu6500_getAccel:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:533    .text.mpu6500_getAccel:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:534    .text.mpu6500_getAccel:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:536    .text.mpu6500_getAccel:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:539    .text.mpu6500_getAccel:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:540    .text.mpu6500_getAccel:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:545    .text.mpu6500_getAccel:0000000000000034 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:546    .text.mpu6500_getAccel:0000000000000034 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:550    .text.mpu6500_getAccel:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:552    .text.mpu6500_getAccel:0000000000000044 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:557    .text.mpu6500_getAccel:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:558    .text.mpu6500_getAccel:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:559    .text.mpu6500_getAccel:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:560    .text.mpu6500_getAccel:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:561    .text.mpu6500_getAccel:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:563    .text.mpu6500_getAccel:000000000000004a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:565    .text.mpu6500_getAccel:000000000000004e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:566    .text.mpu6500_getAccel:000000000000004e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:571    .text.mpu6500_getAccel:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:572    .text.mpu6500_getAccel:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:576    .text.mpu6500_getAccel:000000000000005e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:578    .text.mpu6500_getAccel:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:583    .text.mpu6500_getAccel:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:584    .text.mpu6500_getAccel:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:585    .text.mpu6500_getAccel:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:586    .text.mpu6500_getAccel:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:587    .text.mpu6500_getAccel:0000000000000064 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 23
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:589    .text.mpu6500_getAccel:0000000000000068 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:591    .text.mpu6500_getAccel:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:592    .text.mpu6500_getAccel:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:597    .text.mpu6500_getAccel:0000000000000070 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:598    .text.mpu6500_getAccel:0000000000000070 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:603    .text.mpu6500_getAccel:000000000000007e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:604    .text.mpu6500_getAccel:000000000000007e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:605    .text.mpu6500_getAccel:0000000000000080 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:607    .text.mpu6500_getAccel:0000000000000082 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:612    .text.mpu6500_getAccel:0000000000000086 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:615    .text.mpu6500_getAccel:0000000000000088 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:622    .text.mpu6500_getGyro:0000000000000000 mpu6500_getGyro
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:625    .text.mpu6500_getGyro:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:627    .text.mpu6500_getGyro:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:628    .text.mpu6500_getGyro:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:631    .text.mpu6500_getGyro:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:632    .text.mpu6500_getGyro:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:636    .text.mpu6500_getGyro:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:638    .text.mpu6500_getGyro:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:643    .text.mpu6500_getGyro:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:647    .text.mpu6500_getGyro:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:651    .text.mpu6500_getGyro:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:652    .text.mpu6500_getGyro:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:656    .text.mpu6500_getGyro:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:660    .text.mpu6500_getGyro:0000000000000012 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:665    .text.mpu6500_getGyro:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:666    .text.mpu6500_getGyro:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:670    .text.mpu6500_getGyro:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:680    .text.mpu6500_getGyro:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:681    .text.mpu6500_getGyro:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:686    .text.mpu6500_getGyro:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:687    .text.mpu6500_getGyro:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:688    .text.mpu6500_getGyro:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:689    .text.mpu6500_getGyro:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:691    .text.mpu6500_getGyro:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:694    .text.mpu6500_getGyro:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:695    .text.mpu6500_getGyro:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:700    .text.mpu6500_getGyro:0000000000000034 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:701    .text.mpu6500_getGyro:0000000000000034 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:705    .text.mpu6500_getGyro:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:707    .text.mpu6500_getGyro:0000000000000044 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:712    .text.mpu6500_getGyro:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:713    .text.mpu6500_getGyro:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:714    .text.mpu6500_getGyro:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:715    .text.mpu6500_getGyro:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:716    .text.mpu6500_getGyro:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:718    .text.mpu6500_getGyro:000000000000004a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:720    .text.mpu6500_getGyro:000000000000004e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:721    .text.mpu6500_getGyro:000000000000004e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:726    .text.mpu6500_getGyro:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:727    .text.mpu6500_getGyro:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:731    .text.mpu6500_getGyro:000000000000005e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:733    .text.mpu6500_getGyro:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:738    .text.mpu6500_getGyro:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:739    .text.mpu6500_getGyro:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:740    .text.mpu6500_getGyro:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:741    .text.mpu6500_getGyro:0000000000000064 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 24
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:742    .text.mpu6500_getGyro:0000000000000064 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:744    .text.mpu6500_getGyro:0000000000000068 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:746    .text.mpu6500_getGyro:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:747    .text.mpu6500_getGyro:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:752    .text.mpu6500_getGyro:0000000000000070 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:753    .text.mpu6500_getGyro:0000000000000070 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:758    .text.mpu6500_getGyro:000000000000007e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:759    .text.mpu6500_getGyro:000000000000007e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:760    .text.mpu6500_getGyro:0000000000000080 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:762    .text.mpu6500_getGyro:0000000000000082 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:767    .text.mpu6500_getGyro:0000000000000086 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:770    .text.mpu6500_getGyro:0000000000000088 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:777    .text.mpu6500_getGyroAccel:0000000000000000 mpu6500_getGyroAccel
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:780    .text.mpu6500_getGyroAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:782    .text.mpu6500_getGyroAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:783    .text.mpu6500_getGyroAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:784    .text.mpu6500_getGyroAccel:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:786    .text.mpu6500_getGyroAccel:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:788    .text.mpu6500_getGyroAccel:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:791    .text.mpu6500_getGyroAccel:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:794    .text.mpu6500_getGyroAccel:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:795    .text.mpu6500_getGyroAccel:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:797    .text.mpu6500_getGyroAccel:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:800    .text.mpu6500_getGyroAccel:0000000000000012 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:804    .text.mpu6500_getGyroAccel:000000000000001c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:805    .text.mpu6500_getGyroAccel:000000000000001c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:806    .text.mpu6500_getGyroAccel:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:808    .text.mpu6500_getGyroAccel:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:813    .text.mpu6500_getGyroAccel:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:815    .text.mpu6500_getGyroAccel:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:36     .text.read_mpu:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:62     .text.write_mpu:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:99     .text.flip_bytes:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:463    .text.mpu6500_init:0000000000000144 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:618    .text.mpu6500_getAccel:0000000000000088 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:773    .text.mpu6500_getGyro:0000000000000088 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:819    .text.mpu6500_getGyroAccel:0000000000000026 .L0 
+                     .debug_frame:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:447    .text.mpu6500_init:000000000000013a .L6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:231    .text.mpu6500_init:000000000000007c .L8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:210    .text.mpu6500_init:0000000000000062 .L9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:3474   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5452   .debug_str:0000000000000345 .LASF151
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5298   .debug_str:000000000000002b .LASF152
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5514   .debug_str:00000000000004d5 .LASF153
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5178   .debug_ranges:0000000000000000 .Ldebug_ranges0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5286   .debug_line:0000000000000000 .Ldebug_line0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5330   .debug_str:00000000000000fe .LASF0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5300   .debug_str:0000000000000048 .LASF2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5474   .debug_str:000000000000041d .LASF1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5376   .debug_str:00000000000001c9 .LASF3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5482   .debug_str:000000000000043f .LASF4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5414   .debug_str:0000000000000273 .LASF5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5350   .debug_str:000000000000014e .LASF6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5398   .debug_str:000000000000022b .LASF7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5328   .debug_str:00000000000000f0 .LASF8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5310   .debug_str:0000000000000085 .LASF9
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 25
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5390   .debug_str:0000000000000207 .LASF10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5444   .debug_str:0000000000000313 .LASF11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5426   .debug_str:00000000000002b6 .LASF12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5460   .debug_str:00000000000003db .LASF13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5530   .debug_str:000000000000054d .LASF14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5568   .debug_str:00000000000005f4 .LASF15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5424   .debug_str:00000000000002b0 .LASF16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5392   .debug_str:0000000000000214 .LASF17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5522   .debug_str:000000000000052b .LASF18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5524   .debug_str:0000000000000533 .LASF19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5494   .debug_str:000000000000047c .LASF20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5550   .debug_str:0000000000000599 .LASF21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5472   .debug_str:000000000000040b .LASF22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5576   .debug_str:000000000000061c .LASF23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5380   .debug_str:00000000000001db .LASF28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5542   .debug_str:0000000000000578 .LASF24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5516   .debug_str:0000000000000516 .LASF25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5374   .debug_str:00000000000001c3 .LASF26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5562   .debug_str:00000000000005df .LASF27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5388   .debug_str:0000000000000202 .LASF29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5322   .debug_str:00000000000000d2 .LASF30
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5536   .debug_str:0000000000000561 .LASF31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5338   .debug_str:000000000000011c .LASF32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5598   .debug_str:000000000000067d .LASF33
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5454   .debug_str:00000000000003bf .LASF34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5440   .debug_str:0000000000000300 .LASF35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5564   .debug_str:00000000000005e4 .LASF36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5484   .debug_str:0000000000000449 .LASF37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5586   .debug_str:0000000000000644 .LASF38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5342   .debug_str:000000000000012b .LASF39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5370   .debug_str:00000000000001b6 .LASF40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5288   .debug_str:0000000000000000 .LASF41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5546   .debug_str:000000000000058b .LASF42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5356   .debug_str:000000000000016f .LASF43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5456   .debug_str:00000000000003c8 .LASF44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5506   .debug_str:00000000000004b5 .LASF45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5372   .debug_str:00000000000001be .LASF46
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5488   .debug_str:0000000000000468 .LASF47
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5334   .debug_str:0000000000000110 .LASF48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5290   .debug_str:000000000000000c .LASF49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5496   .debug_str:0000000000000487 .LASF50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5354   .debug_str:0000000000000168 .LASF51
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5400   .debug_str:000000000000023d .LASF52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5312   .debug_str:000000000000009c .LASF53
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5344   .debug_str:0000000000000139 .LASF54
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5384   .debug_str:00000000000001f2 .LASF55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5438   .debug_str:00000000000002f9 .LASF56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5526   .debug_str:000000000000053b .LASF57
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5590   .debug_str:000000000000065e .LASF58
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5332   .debug_str:000000000000010a .LASF59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5580   .debug_str:000000000000062d .LASF60
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5360   .debug_str:000000000000017e .LASF61
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5364   .debug_str:000000000000018f .LASF62
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5302   .debug_str:0000000000000052 .LASF63
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5428   .debug_str:00000000000002bd .LASF64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5498   .debug_str:000000000000048f .LASF65
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5432   .debug_str:00000000000002d3 .LASF66
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 26
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5518   .debug_str:000000000000051e .LASF67
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5532   .debug_str:0000000000000555 .LASF68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5358   .debug_str:0000000000000177 .LASF69
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5394   .debug_str:000000000000021b .LASF70
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5378   .debug_str:00000000000001d3 .LASF71
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5504   .debug_str:00000000000004b0 .LASF72
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5294   .debug_str:000000000000001a .LASF73
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5446   .debug_str:000000000000031f .LASF74
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5510   .debug_str:00000000000004c3 .LASF75
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5458   .debug_str:00000000000003d0 .LASF76
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5512   .debug_str:00000000000004cb .LASF77
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5422   .debug_str:00000000000002a8 .LASF78
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5386   .debug_str:00000000000001f8 .LASF79
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5596   .debug_str:0000000000000678 .LASF80
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5468   .debug_str:00000000000003f5 .LASF81
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5396   .debug_str:0000000000000223 .LASF82
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5362   .debug_str:0000000000000187 .LASF83
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5476   .debug_str:000000000000042b .LASF84
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5416   .debug_str:0000000000000286 .LASF85
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5574   .debug_str:0000000000000612 .LASF86
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5346   .debug_str:0000000000000141 .LASF87
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5340   .debug_str:0000000000000126 .LASF88
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5534   .debug_str:000000000000055c .LASF89
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5492   .debug_str:0000000000000475 .LASF90
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5566   .debug_str:00000000000005ee .LASF91
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5406   .debug_str:0000000000000259 .LASF92
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5490   .debug_str:000000000000046f .LASF93
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5292   .debug_str:0000000000000012 .LASF94
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5520   .debug_str:0000000000000525 .LASF95
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5540   .debug_str:0000000000000572 .LASF96
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5548   .debug_str:0000000000000594 .LASF97
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5556   .debug_str:00000000000005c1 .LASF98
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5544   .debug_str:000000000000057e .LASF99
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5420   .debug_str:000000000000029b .LASF100
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5588   .debug_str:000000000000064f .LASF101
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5382   .debug_str:00000000000001e3 .LASF102
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5500   .debug_str:0000000000000498 .LASF103
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5592   .debug_str:0000000000000665 .LASF104
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5502   .debug_str:00000000000004a3 .LASF105
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5594   .debug_str:000000000000066a .LASF106
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5320   .debug_str:00000000000000c4 .LASF107
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5570   .debug_str:00000000000005fd .LASF108
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5418   .debug_str:000000000000028f .LASF109
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5552   .debug_str:00000000000005a1 .LASF110
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5368   .debug_str:00000000000001a8 .LASF111
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5318   .debug_str:00000000000000b5 .LASF112
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5366   .debug_str:0000000000000197 .LASF113
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5306   .debug_str:0000000000000065 .LASF114
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5308   .debug_str:0000000000000074 .LASF115
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5480   .debug_str:0000000000000436 .LASF116
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5448   .debug_str:0000000000000338 .LASF117
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5442   .debug_str:000000000000030a .LASF118
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5582   .debug_str:0000000000000633 .LASF119
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5314   .debug_str:00000000000000a5 .LASF154
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5528   .debug_str:0000000000000541 .LASF120
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5554   .debug_str:00000000000005ae .LASF121
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5538   .debug_str:000000000000056a .LASF122
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 27
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5324   .debug_str:00000000000000db .LASF123
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5464   .debug_str:00000000000003e7 .LASF124
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5304   .debug_str:0000000000000058 .LASF125
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5352   .debug_str:0000000000000157 .LASF126
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5462   .debug_str:00000000000003e2 .LASF127
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5296   .debug_str:0000000000000025 .LASF128
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5478   .debug_str:0000000000000430 .LASF129
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5578   .debug_str:0000000000000625 .LASF130
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5430   .debug_str:00000000000002c3 .LASF131
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5486   .debug_str:0000000000000453 .LASF134
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:778    .text.mpu6500_getGyroAccel:0000000000000000 .LFB9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:816    .text.mpu6500_getGyroAccel:0000000000000026 .LFE9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4254   .debug_loc:0000000000000000 .LLST66
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5404   .debug_str:0000000000000253 .LASF132
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4272   .debug_loc:000000000000002c .LLST67
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5560   .debug_str:00000000000005d8 .LASF133
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4290   .debug_loc:0000000000000058 .LLST68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:798    .text.mpu6500_getGyroAccel:0000000000000012 .LVL85
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:802    .text.mpu6500_getGyroAccel:000000000000001c .LVL86
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5402   .debug_str:0000000000000243 .LASF135
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:623    .text.mpu6500_getGyro:0000000000000000 .LFB8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:771    .text.mpu6500_getGyro:0000000000000088 .LFE8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4304   .debug_loc:0000000000000079 .LLST57
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4322   .debug_loc:00000000000000a5 .LLST58
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5316   .debug_str:00000000000000b0 .LASF137
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:629    .text.mpu6500_getGyro:0000000000000000 .LBB104
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4340   .debug_loc:00000000000000d1 .LLST59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4359   .debug_loc:00000000000000fe .LLST60
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4367   .debug_loc:0000000000000112 .LLST61
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:676    .text.mpu6500_getGyro:0000000000000024 .LVL70
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:683    .text.mpu6500_getGyro:0000000000000028 .LBB114
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:699    .text.mpu6500_getGyro:0000000000000034 .LBE114
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4376   .debug_loc:0000000000000127 .LLST62
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:684    .text.mpu6500_getGyro:0000000000000028 .LBB115
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:698    .text.mpu6500_getGyro:0000000000000034 .LBE115
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4384   .debug_loc:000000000000013b .LLST63
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:710    .text.mpu6500_getGyro:0000000000000046 .LBB116
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:725    .text.mpu6500_getGyro:0000000000000052 .LBE116
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:711    .text.mpu6500_getGyro:0000000000000046 .LBB117
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:724    .text.mpu6500_getGyro:0000000000000052 .LBE117
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4399   .debug_loc:000000000000015d .LLST64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:736    .text.mpu6500_getGyro:0000000000000064 .LBB118
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:751    .text.mpu6500_getGyro:0000000000000070 .LBE118
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:737    .text.mpu6500_getGyro:0000000000000064 .LBB119
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:750    .text.mpu6500_getGyro:0000000000000070 .LBE119
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4414   .debug_loc:000000000000017f .LLST65
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5436   .debug_str:00000000000002e8 .LASF136
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:468    .text.mpu6500_getAccel:0000000000000000 .LFB7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:616    .text.mpu6500_getAccel:0000000000000088 .LFE7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4429   .debug_loc:00000000000001a1 .LLST48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4447   .debug_loc:00000000000001cd .LLST49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5450   .debug_str:000000000000033f .LASF138
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:474    .text.mpu6500_getAccel:0000000000000000 .LBB88
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4465   .debug_loc:00000000000001f9 .LLST50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4484   .debug_loc:0000000000000226 .LLST51
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4492   .debug_loc:000000000000023a .LLST52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:521    .text.mpu6500_getAccel:0000000000000024 .LVL53
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 28
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:528    .text.mpu6500_getAccel:0000000000000028 .LBB98
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:544    .text.mpu6500_getAccel:0000000000000034 .LBE98
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4501   .debug_loc:000000000000024f .LLST53
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:529    .text.mpu6500_getAccel:0000000000000028 .LBB99
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:543    .text.mpu6500_getAccel:0000000000000034 .LBE99
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4509   .debug_loc:0000000000000263 .LLST54
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:555    .text.mpu6500_getAccel:0000000000000046 .LBB100
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:570    .text.mpu6500_getAccel:0000000000000052 .LBE100
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:556    .text.mpu6500_getAccel:0000000000000046 .LBB101
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:569    .text.mpu6500_getAccel:0000000000000052 .LBE101
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4524   .debug_loc:0000000000000285 .LLST55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:581    .text.mpu6500_getAccel:0000000000000064 .LBB102
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:596    .text.mpu6500_getAccel:0000000000000070 .LBE102
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:582    .text.mpu6500_getAccel:0000000000000064 .LBB103
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:595    .text.mpu6500_getAccel:0000000000000070 .LBE103
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4539   .debug_loc:00000000000002a7 .LLST56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5434   .debug_str:00000000000002db .LASF139
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:104    .text.mpu6500_init:0000000000000000 .LFB6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:460    .text.mpu6500_init:0000000000000144 .LFE6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4554   .debug_loc:00000000000002c9 .LLST10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5466   .debug_str:00000000000003ed .LASF140
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4572   .debug_loc:00000000000002f5 .LLST11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5508   .debug_str:00000000000004ba .LASF141
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4590   .debug_loc:0000000000000321 .LLST12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5408   .debug_str:0000000000000260 .LASF142
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4609   .debug_loc:0000000000000351 .LLST13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4628   .debug_loc:0000000000000381 .LLST14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5470   .debug_str:00000000000003ff .LASF143
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5326   .debug_str:00000000000000e3 .LASF144
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:138    .text.mpu6500_init:0000000000000018 .LBB40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4646   .debug_loc:00000000000003ad .LLST15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4665   .debug_loc:00000000000003da .LLST16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4673   .debug_loc:00000000000003ee .LLST17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:160    .text.mpu6500_init:000000000000002a .LVL21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:172    .text.mpu6500_init:0000000000000038 .LBB44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4682   .debug_loc:0000000000000403 .LLST18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4695   .debug_loc:0000000000000423 .LLST19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4703   .debug_loc:0000000000000437 .LLST20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:198    .text.mpu6500_init:0000000000000052 .LVL23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:213    .text.mpu6500_init:0000000000000062 .LBB50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:226    .text.mpu6500_init:0000000000000074 .LBE50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4712   .debug_loc:000000000000044c .LLST21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4731   .debug_loc:0000000000000479 .LLST22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4739   .debug_loc:000000000000048d .LLST23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:224    .text.mpu6500_init:0000000000000074 .LVL27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:241    .text.mpu6500_init:0000000000000086 .LBB52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4748   .debug_loc:00000000000004a2 .LLST24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4767   .debug_loc:00000000000004cf .LLST25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4775   .debug_loc:00000000000004e3 .LLST26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:262    .text.mpu6500_init:000000000000009e .LVL32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:266    .text.mpu6500_init:000000000000009e .LBB56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4784   .debug_loc:00000000000004f8 .LLST27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4797   .debug_loc:0000000000000518 .LLST28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4805   .debug_loc:000000000000052c .LLST29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:285    .text.mpu6500_init:00000000000000b2 .LVL34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:289    .text.mpu6500_init:00000000000000b2 .LBB60
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4813   .debug_loc:0000000000000540 .LLST30
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 29
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4826   .debug_loc:0000000000000560 .LLST31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4834   .debug_loc:0000000000000574 .LLST32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:308    .text.mpu6500_init:00000000000000c6 .LVL36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:312    .text.mpu6500_init:00000000000000c6 .LBB64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4842   .debug_loc:0000000000000588 .LLST33
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4855   .debug_loc:00000000000005a8 .LLST34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4863   .debug_loc:00000000000005bc .LLST35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:338    .text.mpu6500_init:00000000000000dc .LVL38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:342    .text.mpu6500_init:00000000000000dc .LBB70
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4871   .debug_loc:00000000000005d0 .LLST36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4890   .debug_loc:00000000000005fd .LLST37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4898   .debug_loc:0000000000000611 .LLST38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:363    .text.mpu6500_init:00000000000000f2 .LVL41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:367    .text.mpu6500_init:00000000000000f2 .LBB74
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4906   .debug_loc:0000000000000625 .LLST39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4919   .debug_loc:0000000000000645 .LLST40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4927   .debug_loc:0000000000000659 .LLST41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:386    .text.mpu6500_init:0000000000000106 .LVL43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:390    .text.mpu6500_init:0000000000000106 .LBB78
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4935   .debug_loc:000000000000066d .LLST42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4948   .debug_loc:000000000000068d .LLST43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4956   .debug_loc:00000000000006a1 .LLST44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:416    .text.mpu6500_init:0000000000000120 .LVL45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:420    .text.mpu6500_init:0000000000000120 .LBB84
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4965   .debug_loc:00000000000006b6 .LLST45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4984   .debug_loc:00000000000006e3 .LLST46
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:4992   .debug_loc:00000000000006f7 .LLST47
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:441    .text.mpu6500_init:0000000000000138 .LVL48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:205    .text.mpu6500_init:000000000000005a .LVL24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:239    .text.mpu6500_init:0000000000000086 .LVL29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5572   .debug_str:0000000000000607 .LASF155
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5336   .debug_str:0000000000000116 .LASF145
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5348   .debug_str:0000000000000149 .LASF146
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5558   .debug_str:00000000000005ce .LASF149
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5412   .debug_str:000000000000026e .LASF147
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5410   .debug_str:0000000000000269 .LASF148
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5584   .debug_str:000000000000063b .LASF150
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:14     .text.read_mpu:0000000000000000 .LFB3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:34     .text.read_mpu:000000000000001a .LFE3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5001   .debug_loc:000000000000070c .LLST0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5015   .debug_loc:000000000000072d .LLST1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5029   .debug_loc:000000000000074e .LLST2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:32     .text.read_mpu:000000000000001a .LVL4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:41     .text.write_mpu:0000000000000000 .LFB4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:60     .text.write_mpu:000000000000001a .LFE4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5047   .debug_loc:000000000000077a .LLST3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5061   .debug_loc:000000000000079b .LLST4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5075   .debug_loc:00000000000007bc .LLST5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:58     .text.write_mpu:000000000000001a .LVL9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:67     .text.flip_bytes:0000000000000000 .LFB5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:97     .text.flip_bytes:0000000000000016 .LFE5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5093   .debug_loc:00000000000007e8 .LLST6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5111   .debug_loc:0000000000000814 .LLST7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5125   .debug_loc:0000000000000835 .LLST8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:5140   .debug_loc:0000000000000857 .LLST9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:785    .text.mpu6500_getGyroAccel:0000000000000002 .LCFI8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:812    .text.mpu6500_getGyroAccel:0000000000000024 .LCFI9
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 30
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:781    .text.mpu6500_getGyroAccel:0000000000000000 .LVL83
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:792    .text.mpu6500_getGyroAccel:0000000000000008 .LVL84
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:809    .text.mpu6500_getGyroAccel:0000000000000020 .LVL87
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:637    .text.mpu6500_getGyro:0000000000000006 .LCFI6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:766    .text.mpu6500_getGyro:0000000000000086 .LCFI7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:626    .text.mpu6500_getGyro:0000000000000000 .LVL66
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:661    .text.mpu6500_getGyro:0000000000000014 .LVL68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:763    .text.mpu6500_getGyro:0000000000000082 .LVL81
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:639    .text.mpu6500_getGyro:0000000000000006 .LVL67
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:674    .text.mpu6500_getGyro:0000000000000022 .LVL69
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:682    .text.mpu6500_getGyro:0000000000000028 .LVL71
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:692    .text.mpu6500_getGyro:0000000000000030 .LVL72
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:768    .text.mpu6500_getGyro:0000000000000086 .LVL82
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:709    .text.mpu6500_getGyro:0000000000000046 .LVL75
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:735    .text.mpu6500_getGyro:0000000000000064 .LVL78
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:482    .text.mpu6500_getAccel:0000000000000006 .LCFI4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:611    .text.mpu6500_getAccel:0000000000000086 .LCFI5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:471    .text.mpu6500_getAccel:0000000000000000 .LVL49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:506    .text.mpu6500_getAccel:0000000000000014 .LVL51
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:608    .text.mpu6500_getAccel:0000000000000082 .LVL64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:484    .text.mpu6500_getAccel:0000000000000006 .LVL50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:519    .text.mpu6500_getAccel:0000000000000022 .LVL52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:527    .text.mpu6500_getAccel:0000000000000028 .LVL54
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:537    .text.mpu6500_getAccel:0000000000000030 .LVL55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:613    .text.mpu6500_getAccel:0000000000000086 .LVL65
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:554    .text.mpu6500_getAccel:0000000000000046 .LVL58
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:580    .text.mpu6500_getAccel:0000000000000064 .LVL61
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:113    .text.mpu6500_init:0000000000000002 .LCFI2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:456    .text.mpu6500_init:0000000000000142 .LCFI3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:107    .text.mpu6500_init:0000000000000000 .LVL14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:126    .text.mpu6500_init:0000000000000012 .LVL15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:158    .text.mpu6500_init:0000000000000028 .LVL20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:156    .text.mpu6500_init:0000000000000024 .LVL19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:154    .text.mpu6500_init:0000000000000020 .LVL18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:137    .text.mpu6500_init:0000000000000018 .LVL16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:142    .text.mpu6500_init:000000000000001a .LVL17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:193    .text.mpu6500_init:0000000000000050 .LVL22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:212    .text.mpu6500_init:0000000000000062 .LVL25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:219    .text.mpu6500_init:0000000000000068 .LVL26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:230    .text.mpu6500_init:000000000000007c .LVL28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:252    .text.mpu6500_init:0000000000000090 .LVL30
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:257    .text.mpu6500_init:0000000000000092 .LVL31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:280    .text.mpu6500_init:00000000000000b0 .LVL33
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:303    .text.mpu6500_init:00000000000000c4 .LVL35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:333    .text.mpu6500_init:00000000000000da .LVL37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:353    .text.mpu6500_init:00000000000000e6 .LVL39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:358    .text.mpu6500_init:00000000000000e8 .LVL40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:381    .text.mpu6500_init:0000000000000104 .LVL42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:411    .text.mpu6500_init:000000000000011e .LVL44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:431    .text.mpu6500_init:000000000000012a .LVL46
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:437    .text.mpu6500_init:000000000000012e .LVL47
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:18     .text.read_mpu:0000000000000000 .LVL0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:27     .text.read_mpu:0000000000000012 .LVL2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:30     .text.read_mpu:0000000000000018 .LVL3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:25     .text.read_mpu:0000000000000010 .LVL1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:44     .text.write_mpu:0000000000000000 .LVL5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:53     .text.write_mpu:0000000000000012 .LVL7
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 31
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:56     .text.write_mpu:0000000000000018 .LVL8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:51     .text.write_mpu:0000000000000010 .LVL6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:81     .text.flip_bytes:000000000000000e .LCFI0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:92     .text.flip_bytes:0000000000000014 .LCFI1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:70     .text.flip_bytes:0000000000000000 .LVL10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:76     .text.flip_bytes:0000000000000008 .LVL11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:83     .text.flip_bytes:000000000000000e .LVL12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:94     .text.flip_bytes:0000000000000014 .LVL13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:829    .debug_info:0000000000000000 .Ldebug_info0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:144    .text.mpu6500_init:000000000000001a .LBE40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:150    .text.mpu6500_init:000000000000001e .LBB43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:162    .text.mpu6500_init:000000000000002a .LBE43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:178    .text.mpu6500_init:000000000000003c .LBE44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:181    .text.mpu6500_init:0000000000000040 .LBB48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:189    .text.mpu6500_init:000000000000004c .LBE48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:194    .text.mpu6500_init:0000000000000050 .LBB49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:200    .text.mpu6500_init:0000000000000052 .LBE49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:247    .text.mpu6500_init:000000000000008a .LBE52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:253    .text.mpu6500_init:0000000000000090 .LBB55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:264    .text.mpu6500_init:000000000000009e .LBE55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:276    .text.mpu6500_init:00000000000000ac .LBE56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:281    .text.mpu6500_init:00000000000000b0 .LBB59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:287    .text.mpu6500_init:00000000000000b2 .LBE59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:299    .text.mpu6500_init:00000000000000c0 .LBE60
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:304    .text.mpu6500_init:00000000000000c4 .LBB63
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:310    .text.mpu6500_init:00000000000000c6 .LBE63
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:318    .text.mpu6500_init:00000000000000ca .LBE64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:321    .text.mpu6500_init:00000000000000cc .LBB68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:329    .text.mpu6500_init:00000000000000d6 .LBE68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:334    .text.mpu6500_init:00000000000000da .LBB69
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:340    .text.mpu6500_init:00000000000000dc .LBE69
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:348    .text.mpu6500_init:00000000000000e0 .LBE70
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:354    .text.mpu6500_init:00000000000000e6 .LBB73
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:365    .text.mpu6500_init:00000000000000f2 .LBE73
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:377    .text.mpu6500_init:0000000000000100 .LBE74
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:382    .text.mpu6500_init:0000000000000104 .LBB77
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:388    .text.mpu6500_init:0000000000000106 .LBE77
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:396    .text.mpu6500_init:000000000000010a .LBE78
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:399    .text.mpu6500_init:000000000000010e .LBB82
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:407    .text.mpu6500_init:000000000000011a .LBE82
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:412    .text.mpu6500_init:000000000000011e .LBB83
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:418    .text.mpu6500_init:0000000000000120 .LBE83
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:426    .text.mpu6500_init:0000000000000124 .LBE84
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:432    .text.mpu6500_init:000000000000012a .LBB87
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:443    .text.mpu6500_init:0000000000000138 .LBE87
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:479    .text.mpu6500_getAccel:0000000000000004 .LBE88
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:485    .text.mpu6500_getAccel:0000000000000006 .LBB94
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:490    .text.mpu6500_getAccel:000000000000000a .LBE94
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:493    .text.mpu6500_getAccel:000000000000000c .LBB95
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:499    .text.mpu6500_getAccel:0000000000000010 .LBE95
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:502    .text.mpu6500_getAccel:0000000000000012 .LBB96
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:508    .text.mpu6500_getAccel:0000000000000014 .LBE96
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:512    .text.mpu6500_getAccel:0000000000000016 .LBB97
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:523    .text.mpu6500_getAccel:0000000000000024 .LBE97
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:634    .text.mpu6500_getGyro:0000000000000004 .LBE104
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:640    .text.mpu6500_getGyro:0000000000000006 .LBB110
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:645    .text.mpu6500_getGyro:000000000000000a .LBE110
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s 			page 32
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:648    .text.mpu6500_getGyro:000000000000000c .LBB111
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:654    .text.mpu6500_getGyro:0000000000000010 .LBE111
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:657    .text.mpu6500_getGyro:0000000000000012 .LBB112
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:663    .text.mpu6500_getGyro:0000000000000014 .LBE112
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:667    .text.mpu6500_getGyro:0000000000000016 .LBB113
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//cc3AmiH8.s:678    .text.mpu6500_getGyro:0000000000000024 .LBE113
+
+UNDEFINED SYMBOLS
+__floatsisf

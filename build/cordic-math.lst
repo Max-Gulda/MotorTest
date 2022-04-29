@@ -1,0 +1,1967 @@
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 1
+
+
+   1              		.file	"cordic-math.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.cordic_atan,"ax",@progbits
+  10              		.align	1
+  11              		.globl	cordic_atan
+  13              	cordic_atan:
+  14              	.LFB2:
+  15              		.file 1 "lib/cordicMath/src/cordic-math.c"
+   1:lib/cordicMath/src/cordic-math.c **** /* Copyright (c) 2022 Max Gulda, KTH
+   2:lib/cordicMath/src/cordic-math.c **** 
+   3:lib/cordicMath/src/cordic-math.c **** Permission is hereby granted, free of charge, to any person obtaining a copy
+   4:lib/cordicMath/src/cordic-math.c **** of this software and associated documentation files (the "Software"), to deal
+   5:lib/cordicMath/src/cordic-math.c **** in the Software without restriction, including without limitation the rights
+   6:lib/cordicMath/src/cordic-math.c **** to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   7:lib/cordicMath/src/cordic-math.c **** copies of the Software, and to permit persons to whom the Software is
+   8:lib/cordicMath/src/cordic-math.c **** furnished to do so, subject to the following conditions:
+   9:lib/cordicMath/src/cordic-math.c **** 
+  10:lib/cordicMath/src/cordic-math.c **** The above copyright notice and this permission notice shall be included in all
+  11:lib/cordicMath/src/cordic-math.c **** copies or substantial portions of the Software.
+  12:lib/cordicMath/src/cordic-math.c **** 
+  13:lib/cordicMath/src/cordic-math.c **** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  14:lib/cordicMath/src/cordic-math.c **** IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  15:lib/cordicMath/src/cordic-math.c **** FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  16:lib/cordicMath/src/cordic-math.c **** AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  17:lib/cordicMath/src/cordic-math.c **** LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  18:lib/cordicMath/src/cordic-math.c **** OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  19:lib/cordicMath/src/cordic-math.c **** SOFTWARE. */
+  20:lib/cordicMath/src/cordic-math.c **** 
+  21:lib/cordicMath/src/cordic-math.c **** #include "cordic-math.h"
+  22:lib/cordicMath/src/cordic-math.c **** 
+  23:lib/cordicMath/src/cordic-math.c **** /* AngTable = 45, 26.565, 14.036, 7.125, 3.576, 1.790, 0.895, 0.448, 0.225, 0.112, 0.056, 0.028, 0.
+  24:lib/cordicMath/src/cordic-math.c **** int LUT_CORDIC_ATAN[15] = {11520, 6801, 3593, 1824, 916, 458, 229, 115, 57, 28, 14, 7, 4, 2, 1}; /*
+  25:lib/cordicMath/src/cordic-math.c **** 
+  26:lib/cordicMath/src/cordic-math.c **** int32_t cordic_atan(int32_t y, int32_t x){
+  16              		.loc 1 26 42
+  17              		.cfi_startproc
+  18              	.LVL0:
+  27:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 0;
+  19              		.loc 1 27 5
+  28:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+  20              		.loc 1 28 5
+  26:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 0;
+  21              		.loc 1 26 42 is_stmt 0
+  22 0000 2A86     		mv	a2,a0
+  23              	.LVL1:
+  29:lib/cordicMath/src/cordic-math.c ****     if(x<0 && y>0){              
+  24              		.loc 1 29 5 is_stmt 1
+  25              		.loc 1 29 7 is_stmt 0
+  26 0002 63C20506 		blt	a1,zero,.L12
+  30:lib/cordicMath/src/cordic-math.c ****         sumAngle = 180*256; 
+  31:lib/cordicMath/src/cordic-math.c ****         x = -x;
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 2
+
+
+  32:lib/cordicMath/src/cordic-math.c ****         y = -y;
+  33:lib/cordicMath/src/cordic-math.c ****     }else if(y < 0 && x>0){  
+  27              		.loc 1 33 11 is_stmt 1
+  28              		.loc 1 33 13 is_stmt 0
+  29 0006 63490504 		blt	a0,zero,.L13
+  30              	.L8:
+  31 000a 2E87     		mv	a4,a1
+  32 000c 3288     		mv	a6,a2
+  27:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+  33              		.loc 1 27 9
+  34 000e 0145     		li	a0,0
+  35              	.LVL2:
+  36              	.L3:
+  37 0010 B7060000 		lui	a3,%hi(.LANCHOR0)
+  38 0014 93860600 		addi	a3,a3,%lo(.LANCHOR0)
+  39              		.loc 1 33 20
+  40 0018 8147     		li	a5,0
+  41              	.LBB2:
+  34:lib/cordicMath/src/cordic-math.c ****         sumAngle = 360*256;
+  35:lib/cordicMath/src/cordic-math.c ****     }
+  36:lib/cordicMath/src/cordic-math.c ****     for (int i = 0; i < 15; i++){
+  42              		.loc 1 36 5
+  43 001a 3D4E     		li	t3,15
+  44 001c 11A8     		j	.L6
+  45              	.LVL3:
+  46              	.L15:
+  37:lib/cordicMath/src/cordic-math.c ****         if(y>0){
+  38:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+  39:lib/cordicMath/src/cordic-math.c ****             newX += (y>>i);
+  40:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+  47              		.loc 1 40 18
+  48 001e 198E     		sub	a2,a2,a4
+  49              	.LVL4:
+  39:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+  50              		.loc 1 39 18
+  51 0020 9A95     		add	a1,a1,t1
+  52              	.LVL5:
+  53              		.loc 1 40 13 is_stmt 1
+  41:lib/cordicMath/src/cordic-math.c ****             sumAngle += LUT_CORDIC_ATAN[i];
+  54              		.loc 1 41 13
+  36:lib/cordicMath/src/cordic-math.c ****         if(y>0){
+  55              		.loc 1 36 30 is_stmt 0
+  56 0022 8507     		addi	a5,a5,1
+  57              	.LVL6:
+  58              		.loc 1 41 22
+  59 0024 4695     		add	a0,a0,a7
+  60              	.LVL7:
+  42:lib/cordicMath/src/cordic-math.c ****         }else{
+  43:lib/cordicMath/src/cordic-math.c ****             /* Rotate counterclockwise */
+  44:lib/cordicMath/src/cordic-math.c ****             newX -= (y>>i);
+  45:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+  46:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+  47:lib/cordicMath/src/cordic-math.c ****         }
+  48:lib/cordicMath/src/cordic-math.c ****         x = newX;
+  61              		.loc 1 48 9 is_stmt 1
+  49:lib/cordicMath/src/cordic-math.c ****         y = newY;
+  62              		.loc 1 49 9
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 3
+
+
+  63 0026 9106     		addi	a3,a3,4
+  64              		.loc 1 49 11 is_stmt 0
+  65 0028 3288     		mv	a6,a2
+  48:lib/cordicMath/src/cordic-math.c ****         y = newY;
+  66              		.loc 1 48 11
+  67 002a 2E87     		mv	a4,a1
+  36:lib/cordicMath/src/cordic-math.c ****         if(y>0){
+  68              		.loc 1 36 5
+  69 002c 6385C703 		beq	a5,t3,.L14
+  70              	.LVL8:
+  71              	.L6:
+  37:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+  72              		.loc 1 37 9 is_stmt 1
+  39:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+  73              		.loc 1 39 13
+  44:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+  74              		.loc 1 44 13
+  75 0030 83A80600 		lw	a7,0(a3)
+  76 0034 3353F840 		sra	t1,a6,a5
+  77 0038 3357F740 		sra	a4,a4,a5
+  37:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+  78              		.loc 1 37 11 is_stmt 0
+  79 003c E34100FF 		bgt	a6,zero,.L15
+  45:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+  80              		.loc 1 45 18
+  81 0040 3A96     		add	a2,a2,a4
+  82              	.LVL9:
+  44:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+  83              		.loc 1 44 18
+  84 0042 B3856540 		sub	a1,a1,t1
+  85              	.LVL10:
+  45:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+  86              		.loc 1 45 13 is_stmt 1
+  46:lib/cordicMath/src/cordic-math.c ****         }
+  87              		.loc 1 46 13
+  36:lib/cordicMath/src/cordic-math.c ****         if(y>0){
+  88              		.loc 1 36 30 is_stmt 0
+  89 0046 8507     		addi	a5,a5,1
+  90              	.LVL11:
+  46:lib/cordicMath/src/cordic-math.c ****         }
+  91              		.loc 1 46 22
+  92 0048 33051541 		sub	a0,a0,a7
+  93              	.LVL12:
+  48:lib/cordicMath/src/cordic-math.c ****         y = newY;
+  94              		.loc 1 48 9 is_stmt 1
+  95              		.loc 1 49 9
+  96 004c 9106     		addi	a3,a3,4
+  97              		.loc 1 49 11 is_stmt 0
+  98 004e 3288     		mv	a6,a2
+  48:lib/cordicMath/src/cordic-math.c ****         y = newY;
+  99              		.loc 1 48 11
+ 100 0050 2E87     		mv	a4,a1
+  36:lib/cordicMath/src/cordic-math.c ****         if(y>0){
+ 101              		.loc 1 36 5
+ 102 0052 E39FC7FD 		bne	a5,t3,.L6
+ 103              	.L14:
+ 104              	.LBE2:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 4
+
+
+  50:lib/cordicMath/src/cordic-math.c ****     }
+  51:lib/cordicMath/src/cordic-math.c ****     /* If hypotenusa calculation is needed you will need to multiply 'x' by the cordic-gain which i
+  52:lib/cordicMath/src/cordic-math.c ****     The cordic gain for all 15 angles is 0.607252935 */
+  53:lib/cordicMath/src/cordic-math.c ****     return sumAngle;
+  54:lib/cordicMath/src/cordic-math.c **** }
+ 105              		.loc 1 54 1
+ 106 0056 8280     		ret
+ 107              	.LVL13:
+ 108              	.L13:
+  33:lib/cordicMath/src/cordic-math.c ****         sumAngle = 360*256;
+ 109              		.loc 1 33 20 discriminator 1
+ 110 0058 8DC1     		beq	a1,zero,.L16
+ 111 005a 2A88     		mv	a6,a0
+  34:lib/cordicMath/src/cordic-math.c ****     }
+ 112              		.loc 1 34 18
+ 113 005c 5D65     		li	a0,94208
+ 114              	.LVL14:
+ 115 005e 2E87     		mv	a4,a1
+ 116 0060 13050580 		addi	a0,a0,-2048
+ 117 0064 75B7     		j	.L3
+ 118              	.LVL15:
+ 119              	.L12:
+  29:lib/cordicMath/src/cordic-math.c ****         sumAngle = 180*256; 
+ 120              		.loc 1 29 12 discriminator 1
+ 121 0066 E352A0FA 		ble	a0,zero,.L8
+  30:lib/cordicMath/src/cordic-math.c ****         x = -x;
+ 122              		.loc 1 30 9 is_stmt 1
+ 123              	.LVL16:
+  31:lib/cordicMath/src/cordic-math.c ****         y = -y;
+ 124              		.loc 1 31 9
+  32:lib/cordicMath/src/cordic-math.c ****     }else if(y < 0 && x>0){  
+ 125              		.loc 1 32 11 is_stmt 0
+ 126 006a 3308A040 		neg	a6,a0
+  30:lib/cordicMath/src/cordic-math.c ****         x = -x;
+ 127              		.loc 1 30 18
+ 128 006e 2D65     		li	a0,45056
+ 129              	.LVL17:
+  31:lib/cordicMath/src/cordic-math.c ****         y = -y;
+ 130              		.loc 1 31 11
+ 131 0070 3307B040 		neg	a4,a1
+ 132              	.LVL18:
+  32:lib/cordicMath/src/cordic-math.c ****     }else if(y < 0 && x>0){  
+ 133              		.loc 1 32 9 is_stmt 1
+  30:lib/cordicMath/src/cordic-math.c ****         x = -x;
+ 134              		.loc 1 30 18 is_stmt 0
+ 135 0074 13050540 		addi	a0,a0,1024
+  32:lib/cordicMath/src/cordic-math.c ****     }else if(y < 0 && x>0){  
+ 136              		.loc 1 32 11
+ 137 0078 61BF     		j	.L3
+ 138              	.LVL19:
+ 139              	.L16:
+  27:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 140              		.loc 1 27 9
+ 141 007a 0145     		li	a0,0
+ 142              	.LVL20:
+  33:lib/cordicMath/src/cordic-math.c ****         sumAngle = 360*256;
+ 143              		.loc 1 33 20
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 5
+
+
+ 144 007c 0147     		li	a4,0
+ 145 007e 3288     		mv	a6,a2
+ 146 0080 41BF     		j	.L3
+ 147              		.cfi_endproc
+ 148              	.LFE2:
+ 150              		.section	.text.cordic_cos,"ax",@progbits
+ 151              		.align	1
+ 152              		.globl	cordic_cos
+ 154              	cordic_cos:
+ 155              	.LFB3:
+  55:lib/cordicMath/src/cordic-math.c **** 
+  56:lib/cordicMath/src/cordic-math.c **** int32_t cordic_cos(int32_t theta){
+ 156              		.loc 1 56 34 is_stmt 1
+ 157              		.cfi_startproc
+ 158              	.LVL21:
+  57:lib/cordicMath/src/cordic-math.c ****     int x = 156;
+ 159              		.loc 1 57 5
+  58:lib/cordicMath/src/cordic-math.c ****     int y = 0;
+ 160              		.loc 1 58 5
+  59:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 0;
+ 161              		.loc 1 59 5
+  60:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 162              		.loc 1 60 5
+  61:lib/cordicMath/src/cordic-math.c **** 
+  62:lib/cordicMath/src/cordic-math.c ****     if(theta>(90*256)){
+ 163              		.loc 1 62 5
+ 164              		.loc 1 62 7 is_stmt 0
+ 165 0000 9967     		li	a5,24576
+ 166 0002 938707A0 		addi	a5,a5,-1536
+  59:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 167              		.loc 1 59 9
+ 168 0006 0146     		li	a2,0
+ 169              		.loc 1 62 7
+ 170 0008 63DAA700 		ble	a0,a5,.L18
+  63:lib/cordicMath/src/cordic-math.c ****         sumAngle = 180*256;
+ 171              		.loc 1 63 9 is_stmt 1
+ 172              	.LVL22:
+  64:lib/cordicMath/src/cordic-math.c ****     }
+  65:lib/cordicMath/src/cordic-math.c ****     if(theta>(270*256)){
+ 173              		.loc 1 65 5
+ 174              		.loc 1 65 7 is_stmt 0
+ 175 000c C567     		li	a5,69632
+ 176 000e 938707E0 		addi	a5,a5,-512
+ 177 0012 63D5A706 		ble	a0,a5,.L24
+  66:lib/cordicMath/src/cordic-math.c ****         sumAngle = 360*256;
+ 178              		.loc 1 66 18
+ 179 0016 5D66     		li	a2,94208
+ 180 0018 13060680 		addi	a2,a2,-2048
+ 181              	.LVL23:
+ 182              	.L18:
+ 183 001c 37070000 		lui	a4,%hi(.LANCHOR0)
+ 184 0020 13070700 		addi	a4,a4,%lo(.LANCHOR0)
+ 185 0024 8147     		li	a5,0
+ 186 0026 8145     		li	a1,0
+ 187 0028 9306C009 		li	a3,156
+ 188              	.LBB3:
+  67:lib/cordicMath/src/cordic-math.c ****     }
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 6
+
+
+  68:lib/cordicMath/src/cordic-math.c **** 
+  69:lib/cordicMath/src/cordic-math.c ****     for(int i = 0; i < 15; i++){
+ 189              		.loc 1 69 5
+ 190 002c 3D4E     		li	t3,15
+ 191 002e 09A8     		j	.L21
+ 192              	.LVL24:
+ 193              	.L27:
+ 194              		.loc 1 69 29
+ 195 0030 8507     		addi	a5,a5,1
+ 196              	.LVL25:
+  70:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+  71:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+  72:lib/cordicMath/src/cordic-math.c ****             newX -= (y>>i);
+ 197              		.loc 1 72 18
+ 198 0032 B3866640 		sub	a3,a3,t1
+ 199              	.LVL26:
+  73:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 200              		.loc 1 73 13 is_stmt 1
+ 201              		.loc 1 73 18 is_stmt 0
+ 202 0036 C695     		add	a1,a1,a7
+ 203              	.LVL27:
+  74:lib/cordicMath/src/cordic-math.c ****             sumAngle += LUT_CORDIC_ATAN[i];
+ 204              		.loc 1 74 13 is_stmt 1
+ 205              		.loc 1 74 22 is_stmt 0
+ 206 0038 4296     		add	a2,a2,a6
+ 207              	.LVL28:
+  75:lib/cordicMath/src/cordic-math.c ****         }else{
+  76:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+  77:lib/cordicMath/src/cordic-math.c ****             newX += (y>>i);
+  78:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+  79:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+  80:lib/cordicMath/src/cordic-math.c ****         }
+  81:lib/cordicMath/src/cordic-math.c ****         x = newX;
+ 208              		.loc 1 81 9 is_stmt 1
+  82:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 209              		.loc 1 82 9
+ 210 003a 1107     		addi	a4,a4,4
+  69:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 211              		.loc 1 69 5 is_stmt 0
+ 212 003c 6383C703 		beq	a5,t3,.L26
+ 213              	.LVL29:
+ 214              	.L21:
+  70:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 215              		.loc 1 70 9 is_stmt 1
+  72:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 216              		.loc 1 72 13
+  77:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 217              		.loc 1 77 13
+ 218 0040 33D3F540 		sra	t1,a1,a5
+ 219 0044 B3D8F640 		sra	a7,a3,a5
+ 220 0048 03280700 		lw	a6,0(a4)
+  70:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 221              		.loc 1 70 11 is_stmt 0
+ 222 004c E342A6FE 		bgt	a0,a2,.L27
+  69:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 223              		.loc 1 69 29
+ 224 0050 8507     		addi	a5,a5,1
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 7
+
+
+ 225              	.LVL30:
+  77:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 226              		.loc 1 77 18
+ 227 0052 9A96     		add	a3,a3,t1
+ 228              	.LVL31:
+  78:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 229              		.loc 1 78 13 is_stmt 1
+  78:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 230              		.loc 1 78 18 is_stmt 0
+ 231 0054 B3851541 		sub	a1,a1,a7
+ 232              	.LVL32:
+  79:lib/cordicMath/src/cordic-math.c ****         }
+ 233              		.loc 1 79 13 is_stmt 1
+  79:lib/cordicMath/src/cordic-math.c ****         }
+ 234              		.loc 1 79 22 is_stmt 0
+ 235 0058 33060641 		sub	a2,a2,a6
+ 236              	.LVL33:
+  81:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 237              		.loc 1 81 9 is_stmt 1
+ 238              		.loc 1 82 9
+ 239 005c 1107     		addi	a4,a4,4
+  69:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 240              		.loc 1 69 5 is_stmt 0
+ 241 005e E391C7FF 		bne	a5,t3,.L21
+ 242              	.L26:
+ 243              	.LBE3:
+  83:lib/cordicMath/src/cordic-math.c ****     }
+  84:lib/cordicMath/src/cordic-math.c ****     if(theta > (180*256) && theta < (360*256)){
+ 244              		.loc 1 84 5 is_stmt 1
+ 245              		.loc 1 84 26 is_stmt 0
+ 246 0062 D577     		li	a5,-45056
+ 247              	.LVL34:
+ 248 0064 9387F7BF 		addi	a5,a5,-1025
+ 249 0068 3E95     		add	a0,a0,a5
+ 250              	.LVL35:
+ 251              		.loc 1 84 7
+ 252 006a AD67     		li	a5,45056
+ 253 006c 9387E73F 		addi	a5,a5,1022
+ 254 0070 63E4A700 		bgtu	a0,a5,.L17
+  85:lib/cordicMath/src/cordic-math.c ****         x = -x;
+ 255              		.loc 1 85 9 is_stmt 1
+ 256              		.loc 1 85 11 is_stmt 0
+ 257 0074 B306D040 		neg	a3,a3
+ 258              	.LVL36:
+  86:lib/cordicMath/src/cordic-math.c ****     }
+  87:lib/cordicMath/src/cordic-math.c ****     return x;
+ 259              		.loc 1 87 5 is_stmt 1
+ 260              	.L17:
+  88:lib/cordicMath/src/cordic-math.c **** }
+ 261              		.loc 1 88 1 is_stmt 0
+ 262 0078 3685     		mv	a0,a3
+ 263              	.LVL37:
+ 264 007a 8280     		ret
+ 265              	.LVL38:
+ 266              	.L24:
+  63:lib/cordicMath/src/cordic-math.c ****     }
+ 267              		.loc 1 63 18
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 8
+
+
+ 268 007c 2D66     		li	a2,45056
+ 269 007e 13060640 		addi	a2,a2,1024
+ 270 0082 69BF     		j	.L18
+ 271              		.cfi_endproc
+ 272              	.LFE3:
+ 274              		.section	.text.cordic_sin,"ax",@progbits
+ 275              		.align	1
+ 276              		.globl	cordic_sin
+ 278              	cordic_sin:
+ 279              	.LFB4:
+  89:lib/cordicMath/src/cordic-math.c **** 
+  90:lib/cordicMath/src/cordic-math.c **** int32_t cordic_sin(int32_t theta){
+ 280              		.loc 1 90 34 is_stmt 1
+ 281              		.cfi_startproc
+ 282              	.LVL39:
+  91:lib/cordicMath/src/cordic-math.c ****     int x = 156;
+ 283              		.loc 1 91 5
+  92:lib/cordicMath/src/cordic-math.c ****     int y = 0;
+ 284              		.loc 1 92 5
+  93:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 0;
+ 285              		.loc 1 93 5
+  94:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 286              		.loc 1 94 5
+  95:lib/cordicMath/src/cordic-math.c **** 
+  96:lib/cordicMath/src/cordic-math.c ****     if(theta>(90*256)){
+ 287              		.loc 1 96 5
+ 288              		.loc 1 96 7 is_stmt 0
+ 289 0000 9967     		li	a5,24576
+ 290 0002 938707A0 		addi	a5,a5,-1536
+  93:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 291              		.loc 1 93 9
+ 292 0006 0146     		li	a2,0
+ 293              		.loc 1 96 7
+ 294 0008 63DAA700 		ble	a0,a5,.L29
+  97:lib/cordicMath/src/cordic-math.c ****         sumAngle = 180*256;
+ 295              		.loc 1 97 9 is_stmt 1
+ 296              	.LVL40:
+  98:lib/cordicMath/src/cordic-math.c ****     }
+  99:lib/cordicMath/src/cordic-math.c ****     if(theta>(270*256)){
+ 297              		.loc 1 99 5
+ 298              		.loc 1 99 7 is_stmt 0
+ 299 000c C567     		li	a5,69632
+ 300 000e 938707E0 		addi	a5,a5,-512
+ 301 0012 63D5A706 		ble	a0,a5,.L35
+ 100:lib/cordicMath/src/cordic-math.c ****         sumAngle = 360*256;
+ 302              		.loc 1 100 18
+ 303 0016 5D66     		li	a2,94208
+ 304 0018 13060680 		addi	a2,a2,-2048
+ 305              	.LVL41:
+ 306              	.L29:
+ 307 001c 37070000 		lui	a4,%hi(.LANCHOR0)
+ 308 0020 13070700 		addi	a4,a4,%lo(.LANCHOR0)
+ 309 0024 8147     		li	a5,0
+ 310 0026 8146     		li	a3,0
+ 311 0028 9305C009 		li	a1,156
+ 312              	.LBB4:
+ 101:lib/cordicMath/src/cordic-math.c ****     }
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 9
+
+
+ 102:lib/cordicMath/src/cordic-math.c **** 
+ 103:lib/cordicMath/src/cordic-math.c ****     for(int i = 0; i < 15; i++){
+ 313              		.loc 1 103 5
+ 314 002c 3D4E     		li	t3,15
+ 315 002e 09A8     		j	.L32
+ 316              	.LVL42:
+ 317              	.L38:
+ 318              		.loc 1 103 29
+ 319 0030 8507     		addi	a5,a5,1
+ 320              	.LVL43:
+ 104:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 105:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 106:lib/cordicMath/src/cordic-math.c ****             newX -= (y>>i);
+ 321              		.loc 1 106 18
+ 322 0032 B3856540 		sub	a1,a1,t1
+ 323              	.LVL44:
+ 107:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 324              		.loc 1 107 13 is_stmt 1
+ 325              		.loc 1 107 18 is_stmt 0
+ 326 0036 C696     		add	a3,a3,a7
+ 327              	.LVL45:
+ 108:lib/cordicMath/src/cordic-math.c ****             sumAngle += LUT_CORDIC_ATAN[i];
+ 328              		.loc 1 108 13 is_stmt 1
+ 329              		.loc 1 108 22 is_stmt 0
+ 330 0038 4296     		add	a2,a2,a6
+ 331              	.LVL46:
+ 109:lib/cordicMath/src/cordic-math.c ****         }else{
+ 110:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+ 111:lib/cordicMath/src/cordic-math.c ****             newX += (y>>i);
+ 112:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 113:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 114:lib/cordicMath/src/cordic-math.c ****         }
+ 115:lib/cordicMath/src/cordic-math.c ****         x = newX;
+ 332              		.loc 1 115 9 is_stmt 1
+ 116:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 333              		.loc 1 116 9
+ 334 003a 1107     		addi	a4,a4,4
+ 103:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 335              		.loc 1 103 5 is_stmt 0
+ 336 003c 6383C703 		beq	a5,t3,.L37
+ 337              	.LVL47:
+ 338              	.L32:
+ 104:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 339              		.loc 1 104 9 is_stmt 1
+ 106:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 340              		.loc 1 106 13
+ 111:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 341              		.loc 1 111 13
+ 342 0040 33D3F640 		sra	t1,a3,a5
+ 343 0044 B3D8F540 		sra	a7,a1,a5
+ 344 0048 03280700 		lw	a6,0(a4)
+ 104:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 345              		.loc 1 104 11 is_stmt 0
+ 346 004c E342A6FE 		bgt	a0,a2,.L38
+ 103:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 347              		.loc 1 103 29
+ 348 0050 8507     		addi	a5,a5,1
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 10
+
+
+ 349              	.LVL48:
+ 111:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 350              		.loc 1 111 18
+ 351 0052 9A95     		add	a1,a1,t1
+ 352              	.LVL49:
+ 112:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 353              		.loc 1 112 13 is_stmt 1
+ 112:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 354              		.loc 1 112 18 is_stmt 0
+ 355 0054 B3861641 		sub	a3,a3,a7
+ 356              	.LVL50:
+ 113:lib/cordicMath/src/cordic-math.c ****         }
+ 357              		.loc 1 113 13 is_stmt 1
+ 113:lib/cordicMath/src/cordic-math.c ****         }
+ 358              		.loc 1 113 22 is_stmt 0
+ 359 0058 33060641 		sub	a2,a2,a6
+ 360              	.LVL51:
+ 115:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 361              		.loc 1 115 9 is_stmt 1
+ 362              		.loc 1 116 9
+ 363 005c 1107     		addi	a4,a4,4
+ 103:lib/cordicMath/src/cordic-math.c ****         if(theta > sumAngle){
+ 364              		.loc 1 103 5 is_stmt 0
+ 365 005e E391C7FF 		bne	a5,t3,.L32
+ 366              	.L37:
+ 367              	.LBE4:
+ 117:lib/cordicMath/src/cordic-math.c ****     }
+ 118:lib/cordicMath/src/cordic-math.c ****     if(theta > (90*256) && theta < (270*256)){
+ 368              		.loc 1 118 5 is_stmt 1
+ 369              		.loc 1 118 25 is_stmt 0
+ 370 0062 E977     		li	a5,-24576
+ 371              	.LVL52:
+ 372 0064 9387F75F 		addi	a5,a5,1535
+ 373 0068 3E95     		add	a0,a0,a5
+ 374              	.LVL53:
+ 375              		.loc 1 118 7
+ 376 006a AD67     		li	a5,45056
+ 377 006c 9387E73F 		addi	a5,a5,1022
+ 378 0070 63E4A700 		bgtu	a0,a5,.L28
+ 119:lib/cordicMath/src/cordic-math.c ****         y = -y;
+ 379              		.loc 1 119 9 is_stmt 1
+ 380              		.loc 1 119 11 is_stmt 0
+ 381 0074 B306D040 		neg	a3,a3
+ 382              	.LVL54:
+ 120:lib/cordicMath/src/cordic-math.c ****     }
+ 121:lib/cordicMath/src/cordic-math.c ****     return y;
+ 383              		.loc 1 121 5 is_stmt 1
+ 384              	.L28:
+ 122:lib/cordicMath/src/cordic-math.c **** }
+ 385              		.loc 1 122 1 is_stmt 0
+ 386 0078 3685     		mv	a0,a3
+ 387              	.LVL55:
+ 388 007a 8280     		ret
+ 389              	.LVL56:
+ 390              	.L35:
+  97:lib/cordicMath/src/cordic-math.c ****     }
+ 391              		.loc 1 97 18
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 11
+
+
+ 392 007c 2D66     		li	a2,45056
+ 393 007e 13060640 		addi	a2,a2,1024
+ 394 0082 69BF     		j	.L29
+ 395              		.cfi_endproc
+ 396              	.LFE4:
+ 398              		.section	.text.cordic_asin,"ax",@progbits
+ 399              		.align	1
+ 400              		.globl	cordic_asin
+ 402              	cordic_asin:
+ 403              	.LFB5:
+ 123:lib/cordicMath/src/cordic-math.c **** 
+ 124:lib/cordicMath/src/cordic-math.c **** int32_t cordic_asin(int32_t yInput){
+ 404              		.loc 1 124 36 is_stmt 1
+ 405              		.cfi_startproc
+ 406              	.LVL57:
+ 125:lib/cordicMath/src/cordic-math.c ****     int x = 156;
+ 407              		.loc 1 125 5
+ 126:lib/cordicMath/src/cordic-math.c ****     int y = 0;
+ 408              		.loc 1 126 5
+ 127:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 0;
+ 409              		.loc 1 127 5
+ 128:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 410              		.loc 1 128 5
+ 129:lib/cordicMath/src/cordic-math.c **** 
+ 130:lib/cordicMath/src/cordic-math.c ****     for(int i = 0; i < 15; i++){
+ 411              		.loc 1 130 5
+ 412              	.LBB5:
+ 413              		.loc 1 130 9
+ 414 0000 B7060000 		lui	a3,%hi(.LANCHOR0)
+ 415 0004 93860600 		addi	a3,a3,%lo(.LANCHOR0)
+ 416              		.loc 1 130 13 is_stmt 0
+ 417 0008 8147     		li	a5,0
+ 418              	.LBE5:
+ 127:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 419              		.loc 1 127 9
+ 420 000a 8145     		li	a1,0
+ 126:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 0;
+ 421              		.loc 1 126 9
+ 422 000c 0147     		li	a4,0
+ 125:lib/cordicMath/src/cordic-math.c ****     int y = 0;
+ 423              		.loc 1 125 9
+ 424 000e 1306C009 		li	a2,156
+ 425              	.LBB6:
+ 426              		.loc 1 130 5
+ 427 0012 3D4E     		li	t3,15
+ 428 0014 09A8     		j	.L42
+ 429              	.LVL58:
+ 430              	.L45:
+ 431              		.loc 1 130 29
+ 432 0016 8507     		addi	a5,a5,1
+ 433              	.LVL59:
+ 131:lib/cordicMath/src/cordic-math.c ****         if(y < yInput){
+ 132:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 133:lib/cordicMath/src/cordic-math.c ****             newX -= (y>>i);
+ 434              		.loc 1 133 18
+ 435 0018 33066640 		sub	a2,a2,t1
+ 436              	.LVL60:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 12
+
+
+ 134:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 437              		.loc 1 134 13 is_stmt 1
+ 438              		.loc 1 134 18 is_stmt 0
+ 439 001c 4697     		add	a4,a4,a7
+ 440              	.LVL61:
+ 135:lib/cordicMath/src/cordic-math.c ****             sumAngle += LUT_CORDIC_ATAN[i];
+ 441              		.loc 1 135 13 is_stmt 1
+ 442              		.loc 1 135 22 is_stmt 0
+ 443 001e C295     		add	a1,a1,a6
+ 444              	.LVL62:
+ 136:lib/cordicMath/src/cordic-math.c ****         }else{
+ 137:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+ 138:lib/cordicMath/src/cordic-math.c ****             newX += (y>>i);
+ 139:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 140:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 141:lib/cordicMath/src/cordic-math.c ****         }
+ 142:lib/cordicMath/src/cordic-math.c ****         x = newX;
+ 445              		.loc 1 142 9 is_stmt 1
+ 143:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 446              		.loc 1 143 9
+ 447 0020 9106     		addi	a3,a3,4
+ 130:lib/cordicMath/src/cordic-math.c ****         if(y < yInput){
+ 448              		.loc 1 130 5 is_stmt 0
+ 449 0022 6383C703 		beq	a5,t3,.L44
+ 450              	.LVL63:
+ 451              	.L42:
+ 131:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 452              		.loc 1 131 9 is_stmt 1
+ 133:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 453              		.loc 1 133 13
+ 138:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 454              		.loc 1 138 13
+ 455 0026 3353F740 		sra	t1,a4,a5
+ 456 002a B358F640 		sra	a7,a2,a5
+ 457 002e 03A80600 		lw	a6,0(a3)
+ 131:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 458              		.loc 1 131 11 is_stmt 0
+ 459 0032 E342A7FE 		bgt	a0,a4,.L45
+ 130:lib/cordicMath/src/cordic-math.c ****         if(y < yInput){
+ 460              		.loc 1 130 29
+ 461 0036 8507     		addi	a5,a5,1
+ 462              	.LVL64:
+ 138:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 463              		.loc 1 138 18
+ 464 0038 1A96     		add	a2,a2,t1
+ 465              	.LVL65:
+ 139:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 466              		.loc 1 139 13 is_stmt 1
+ 139:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 467              		.loc 1 139 18 is_stmt 0
+ 468 003a 33071741 		sub	a4,a4,a7
+ 469              	.LVL66:
+ 140:lib/cordicMath/src/cordic-math.c ****         }
+ 470              		.loc 1 140 13 is_stmt 1
+ 140:lib/cordicMath/src/cordic-math.c ****         }
+ 471              		.loc 1 140 22 is_stmt 0
+ 472 003e B3850541 		sub	a1,a1,a6
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 13
+
+
+ 473              	.LVL67:
+ 142:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 474              		.loc 1 142 9 is_stmt 1
+ 475              		.loc 1 143 9
+ 476 0042 9106     		addi	a3,a3,4
+ 130:lib/cordicMath/src/cordic-math.c ****         if(y < yInput){
+ 477              		.loc 1 130 5 is_stmt 0
+ 478 0044 E391C7FF 		bne	a5,t3,.L42
+ 479              	.L44:
+ 480              	.LBE6:
+ 144:lib/cordicMath/src/cordic-math.c ****     }
+ 145:lib/cordicMath/src/cordic-math.c **** 
+ 146:lib/cordicMath/src/cordic-math.c ****     return sumAngle;
+ 481              		.loc 1 146 5 is_stmt 1
+ 147:lib/cordicMath/src/cordic-math.c **** }
+ 482              		.loc 1 147 1 is_stmt 0
+ 483 0048 2E85     		mv	a0,a1
+ 484              	.LVL68:
+ 485 004a 8280     		ret
+ 486              		.cfi_endproc
+ 487              	.LFE5:
+ 489              		.section	.text.cordic_acos,"ax",@progbits
+ 490              		.align	1
+ 491              		.globl	cordic_acos
+ 493              	cordic_acos:
+ 494              	.LFB6:
+ 148:lib/cordicMath/src/cordic-math.c **** 
+ 149:lib/cordicMath/src/cordic-math.c **** int32_t cordic_acos(int32_t xInput){
+ 495              		.loc 1 149 36 is_stmt 1
+ 496              		.cfi_startproc
+ 497              	.LVL69:
+ 150:lib/cordicMath/src/cordic-math.c ****     int x = 0;
+ 498              		.loc 1 150 5
+ 151:lib/cordicMath/src/cordic-math.c ****     int y = 156;
+ 499              		.loc 1 151 5
+ 152:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 90*256;
+ 500              		.loc 1 152 5
+ 153:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 501              		.loc 1 153 5
+ 154:lib/cordicMath/src/cordic-math.c **** 
+ 155:lib/cordicMath/src/cordic-math.c ****     for(int i = 0; i < 15; i++){
+ 502              		.loc 1 155 5
+ 503              	.LBB7:
+ 504              		.loc 1 155 9
+ 505 0000 B7060000 		lui	a3,%hi(.LANCHOR0)
+ 506              	.LBE7:
+ 152:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 507              		.loc 1 152 9 is_stmt 0
+ 508 0004 9965     		li	a1,24576
+ 509 0006 93860600 		addi	a3,a3,%lo(.LANCHOR0)
+ 510              	.LBB8:
+ 511              		.loc 1 155 13
+ 512 000a 8147     		li	a5,0
+ 513              	.LBE8:
+ 152:lib/cordicMath/src/cordic-math.c ****     int newX=x, newY=y;
+ 514              		.loc 1 152 9
+ 515 000c 938505A0 		addi	a1,a1,-1536
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 14
+
+
+ 151:lib/cordicMath/src/cordic-math.c ****     int sumAngle = 90*256;
+ 516              		.loc 1 151 9
+ 517 0010 1306C009 		li	a2,156
+ 150:lib/cordicMath/src/cordic-math.c ****     int y = 156;
+ 518              		.loc 1 150 9
+ 519 0014 0147     		li	a4,0
+ 520              	.LBB9:
+ 521              		.loc 1 155 5
+ 522 0016 3D4E     		li	t3,15
+ 523 0018 09A8     		j	.L49
+ 524              	.LVL70:
+ 525              	.L52:
+ 526              		.loc 1 155 29
+ 527 001a 8507     		addi	a5,a5,1
+ 528              	.LVL71:
+ 156:lib/cordicMath/src/cordic-math.c ****         if(x > xInput){
+ 157:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 158:lib/cordicMath/src/cordic-math.c ****             newX -= (y>>i);
+ 529              		.loc 1 158 18
+ 530 001c 33076740 		sub	a4,a4,t1
+ 531              	.LVL72:
+ 159:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 532              		.loc 1 159 13 is_stmt 1
+ 533              		.loc 1 159 18 is_stmt 0
+ 534 0020 4696     		add	a2,a2,a7
+ 535              	.LVL73:
+ 160:lib/cordicMath/src/cordic-math.c ****             sumAngle += LUT_CORDIC_ATAN[i];
+ 536              		.loc 1 160 13 is_stmt 1
+ 537              		.loc 1 160 22 is_stmt 0
+ 538 0022 C295     		add	a1,a1,a6
+ 539              	.LVL74:
+ 161:lib/cordicMath/src/cordic-math.c ****         }else{
+ 162:lib/cordicMath/src/cordic-math.c ****             /* Rotate clockwise */
+ 163:lib/cordicMath/src/cordic-math.c ****             newX += (y>>i);
+ 164:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 165:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 166:lib/cordicMath/src/cordic-math.c ****         }
+ 167:lib/cordicMath/src/cordic-math.c ****         x = newX;
+ 540              		.loc 1 167 9 is_stmt 1
+ 168:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 541              		.loc 1 168 9
+ 542 0024 9106     		addi	a3,a3,4
+ 155:lib/cordicMath/src/cordic-math.c ****         if(x > xInput){
+ 543              		.loc 1 155 5 is_stmt 0
+ 544 0026 6383C703 		beq	a5,t3,.L51
+ 545              	.LVL75:
+ 546              	.L49:
+ 156:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+ 547              		.loc 1 156 9 is_stmt 1
+ 158:lib/cordicMath/src/cordic-math.c ****             newY += (x>>i);
+ 548              		.loc 1 158 13
+ 163:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 549              		.loc 1 163 13
+ 550 002a 3353F640 		sra	t1,a2,a5
+ 551 002e B358F740 		sra	a7,a4,a5
+ 552 0032 03A80600 		lw	a6,0(a3)
+ 156:lib/cordicMath/src/cordic-math.c ****             /* Rotate counter clockwise */
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 15
+
+
+ 553              		.loc 1 156 11 is_stmt 0
+ 554 0036 E342E5FE 		blt	a0,a4,.L52
+ 155:lib/cordicMath/src/cordic-math.c ****         if(x > xInput){
+ 555              		.loc 1 155 29
+ 556 003a 8507     		addi	a5,a5,1
+ 557              	.LVL76:
+ 163:lib/cordicMath/src/cordic-math.c ****             newY -= (x>>i);
+ 558              		.loc 1 163 18
+ 559 003c 1A97     		add	a4,a4,t1
+ 560              	.LVL77:
+ 164:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 561              		.loc 1 164 13 is_stmt 1
+ 164:lib/cordicMath/src/cordic-math.c ****             sumAngle -= LUT_CORDIC_ATAN[i];
+ 562              		.loc 1 164 18 is_stmt 0
+ 563 003e 33061641 		sub	a2,a2,a7
+ 564              	.LVL78:
+ 165:lib/cordicMath/src/cordic-math.c ****         }
+ 565              		.loc 1 165 13 is_stmt 1
+ 165:lib/cordicMath/src/cordic-math.c ****         }
+ 566              		.loc 1 165 22 is_stmt 0
+ 567 0042 B3850541 		sub	a1,a1,a6
+ 568              	.LVL79:
+ 167:lib/cordicMath/src/cordic-math.c ****         y = newY;
+ 569              		.loc 1 167 9 is_stmt 1
+ 570              		.loc 1 168 9
+ 571 0046 9106     		addi	a3,a3,4
+ 155:lib/cordicMath/src/cordic-math.c ****         if(x > xInput){
+ 572              		.loc 1 155 5 is_stmt 0
+ 573 0048 E391C7FF 		bne	a5,t3,.L49
+ 574              	.L51:
+ 575              	.LBE9:
+ 169:lib/cordicMath/src/cordic-math.c ****     }
+ 170:lib/cordicMath/src/cordic-math.c **** 
+ 171:lib/cordicMath/src/cordic-math.c ****     return sumAngle;
+ 576              		.loc 1 171 5 is_stmt 1
+ 172:lib/cordicMath/src/cordic-math.c **** }
+ 577              		.loc 1 172 1 is_stmt 0
+ 578 004c 2E85     		mv	a0,a1
+ 579              	.LVL80:
+ 580 004e 8280     		ret
+ 581              		.cfi_endproc
+ 582              	.LFE6:
+ 584              		.section	.text.cordic_tan,"ax",@progbits
+ 585              		.align	1
+ 586              		.globl	cordic_tan
+ 588              	cordic_tan:
+ 589              	.LFB7:
+ 173:lib/cordicMath/src/cordic-math.c **** 
+ 174:lib/cordicMath/src/cordic-math.c **** int32_t cordic_tan(int32_t degree){
+ 590              		.loc 1 174 35 is_stmt 1
+ 591              		.cfi_startproc
+ 592              	.LVL81:
+ 175:lib/cordicMath/src/cordic-math.c ****     return (cordic_sin(degree)/cordic_cos(degree));
+ 593              		.loc 1 175 5
+ 174:lib/cordicMath/src/cordic-math.c ****     return (cordic_sin(degree)/cordic_cos(degree));
+ 594              		.loc 1 174 35 is_stmt 0
+ 595 0000 4111     		addi	sp,sp,-16
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 16
+
+
+ 596              	.LCFI0:
+ 597              		.cfi_def_cfa_offset 16
+ 598 0002 06C6     		sw	ra,12(sp)
+ 599 0004 22C4     		sw	s0,8(sp)
+ 600 0006 26C2     		sw	s1,4(sp)
+ 601              		.cfi_offset 1, -4
+ 602              		.cfi_offset 8, -8
+ 603              		.cfi_offset 9, -12
+ 174:lib/cordicMath/src/cordic-math.c ****     return (cordic_sin(degree)/cordic_cos(degree));
+ 604              		.loc 1 174 35
+ 605 0008 AA84     		mv	s1,a0
+ 606              		.loc 1 175 13
+ 607 000a 97000000 		call	cordic_sin
+ 607      E7800000 
+ 608              	.LVL82:
+ 609 0012 2A84     		mv	s0,a0
+ 610              		.loc 1 175 32
+ 611 0014 2685     		mv	a0,s1
+ 612 0016 97000000 		call	cordic_cos
+ 612      E7800000 
+ 613              	.LVL83:
+ 176:lib/cordicMath/src/cordic-math.c **** }
+ 614              		.loc 1 176 1
+ 615 001e 3345A402 		div	a0,s0,a0
+ 616 0022 B240     		lw	ra,12(sp)
+ 617              		.cfi_restore 1
+ 618 0024 2244     		lw	s0,8(sp)
+ 619              		.cfi_restore 8
+ 620 0026 9244     		lw	s1,4(sp)
+ 621              		.cfi_restore 9
+ 622              	.LVL84:
+ 623 0028 4101     		addi	sp,sp,16
+ 624              	.LCFI1:
+ 625              		.cfi_def_cfa_offset 0
+ 626 002a 8280     		jr	ra
+ 627              		.cfi_endproc
+ 628              	.LFE7:
+ 630              		.section	.text.ssqrt,"ax",@progbits
+ 631              		.align	1
+ 632              		.globl	ssqrt
+ 634              	ssqrt:
+ 635              	.LFB8:
+ 177:lib/cordicMath/src/cordic-math.c **** 
+ 178:lib/cordicMath/src/cordic-math.c **** int32_t ssqrt(int32_t n){
+ 636              		.loc 1 178 25 is_stmt 1
+ 637              		.cfi_startproc
+ 638              	.LVL85:
+ 179:lib/cordicMath/src/cordic-math.c ****     n = n<<2;
+ 639              		.loc 1 179 5
+ 180:lib/cordicMath/src/cordic-math.c ****     int64_t val = n << 10;
+ 640              		.loc 1 180 5
+ 641              		.loc 1 180 21 is_stmt 0
+ 642 0000 3205     		slli	a0,a0,12
+ 643              	.LVL86:
+ 644              		.loc 1 180 13
+ 645 0002 1356F541 		srai	a2,a0,31
+ 646              	.LVL87:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 17
+
+
+ 181:lib/cordicMath/src/cordic-math.c ****     unsigned long temp, g=0, b = 0x8000, bshft = 15;
+ 647              		.loc 1 181 5 is_stmt 1
+ 648              		.loc 1 181 42 is_stmt 0
+ 649 0006 BD47     		li	a5,15
+ 650              		.loc 1 181 30
+ 651 0008 A166     		li	a3,32768
+ 652              		.loc 1 181 25
+ 653 000a 8145     		li	a1,0
+ 182:lib/cordicMath/src/cordic-math.c ****     do {
+ 183:lib/cordicMath/src/cordic-math.c ****         if (val >= (temp = (((g << 1) + b)<<bshft--))) {
+ 654              		.loc 1 183 26
+ 655 000c 0143     		li	t1,0
+ 184:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 185:lib/cordicMath/src/cordic-math.c ****            val -= temp;
+ 186:lib/cordicMath/src/cordic-math.c ****         }
+ 187:lib/cordicMath/src/cordic-math.c ****     } while (b >>= 1);
+ 656              		.loc 1 187 5
+ 657 000e FD58     		li	a7,-1
+ 658              	.LVL88:
+ 659              	.L58:
+ 182:lib/cordicMath/src/cordic-math.c ****     do {
+ 660              		.loc 1 182 5 is_stmt 1
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 661              		.loc 1 183 9
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 662              		.loc 1 183 33 is_stmt 0
+ 663 0010 13971500 		slli	a4,a1,1
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 664              		.loc 1 183 39
+ 665 0014 3697     		add	a4,a4,a3
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 666              		.loc 1 183 26
+ 667 0016 3317F700 		sll	a4,a4,a5
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 668              		.loc 1 183 50
+ 669 001a FD17     		addi	a5,a5,-1
+ 670              	.LVL89:
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 671              		.loc 1 183 12
+ 672 001c 634D6600 		bgt	t1,a2,.L56
+ 184:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 673              		.loc 1 184 12 is_stmt 1
+ 185:lib/cordicMath/src/cordic-math.c ****         }
+ 674              		.loc 1 185 16 is_stmt 0
+ 675 0020 3308E540 		sub	a6,a0,a4
+ 676 0024 333E0501 		sgtu	t3,a6,a0
+ 183:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 677              		.loc 1 183 12
+ 678 0028 19E2     		bne	a2,zero,.L59
+ 679 002a 6366E500 		bgtu	a4,a0,.L56
+ 680              	.L59:
+ 184:lib/cordicMath/src/cordic-math.c ****            g += b;
+ 681              		.loc 1 184 14
+ 682 002e B695     		add	a1,a1,a3
+ 683              	.LVL90:
+ 185:lib/cordicMath/src/cordic-math.c ****         }
+ 684              		.loc 1 185 12 is_stmt 1
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 18
+
+
+ 185:lib/cordicMath/src/cordic-math.c ****         }
+ 685              		.loc 1 185 16 is_stmt 0
+ 686 0030 4285     		mv	a0,a6
+ 687              	.LVL91:
+ 688 0032 3306C641 		sub	a2,a2,t3
+ 689              	.LVL92:
+ 690              	.L56:
+ 691              		.loc 1 187 16
+ 692 0036 8582     		srli	a3,a3,1
+ 693              	.LVL93:
+ 694              		.loc 1 187 5
+ 695 0038 E39C17FD 		bne	a5,a7,.L58
+ 188:lib/cordicMath/src/cordic-math.c ****     return g>>2;
+ 696              		.loc 1 188 5 is_stmt 1
+ 189:lib/cordicMath/src/cordic-math.c **** }
+ 697              		.loc 1 189 1 is_stmt 0
+ 698 003c 13D52500 		srli	a0,a1,2
+ 699              	.LVL94:
+ 700 0040 8280     		ret
+ 701              		.cfi_endproc
+ 702              	.LFE8:
+ 704              		.section	.text.power,"ax",@progbits
+ 705              		.align	1
+ 706              		.globl	power
+ 708              	power:
+ 709              	.LFB9:
+ 190:lib/cordicMath/src/cordic-math.c **** 
+ 191:lib/cordicMath/src/cordic-math.c **** int32_t power(int32_t x, int32_t y){
+ 710              		.loc 1 191 36 is_stmt 1
+ 711              		.cfi_startproc
+ 712              	.LVL95:
+ 192:lib/cordicMath/src/cordic-math.c **** 
+ 193:lib/cordicMath/src/cordic-math.c ****     if(y==0){
+ 713              		.loc 1 193 5
+ 191:lib/cordicMath/src/cordic-math.c **** 
+ 714              		.loc 1 191 36 is_stmt 0
+ 715 0000 4111     		addi	sp,sp,-16
+ 716              	.LCFI2:
+ 717              		.cfi_def_cfa_offset 16
+ 718 0002 22C4     		sw	s0,8(sp)
+ 719 0004 06C6     		sw	ra,12(sp)
+ 720              		.cfi_offset 8, -8
+ 721              		.cfi_offset 1, -4
+ 194:lib/cordicMath/src/cordic-math.c ****         return 256;
+ 722              		.loc 1 194 16
+ 723 0006 13040010 		li	s0,256
+ 193:lib/cordicMath/src/cordic-math.c ****         return 256;
+ 724              		.loc 1 193 7
+ 725 000a 99C1     		beq	a1,zero,.L62
+ 726 000c 2A84     		mv	s0,a0
+ 195:lib/cordicMath/src/cordic-math.c ****     }
+ 196:lib/cordicMath/src/cordic-math.c ****     if(x==0){
+ 727              		.loc 1 196 5 is_stmt 1
+ 728              		.loc 1 196 7 is_stmt 0
+ 729 000e 11E5     		bne	a0,zero,.L68
+ 730              	.L62:
+ 197:lib/cordicMath/src/cordic-math.c ****         return 0;
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 19
+
+
+ 198:lib/cordicMath/src/cordic-math.c ****     }
+ 199:lib/cordicMath/src/cordic-math.c ****     if(/*y>0*/1){
+ 200:lib/cordicMath/src/cordic-math.c ****         return (x * power(x,y-256))/256;
+ 201:lib/cordicMath/src/cordic-math.c ****     }/* else{ //Funkar inte än
+ 202:lib/cordicMath/src/cordic-math.c ****         return ((x * power(x,y+256))/256)*(1/256); 
+ 203:lib/cordicMath/src/cordic-math.c ****     } */
+ 204:lib/cordicMath/src/cordic-math.c **** }
+ 731              		.loc 1 204 1
+ 732 0010 2285     		mv	a0,s0
+ 733              	.LVL96:
+ 734 0012 B240     		lw	ra,12(sp)
+ 735              		.cfi_remember_state
+ 736              		.cfi_restore 1
+ 737 0014 2244     		lw	s0,8(sp)
+ 738              		.cfi_restore 8
+ 739 0016 4101     		addi	sp,sp,16
+ 740              	.LCFI3:
+ 741              		.cfi_def_cfa_offset 0
+ 742 0018 8280     		jr	ra
+ 743              	.LVL97:
+ 744              	.L68:
+ 745              	.LCFI4:
+ 746              		.cfi_restore_state
+ 199:lib/cordicMath/src/cordic-math.c ****         return (x * power(x,y-256))/256;
+ 747              		.loc 1 199 5 is_stmt 1
+ 200:lib/cordicMath/src/cordic-math.c ****     }/* else{ //Funkar inte än
+ 748              		.loc 1 200 9
+ 200:lib/cordicMath/src/cordic-math.c ****     }/* else{ //Funkar inte än
+ 749              		.loc 1 200 21 is_stmt 0
+ 750 001a 938505F0 		addi	a1,a1,-256
+ 751              	.LVL98:
+ 752 001e 97000000 		call	power
+ 752      E7800000 
+ 753              	.LVL99:
+ 200:lib/cordicMath/src/cordic-math.c ****     }/* else{ //Funkar inte än
+ 754              		.loc 1 200 19
+ 755 0026 33058502 		mul	a0,a0,s0
+ 756              		.loc 1 204 1
+ 757 002a B240     		lw	ra,12(sp)
+ 758              		.cfi_restore 1
+ 200:lib/cordicMath/src/cordic-math.c ****     }/* else{ //Funkar inte än
+ 759              		.loc 1 200 36
+ 760 002c 1354F541 		srai	s0,a0,31
+ 761              	.LVL100:
+ 762 0030 1374F40F 		andi	s0,s0,255
+ 763 0034 2A94     		add	s0,s0,a0
+ 764 0036 2184     		srai	s0,s0,8
+ 765              		.loc 1 204 1
+ 766 0038 2285     		mv	a0,s0
+ 767 003a 2244     		lw	s0,8(sp)
+ 768              		.cfi_restore 8
+ 769 003c 4101     		addi	sp,sp,16
+ 770              	.LCFI5:
+ 771              		.cfi_def_cfa_offset 0
+ 772 003e 8280     		jr	ra
+ 773              		.cfi_endproc
+ 774              	.LFE9:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 20
+
+
+ 776              		.section	.text.absolute,"ax",@progbits
+ 777              		.align	1
+ 778              		.globl	absolute
+ 780              	absolute:
+ 781              	.LFB10:
+ 205:lib/cordicMath/src/cordic-math.c **** 
+ 206:lib/cordicMath/src/cordic-math.c **** int32_t absolute(int32_t input){
+ 782              		.loc 1 206 32 is_stmt 1
+ 783              		.cfi_startproc
+ 784              	.LVL101:
+ 207:lib/cordicMath/src/cordic-math.c ****     if(input>0){
+ 785              		.loc 1 207 5
+ 786 0000 9357F541 		srai	a5,a0,31
+ 787 0004 3D8D     		xor	a0,a5,a0
+ 788              	.LVL102:
+ 208:lib/cordicMath/src/cordic-math.c ****         return input;
+ 209:lib/cordicMath/src/cordic-math.c ****     }else{
+ 210:lib/cordicMath/src/cordic-math.c ****         return -input;
+ 211:lib/cordicMath/src/cordic-math.c ****     }
+ 212:lib/cordicMath/src/cordic-math.c **** }
+ 789              		.loc 1 212 1 is_stmt 0
+ 790 0006 1D8D     		sub	a0,a0,a5
+ 791 0008 8280     		ret
+ 792              		.cfi_endproc
+ 793              	.LFE10:
+ 795              		.section	.text.isEven,"ax",@progbits
+ 796              		.align	1
+ 797              		.globl	isEven
+ 799              	isEven:
+ 800              	.LFB11:
+ 213:lib/cordicMath/src/cordic-math.c **** 
+ 214:lib/cordicMath/src/cordic-math.c **** int32_t isEven(int32_t input){
+ 801              		.loc 1 214 30 is_stmt 1
+ 802              		.cfi_startproc
+ 803              	.LVL103:
+ 215:lib/cordicMath/src/cordic-math.c ****     if(input%2) return 0;
+ 804              		.loc 1 215 5
+ 805              		.loc 1 215 24 is_stmt 0
+ 806 0000 1345F5FF 		not	a0,a0
+ 807              	.LVL104:
+ 216:lib/cordicMath/src/cordic-math.c ****     return 1;
+ 217:lib/cordicMath/src/cordic-math.c **** }
+ 808              		.loc 1 217 1
+ 809 0004 0589     		andi	a0,a0,1
+ 810              	.LVL105:
+ 811 0006 8280     		ret
+ 812              		.cfi_endproc
+ 813              	.LFE11:
+ 815              		.section	.text.isOdd,"ax",@progbits
+ 816              		.align	1
+ 817              		.globl	isOdd
+ 819              	isOdd:
+ 820              	.LFB12:
+ 218:lib/cordicMath/src/cordic-math.c **** 
+ 219:lib/cordicMath/src/cordic-math.c **** int32_t isOdd(int32_t input){
+ 821              		.loc 1 219 29 is_stmt 1
+ 822              		.cfi_startproc
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 21
+
+
+ 823              	.LVL106:
+ 220:lib/cordicMath/src/cordic-math.c ****     if(input%2) return 1;
+ 824              		.loc 1 220 5
+ 221:lib/cordicMath/src/cordic-math.c ****     return 0;
+ 222:lib/cordicMath/src/cordic-math.c **** }
+ 825              		.loc 1 222 1 is_stmt 0
+ 826 0000 0589     		andi	a0,a0,1
+ 827              	.LVL107:
+ 828 0002 8280     		ret
+ 829              		.cfi_endproc
+ 830              	.LFE12:
+ 832              		.section	.text.to_degree,"ax",@progbits
+ 833              		.align	1
+ 834              		.globl	to_degree
+ 836              	to_degree:
+ 837              	.LFB13:
+ 223:lib/cordicMath/src/cordic-math.c **** 
+ 224:lib/cordicMath/src/cordic-math.c **** int32_t to_degree(int32_t input){
+ 838              		.loc 1 224 33 is_stmt 1
+ 839              		.cfi_startproc
+ 840              	.LVL108:
+ 225:lib/cordicMath/src/cordic-math.c ****     return (input*14667>>8);
+ 841              		.loc 1 225 5
+ 842              		.loc 1 225 18 is_stmt 0
+ 843 0000 9167     		li	a5,16384
+ 844 0002 9387B794 		addi	a5,a5,-1717
+ 845 0006 3305F502 		mul	a0,a0,a5
+ 846              	.LVL109:
+ 226:lib/cordicMath/src/cordic-math.c **** }
+ 847              		.loc 1 226 1
+ 848 000a 2185     		srai	a0,a0,8
+ 849 000c 8280     		ret
+ 850              		.cfi_endproc
+ 851              	.LFE13:
+ 853              		.section	.text.to_radians,"ax",@progbits
+ 854              		.align	1
+ 855              		.globl	to_radians
+ 857              	to_radians:
+ 858              	.LFB14:
+ 227:lib/cordicMath/src/cordic-math.c **** 
+ 228:lib/cordicMath/src/cordic-math.c **** int32_t to_radians(int32_t input){
+ 859              		.loc 1 228 34 is_stmt 1
+ 860              		.cfi_startproc
+ 861              	.LVL110:
+ 229:lib/cordicMath/src/cordic-math.c ****     return (input/14667)<<8;
+ 862              		.loc 1 229 5
+ 863              		.loc 1 229 18 is_stmt 0
+ 864 0000 9167     		li	a5,16384
+ 865 0002 9387B794 		addi	a5,a5,-1717
+ 866 0006 3345F502 		div	a0,a0,a5
+ 867              	.LVL111:
+ 230:lib/cordicMath/src/cordic-math.c **** }
+ 868              		.loc 1 230 1
+ 869 000a 2205     		slli	a0,a0,8
+ 870 000c 8280     		ret
+ 871              		.cfi_endproc
+ 872              	.LFE14:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 22
+
+
+ 874              		.globl	LUT_CORDIC_ATAN
+ 875              		.section	.data.LUT_CORDIC_ATAN,"aw"
+ 876              		.align	2
+ 877              		.set	.LANCHOR0,. + 0
+ 880              	LUT_CORDIC_ATAN:
+ 881 0000 002D0000 		.word	11520
+ 882 0004 911A0000 		.word	6801
+ 883 0008 090E0000 		.word	3593
+ 884 000c 20070000 		.word	1824
+ 885 0010 94030000 		.word	916
+ 886 0014 CA010000 		.word	458
+ 887 0018 E5000000 		.word	229
+ 888 001c 73000000 		.word	115
+ 889 0020 39000000 		.word	57
+ 890 0024 1C000000 		.word	28
+ 891 0028 0E000000 		.word	14
+ 892 002c 07000000 		.word	7
+ 893 0030 04000000 		.word	4
+ 894 0034 02000000 		.word	2
+ 895 0038 01000000 		.word	1
+ 896              		.text
+ 897              	.Letext0:
+ 898              		.file 2 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/machine/_de
+ 899              		.file 3 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/_stdint
+ 900              		.file 4 "../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 cordic-math.c
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:13     .text.cordic_atan:0000000000000000 cordic_atan
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:17     .text.cordic_atan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:19     .text.cordic_atan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:20     .text.cordic_atan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:21     .text.cordic_atan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:22     .text.cordic_atan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:25     .text.cordic_atan:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:26     .text.cordic_atan:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:28     .text.cordic_atan:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:29     .text.cordic_atan:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:34     .text.cordic_atan:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:40     .text.cordic_atan:0000000000000018 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:43     .text.cordic_atan:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:48     .text.cordic_atan:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:51     .text.cordic_atan:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:54     .text.cordic_atan:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:55     .text.cordic_atan:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:56     .text.cordic_atan:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:59     .text.cordic_atan:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:62     .text.cordic_atan:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:63     .text.cordic_atan:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:65     .text.cordic_atan:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:67     .text.cordic_atan:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:69     .text.cordic_atan:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:73     .text.cordic_atan:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:74     .text.cordic_atan:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:75     .text.cordic_atan:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:79     .text.cordic_atan:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:81     .text.cordic_atan:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:84     .text.cordic_atan:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:87     .text.cordic_atan:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:88     .text.cordic_atan:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:89     .text.cordic_atan:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:92     .text.cordic_atan:0000000000000048 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:95     .text.cordic_atan:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:96     .text.cordic_atan:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:98     .text.cordic_atan:000000000000004e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:100    .text.cordic_atan:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:102    .text.cordic_atan:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:106    .text.cordic_atan:0000000000000056 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:110    .text.cordic_atan:0000000000000058 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:113    .text.cordic_atan:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:121    .text.cordic_atan:0000000000000066 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:124    .text.cordic_atan:000000000000006a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:125    .text.cordic_atan:000000000000006a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:126    .text.cordic_atan:000000000000006a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:128    .text.cordic_atan:000000000000006e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:131    .text.cordic_atan:0000000000000070 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:134    .text.cordic_atan:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:135    .text.cordic_atan:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:137    .text.cordic_atan:0000000000000078 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:141    .text.cordic_atan:000000000000007a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:144    .text.cordic_atan:000000000000007c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:147    .text.cordic_atan:0000000000000082 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:154    .text.cordic_cos:0000000000000000 cordic_cos
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 24
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:157    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:159    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:160    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:161    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:162    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:163    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:164    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:165    .text.cordic_cos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:168    .text.cordic_cos:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:170    .text.cordic_cos:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:173    .text.cordic_cos:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:174    .text.cordic_cos:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:175    .text.cordic_cos:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:179    .text.cordic_cos:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:190    .text.cordic_cos:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:195    .text.cordic_cos:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:198    .text.cordic_cos:0000000000000032 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:201    .text.cordic_cos:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:202    .text.cordic_cos:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:205    .text.cordic_cos:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:206    .text.cordic_cos:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:209    .text.cordic_cos:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:210    .text.cordic_cos:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:212    .text.cordic_cos:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:216    .text.cordic_cos:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:217    .text.cordic_cos:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:218    .text.cordic_cos:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:222    .text.cordic_cos:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:224    .text.cordic_cos:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:227    .text.cordic_cos:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:230    .text.cordic_cos:0000000000000054 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:231    .text.cordic_cos:0000000000000054 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:234    .text.cordic_cos:0000000000000058 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:235    .text.cordic_cos:0000000000000058 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:238    .text.cordic_cos:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:239    .text.cordic_cos:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:241    .text.cordic_cos:000000000000005e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:245    .text.cordic_cos:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:246    .text.cordic_cos:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:252    .text.cordic_cos:000000000000006a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:256    .text.cordic_cos:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:257    .text.cordic_cos:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:261    .text.cordic_cos:0000000000000078 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:262    .text.cordic_cos:0000000000000078 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:268    .text.cordic_cos:000000000000007c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:271    .text.cordic_cos:0000000000000084 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:278    .text.cordic_sin:0000000000000000 cordic_sin
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:281    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:283    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:284    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:285    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:286    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:287    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:288    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:289    .text.cordic_sin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:292    .text.cordic_sin:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:294    .text.cordic_sin:0000000000000008 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 25
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:297    .text.cordic_sin:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:298    .text.cordic_sin:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:299    .text.cordic_sin:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:303    .text.cordic_sin:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:314    .text.cordic_sin:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:319    .text.cordic_sin:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:322    .text.cordic_sin:0000000000000032 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:325    .text.cordic_sin:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:326    .text.cordic_sin:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:329    .text.cordic_sin:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:330    .text.cordic_sin:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:333    .text.cordic_sin:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:334    .text.cordic_sin:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:336    .text.cordic_sin:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:340    .text.cordic_sin:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:341    .text.cordic_sin:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:342    .text.cordic_sin:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:346    .text.cordic_sin:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:348    .text.cordic_sin:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:351    .text.cordic_sin:0000000000000052 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:354    .text.cordic_sin:0000000000000054 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:355    .text.cordic_sin:0000000000000054 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:358    .text.cordic_sin:0000000000000058 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:359    .text.cordic_sin:0000000000000058 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:362    .text.cordic_sin:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:363    .text.cordic_sin:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:365    .text.cordic_sin:000000000000005e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:369    .text.cordic_sin:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:370    .text.cordic_sin:0000000000000062 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:376    .text.cordic_sin:000000000000006a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:380    .text.cordic_sin:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:381    .text.cordic_sin:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:385    .text.cordic_sin:0000000000000078 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:386    .text.cordic_sin:0000000000000078 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:392    .text.cordic_sin:000000000000007c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:395    .text.cordic_sin:0000000000000084 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:402    .text.cordic_asin:0000000000000000 cordic_asin
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:405    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:407    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:408    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:409    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:410    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:411    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:413    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:414    .text.cordic_asin:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:417    .text.cordic_asin:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:420    .text.cordic_asin:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:422    .text.cordic_asin:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:424    .text.cordic_asin:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:427    .text.cordic_asin:0000000000000012 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:432    .text.cordic_asin:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:435    .text.cordic_asin:0000000000000018 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:438    .text.cordic_asin:000000000000001c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:439    .text.cordic_asin:000000000000001c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:442    .text.cordic_asin:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:443    .text.cordic_asin:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:446    .text.cordic_asin:0000000000000020 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 26
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:447    .text.cordic_asin:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:449    .text.cordic_asin:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:453    .text.cordic_asin:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:454    .text.cordic_asin:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:455    .text.cordic_asin:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:459    .text.cordic_asin:0000000000000032 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:461    .text.cordic_asin:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:464    .text.cordic_asin:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:467    .text.cordic_asin:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:468    .text.cordic_asin:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:471    .text.cordic_asin:000000000000003e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:472    .text.cordic_asin:000000000000003e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:475    .text.cordic_asin:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:476    .text.cordic_asin:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:478    .text.cordic_asin:0000000000000044 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:482    .text.cordic_asin:0000000000000048 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:483    .text.cordic_asin:0000000000000048 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:486    .text.cordic_asin:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:493    .text.cordic_acos:0000000000000000 cordic_acos
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:496    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:498    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:499    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:500    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:501    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:502    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:504    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:505    .text.cordic_acos:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:508    .text.cordic_acos:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:512    .text.cordic_acos:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:515    .text.cordic_acos:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:517    .text.cordic_acos:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:519    .text.cordic_acos:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:522    .text.cordic_acos:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:527    .text.cordic_acos:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:530    .text.cordic_acos:000000000000001c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:533    .text.cordic_acos:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:534    .text.cordic_acos:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:537    .text.cordic_acos:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:538    .text.cordic_acos:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:541    .text.cordic_acos:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:542    .text.cordic_acos:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:544    .text.cordic_acos:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:548    .text.cordic_acos:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:549    .text.cordic_acos:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:550    .text.cordic_acos:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:554    .text.cordic_acos:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:556    .text.cordic_acos:000000000000003a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:559    .text.cordic_acos:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:562    .text.cordic_acos:000000000000003e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:563    .text.cordic_acos:000000000000003e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:566    .text.cordic_acos:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:567    .text.cordic_acos:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:570    .text.cordic_acos:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:571    .text.cordic_acos:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:573    .text.cordic_acos:0000000000000048 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:577    .text.cordic_acos:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:578    .text.cordic_acos:000000000000004c .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 27
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:581    .text.cordic_acos:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:588    .text.cordic_tan:0000000000000000 cordic_tan
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:591    .text.cordic_tan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:593    .text.cordic_tan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:594    .text.cordic_tan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:595    .text.cordic_tan:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:597    .text.cordic_tan:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:601    .text.cordic_tan:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:602    .text.cordic_tan:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:603    .text.cordic_tan:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:605    .text.cordic_tan:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:607    .text.cordic_tan:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:611    .text.cordic_tan:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:615    .text.cordic_tan:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:617    .text.cordic_tan:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:619    .text.cordic_tan:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:621    .text.cordic_tan:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:625    .text.cordic_tan:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:627    .text.cordic_tan:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:634    .text.ssqrt:0000000000000000 ssqrt
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:637    .text.ssqrt:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:639    .text.ssqrt:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:640    .text.ssqrt:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:641    .text.ssqrt:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:642    .text.ssqrt:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:645    .text.ssqrt:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:648    .text.ssqrt:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:649    .text.ssqrt:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:651    .text.ssqrt:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:653    .text.ssqrt:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:655    .text.ssqrt:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:657    .text.ssqrt:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:661    .text.ssqrt:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:662    .text.ssqrt:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:663    .text.ssqrt:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:665    .text.ssqrt:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:667    .text.ssqrt:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:669    .text.ssqrt:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:672    .text.ssqrt:000000000000001c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:674    .text.ssqrt:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:675    .text.ssqrt:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:678    .text.ssqrt:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:682    .text.ssqrt:000000000000002e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:685    .text.ssqrt:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:686    .text.ssqrt:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:692    .text.ssqrt:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:695    .text.ssqrt:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:697    .text.ssqrt:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:698    .text.ssqrt:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:701    .text.ssqrt:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:708    .text.power:0000000000000000 power
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:711    .text.power:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:713    .text.power:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:714    .text.power:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:715    .text.power:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:717    .text.power:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:720    .text.power:0000000000000006 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 28
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:721    .text.power:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:723    .text.power:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:725    .text.power:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:728    .text.power:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:729    .text.power:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:732    .text.power:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:735    .text.power:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:736    .text.power:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:738    .text.power:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:741    .text.power:0000000000000018 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:746    .text.power:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:748    .text.power:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:749    .text.power:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:750    .text.power:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:755    .text.power:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:757    .text.power:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:758    .text.power:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:760    .text.power:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:766    .text.power:0000000000000038 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:768    .text.power:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:771    .text.power:000000000000003e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:773    .text.power:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:780    .text.absolute:0000000000000000 absolute
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:783    .text.absolute:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:785    .text.absolute:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:786    .text.absolute:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:790    .text.absolute:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:792    .text.absolute:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:799    .text.isEven:0000000000000000 isEven
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:802    .text.isEven:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:804    .text.isEven:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:805    .text.isEven:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:806    .text.isEven:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:809    .text.isEven:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:812    .text.isEven:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:819    .text.isOdd:0000000000000000 isOdd
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:822    .text.isOdd:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:824    .text.isOdd:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:825    .text.isOdd:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:826    .text.isOdd:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:829    .text.isOdd:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:836    .text.to_degree:0000000000000000 to_degree
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:839    .text.to_degree:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:841    .text.to_degree:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:842    .text.to_degree:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:843    .text.to_degree:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:848    .text.to_degree:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:850    .text.to_degree:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:857    .text.to_radians:0000000000000000 to_radians
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:860    .text.to_radians:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:862    .text.to_radians:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:863    .text.to_radians:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:864    .text.to_radians:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:869    .text.to_radians:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:871    .text.to_radians:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:880    .data.LUT_CORDIC_ATAN:0000000000000000 LUT_CORDIC_ATAN
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:877    .data.LUT_CORDIC_ATAN:0000000000000000 .LANCHOR0
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 29
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:150    .text.cordic_atan:0000000000000082 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:274    .text.cordic_cos:0000000000000084 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:398    .text.cordic_sin:0000000000000084 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:489    .text.cordic_asin:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:584    .text.cordic_acos:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:630    .text.cordic_tan:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:704    .text.ssqrt:0000000000000042 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:776    .text.power:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:795    .text.absolute:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:815    .text.isEven:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:832    .text.isOdd:0000000000000004 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:853    .text.to_degree:000000000000000e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:875    .text.to_radians:000000000000000e .L0 
+                     .debug_frame:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:119    .text.cordic_atan:0000000000000066 .L12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:108    .text.cordic_atan:0000000000000058 .L13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:71     .text.cordic_atan:0000000000000030 .L6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:103    .text.cordic_atan:0000000000000056 .L14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:46     .text.cordic_atan:000000000000001e .L15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:139    .text.cordic_atan:000000000000007a .L16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:36     .text.cordic_atan:0000000000000010 .L3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:30     .text.cordic_atan:000000000000000a .L8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:182    .text.cordic_cos:000000000000001c .L18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:266    .text.cordic_cos:000000000000007c .L24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:214    .text.cordic_cos:0000000000000040 .L21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:242    .text.cordic_cos:0000000000000062 .L26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:193    .text.cordic_cos:0000000000000030 .L27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:260    .text.cordic_cos:0000000000000078 .L17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:306    .text.cordic_sin:000000000000001c .L29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:390    .text.cordic_sin:000000000000007c .L35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:338    .text.cordic_sin:0000000000000040 .L32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:366    .text.cordic_sin:0000000000000062 .L37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:317    .text.cordic_sin:0000000000000030 .L38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:384    .text.cordic_sin:0000000000000078 .L28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:451    .text.cordic_asin:0000000000000026 .L42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:479    .text.cordic_asin:0000000000000048 .L44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:430    .text.cordic_asin:0000000000000016 .L45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:546    .text.cordic_acos:000000000000002a .L49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:574    .text.cordic_acos:000000000000004c .L51
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:525    .text.cordic_acos:000000000000001a .L52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:690    .text.ssqrt:0000000000000036 .L56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:680    .text.ssqrt:000000000000002e .L59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:659    .text.ssqrt:0000000000000010 .L58
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:730    .text.power:0000000000000010 .L62
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:744    .text.power:000000000000001a .L68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:1628   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3138   .debug_str:00000000000001cf .LASF42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3068   .debug_str:0000000000000012 .LASF43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3086   .debug_str:0000000000000085 .LASF44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3018   .debug_ranges:0000000000000000 .Ldebug_ranges0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3062   .debug_line:0000000000000000 .Ldebug_line0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3112   .debug_str:0000000000000137 .LASF0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3150   .debug_str:0000000000000278 .LASF1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3066   .debug_str:0000000000000008 .LASF5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3090   .debug_str:00000000000000cb .LASF2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3134   .debug_str:00000000000001bb .LASF3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3076   .debug_str:000000000000004f .LASF4
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 30
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3070   .debug_str:0000000000000033 .LASF6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3144   .debug_str:0000000000000258 .LASF7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3110   .debug_str:000000000000012c .LASF8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3100   .debug_str:0000000000000100 .LASF9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3104   .debug_str:0000000000000117 .LASF10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3124   .debug_str:0000000000000182 .LASF11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3114   .debug_str:0000000000000144 .LASF12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3116   .debug_str:000000000000015b .LASF13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3084   .debug_str:000000000000007d .LASF14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3142   .debug_str:000000000000024f .LASF15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3064   .debug_str:0000000000000000 .LASF16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3126   .debug_str:0000000000000190 .LASF18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3122   .debug_str:0000000000000176 .LASF17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3148   .debug_str:0000000000000268 .LASF19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3098   .debug_str:00000000000000f5 .LASF20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:858    .text.to_radians:0000000000000000 .LFB14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:872    .text.to_radians:000000000000000e .LFE14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3094   .debug_str:00000000000000e4 .LASF22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:1961   .debug_loc:0000000000000000 .LLST48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3136   .debug_str:00000000000001c5 .LASF21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:837    .text.to_degree:0000000000000000 .LFB13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:851    .text.to_degree:000000000000000e .LFE13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:1975   .debug_loc:0000000000000021 .LLST47
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3140   .debug_str:0000000000000249 .LASF23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:820    .text.isOdd:0000000000000000 .LFB12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:830    .text.isOdd:0000000000000004 .LFE12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:1989   .debug_loc:0000000000000042 .LLST46
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3130   .debug_str:00000000000001a9 .LASF24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:800    .text.isEven:0000000000000000 .LFB11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:813    .text.isEven:0000000000000008 .LFE11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2003   .debug_loc:0000000000000063 .LLST45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3128   .debug_str:00000000000001a0 .LASF25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:781    .text.absolute:0000000000000000 .LFB10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:793    .text.absolute:000000000000000a .LFE10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2024   .debug_loc:0000000000000092 .LLST44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3082   .debug_str:0000000000000077 .LASF26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:709    .text.power:0000000000000000 .LFB9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:774    .text.power:0000000000000040 .LFE9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2038   .debug_loc:00000000000000b3 .LLST41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2066   .debug_loc:00000000000000f7 .LLST42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2091   .debug_loc:0000000000000131 .LLST43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:753    .text.power:0000000000000026 .LVL99
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3108   .debug_str:0000000000000126 .LASF27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:635    .text.ssqrt:0000000000000000 .LFB8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:702    .text.ssqrt:0000000000000042 .LFE8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2111   .debug_loc:0000000000000160 .LLST35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2135   .debug_loc:0000000000000192 .LLST36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3102   .debug_str:0000000000000112 .LASF28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2156   .debug_loc:00000000000001ba .LLST37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2173   .debug_loc:00000000000001d7 .LLST38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2185   .debug_loc:00000000000001f6 .LLST39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3154   .debug_str:000000000000028b .LASF29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2198   .debug_loc:0000000000000217 .LLST40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3132   .debug_str:00000000000001b0 .LASF30
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:589    .text.cordic_tan:0000000000000000 .LFB7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:628    .text.cordic_tan:000000000000002c .LFE7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2210   .debug_loc:0000000000000236 .LLST33
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 31
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3146   .debug_str:0000000000000261 .LASF31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2228   .debug_loc:0000000000000262 .LLST34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:608    .text.cordic_tan:0000000000000012 .LVL82
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:613    .text.cordic_tan:000000000000001e .LVL83
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3120   .debug_str:000000000000016a .LASF32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:494    .text.cordic_acos:0000000000000000 .LFB6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:582    .text.cordic_acos:0000000000000050 .LFE6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3118   .debug_str:0000000000000163 .LASF33
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2246   .debug_loc:000000000000028e .LLST26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2260   .debug_loc:00000000000002af .LLST27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2280   .debug_loc:00000000000002e4 .LLST28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3080   .debug_str:000000000000006e .LASF34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2301   .debug_loc:000000000000031a .LLST29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3088   .debug_str:00000000000000c6 .LASF35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2314   .debug_loc:000000000000033b .LLST30
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3106   .debug_str:0000000000000121 .LASF36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2326   .debug_loc:000000000000035a .LLST31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2339   .debug_loc:000000000000037a .LLST32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3078   .debug_str:0000000000000062 .LASF37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:403    .text.cordic_asin:0000000000000000 .LFB5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:487    .text.cordic_asin:000000000000004c .LFE5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3152   .debug_str:0000000000000284 .LASF38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2371   .debug_loc:00000000000003c9 .LLST19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2385   .debug_loc:00000000000003ea .LLST20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2406   .debug_loc:0000000000000420 .LLST21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2426   .debug_loc:0000000000000455 .LLST22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2438   .debug_loc:0000000000000474 .LLST23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2451   .debug_loc:0000000000000494 .LLST24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2463   .debug_loc:00000000000004b3 .LLST25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3092   .debug_str:00000000000000d9 .LASF39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:279    .text.cordic_sin:0000000000000000 .LFB4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:396    .text.cordic_sin:0000000000000084 .LFE4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3072   .debug_str:000000000000003d .LASF40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2495   .debug_loc:0000000000000502 .LLST12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2519   .debug_loc:000000000000053d .LLST13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2546   .debug_loc:0000000000000580 .LLST14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2571   .debug_loc:00000000000005c1 .LLST15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2595   .debug_loc:00000000000005fc .LLST16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2614   .debug_loc:0000000000000629 .LLST17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:312    .text.cordic_sin:000000000000002c .LBB4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:367    .text.cordic_sin:0000000000000062 .LBE4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2631   .debug_loc:0000000000000654 .LLST18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3096   .debug_str:00000000000000ea .LASF41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:155    .text.cordic_cos:0000000000000000 .LFB3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:272    .text.cordic_cos:0000000000000084 .LFE3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2658   .debug_loc:0000000000000697 .LLST5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2682   .debug_loc:00000000000006d2 .LLST6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2709   .debug_loc:0000000000000715 .LLST7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2734   .debug_loc:0000000000000756 .LLST8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2758   .debug_loc:0000000000000791 .LLST9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2777   .debug_loc:00000000000007be .LLST10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:188    .text.cordic_cos:000000000000002c .LBB3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:243    .text.cordic_cos:0000000000000062 .LBE3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2794   .debug_loc:00000000000007e9 .LLST11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:3074   .debug_str:0000000000000043 .LASF45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:14     .text.cordic_atan:0000000000000000 .LFB2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:148    .text.cordic_atan:0000000000000082 .LFE2
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 32
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2821   .debug_loc:000000000000082c .LLST0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2860   .debug_loc:0000000000000897 .LLST1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2883   .debug_loc:00000000000008d6 .LLST2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2911   .debug_loc:000000000000091b .LLST3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:41     .text.cordic_atan:000000000000001a .LBB2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:104    .text.cordic_atan:0000000000000056 .LBE2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:2954   .debug_loc:0000000000000991 .LLST4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:861    .text.to_radians:0000000000000000 .LVL110
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:867    .text.to_radians:000000000000000a .LVL111
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:840    .text.to_degree:0000000000000000 .LVL108
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:846    .text.to_degree:000000000000000a .LVL109
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:823    .text.isOdd:0000000000000000 .LVL106
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:827    .text.isOdd:0000000000000002 .LVL107
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:803    .text.isEven:0000000000000000 .LVL103
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:807    .text.isEven:0000000000000004 .LVL104
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:810    .text.isEven:0000000000000006 .LVL105
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:784    .text.absolute:0000000000000000 .LVL101
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:788    .text.absolute:0000000000000006 .LVL102
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:716    .text.power:0000000000000002 .LCFI2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:740    .text.power:0000000000000018 .LCFI3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:745    .text.power:000000000000001a .LCFI4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:770    .text.power:000000000000003e .LCFI5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:712    .text.power:0000000000000000 .LVL95
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:733    .text.power:0000000000000012 .LVL96
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:743    .text.power:000000000000001a .LVL97
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:761    .text.power:0000000000000030 .LVL100
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:751    .text.power:000000000000001e .LVL98
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:638    .text.ssqrt:0000000000000000 .LVL85
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:643    .text.ssqrt:0000000000000002 .LVL86
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:646    .text.ssqrt:0000000000000006 .LVL87
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:687    .text.ssqrt:0000000000000032 .LVL91
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:689    .text.ssqrt:0000000000000036 .LVL92
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:699    .text.ssqrt:0000000000000040 .LVL94
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:670    .text.ssqrt:000000000000001c .LVL89
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:683    .text.ssqrt:0000000000000030 .LVL90
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:658    .text.ssqrt:0000000000000010 .LVL88
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:596    .text.cordic_tan:0000000000000002 .LCFI0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:624    .text.cordic_tan:000000000000002a .LCFI1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:592    .text.cordic_tan:0000000000000000 .LVL81
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:622    .text.cordic_tan:0000000000000028 .LVL84
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:497    .text.cordic_acos:0000000000000000 .LVL69
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:579    .text.cordic_acos:000000000000004e .LVL80
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:524    .text.cordic_acos:000000000000001a .LVL70
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:531    .text.cordic_acos:0000000000000020 .LVL72
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:539    .text.cordic_acos:0000000000000024 .LVL74
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:560    .text.cordic_acos:000000000000003e .LVL77
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:568    .text.cordic_acos:0000000000000046 .LVL79
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:535    .text.cordic_acos:0000000000000022 .LVL73
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:564    .text.cordic_acos:0000000000000042 .LVL78
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:528    .text.cordic_acos:000000000000001c .LVL71
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:557    .text.cordic_acos:000000000000003c .LVL76
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:406    .text.cordic_asin:0000000000000000 .LVL57
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:484    .text.cordic_asin:000000000000004a .LVL68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:429    .text.cordic_asin:0000000000000016 .LVL58
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:436    .text.cordic_asin:000000000000001c .LVL60
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:444    .text.cordic_asin:0000000000000020 .LVL62
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:465    .text.cordic_asin:000000000000003a .LVL65
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 33
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:473    .text.cordic_asin:0000000000000042 .LVL67
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:440    .text.cordic_asin:000000000000001e .LVL61
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:469    .text.cordic_asin:000000000000003e .LVL66
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:433    .text.cordic_asin:0000000000000018 .LVL59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:462    .text.cordic_asin:0000000000000038 .LVL64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:282    .text.cordic_sin:0000000000000000 .LVL39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:374    .text.cordic_sin:000000000000006a .LVL53
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:387    .text.cordic_sin:000000000000007a .LVL55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:389    .text.cordic_sin:000000000000007c .LVL56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:316    .text.cordic_sin:0000000000000030 .LVL42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:323    .text.cordic_sin:0000000000000036 .LVL44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:331    .text.cordic_sin:000000000000003a .LVL46
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:352    .text.cordic_sin:0000000000000054 .LVL49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:360    .text.cordic_sin:000000000000005c .LVL51
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:327    .text.cordic_sin:0000000000000038 .LVL45
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:356    .text.cordic_sin:0000000000000058 .LVL50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:296    .text.cordic_sin:000000000000000c .LVL40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:305    .text.cordic_sin:000000000000001c .LVL41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:382    .text.cordic_sin:0000000000000078 .LVL54
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:320    .text.cordic_sin:0000000000000032 .LVL43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:349    .text.cordic_sin:0000000000000052 .LVL48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:371    .text.cordic_sin:0000000000000064 .LVL52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:158    .text.cordic_cos:0000000000000000 .LVL21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:250    .text.cordic_cos:000000000000006a .LVL35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:263    .text.cordic_cos:000000000000007a .LVL37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:265    .text.cordic_cos:000000000000007c .LVL38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:192    .text.cordic_cos:0000000000000030 .LVL24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:199    .text.cordic_cos:0000000000000036 .LVL26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:207    .text.cordic_cos:000000000000003a .LVL28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:228    .text.cordic_cos:0000000000000054 .LVL31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:236    .text.cordic_cos:000000000000005c .LVL33
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:203    .text.cordic_cos:0000000000000038 .LVL27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:232    .text.cordic_cos:0000000000000058 .LVL32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:172    .text.cordic_cos:000000000000000c .LVL22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:181    .text.cordic_cos:000000000000001c .LVL23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:258    .text.cordic_cos:0000000000000078 .LVL36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:196    .text.cordic_cos:0000000000000032 .LVL25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:225    .text.cordic_cos:0000000000000052 .LVL30
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:247    .text.cordic_cos:0000000000000064 .LVL34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:18     .text.cordic_atan:0000000000000000 .LVL0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:35     .text.cordic_atan:0000000000000010 .LVL2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:60     .text.cordic_atan:0000000000000026 .LVL7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:70     .text.cordic_atan:0000000000000030 .LVL8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:93     .text.cordic_atan:000000000000004c .LVL12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:107    .text.cordic_atan:0000000000000058 .LVL13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:114    .text.cordic_atan:000000000000005e .LVL14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:118    .text.cordic_atan:0000000000000066 .LVL15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:129    .text.cordic_atan:0000000000000070 .LVL17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:132    .text.cordic_atan:0000000000000074 .LVL18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:138    .text.cordic_atan:000000000000007a .LVL19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:142    .text.cordic_atan:000000000000007c .LVL20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:45     .text.cordic_atan:000000000000001e .LVL3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:123    .text.cordic_atan:000000000000006a .LVL16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:23     .text.cordic_atan:0000000000000002 .LVL1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:49     .text.cordic_atan:0000000000000020 .LVL4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:52     .text.cordic_atan:0000000000000022 .LVL5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:82     .text.cordic_atan:0000000000000042 .LVL9
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s 			page 34
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:85     .text.cordic_atan:0000000000000046 .LVL10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:57     .text.cordic_atan:0000000000000024 .LVL6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:90     .text.cordic_atan:0000000000000048 .LVL11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:902    .debug_info:0000000000000000 .Ldebug_info0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:412    .text.cordic_asin:0000000000000000 .LBB5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:418    .text.cordic_asin:000000000000000a .LBE5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:425    .text.cordic_asin:0000000000000012 .LBB6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:480    .text.cordic_asin:0000000000000048 .LBE6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:503    .text.cordic_acos:0000000000000000 .LBB7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:506    .text.cordic_acos:0000000000000004 .LBE7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:510    .text.cordic_acos:000000000000000a .LBB8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:513    .text.cordic_acos:000000000000000c .LBE8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:520    .text.cordic_acos:0000000000000016 .LBB9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccOqOmRb.s:575    .text.cordic_acos:000000000000004c .LBE9
+
+NO UNDEFINED SYMBOLS

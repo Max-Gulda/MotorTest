@@ -1,0 +1,562 @@
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 1
+
+
+   1              		.file	"PID.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.PIDController_Init,"ax",@progbits
+  10              		.align	1
+  11              		.globl	PIDController_Init
+  13              	PIDController_Init:
+  14              	.LFB0:
+  15              		.file 1 "PID.c"
+   1:PID.c         **** #include "PID.h"
+   2:PID.c         **** 
+   3:PID.c         **** void PIDController_Init(PIDController *pid) {
+  16              		.loc 1 3 45
+  17              		.cfi_startproc
+  18              	.LVL0:
+   4:PID.c         **** 
+   5:PID.c         **** 	pid->Kp = 3.50f;
+  19              		.loc 1 5 2
+   6:PID.c         ****     pid->Kd = 40.0f;
+   7:PID.c         ****     pid->Ki = 0.10f;
+  20              		.loc 1 7 13 is_stmt 0
+  21 0000 B7070000 		lui	a5,%hi(.LC2)
+  22 0004 83A70700 		lw	a5,%lo(.LC2)(a5)
+   5:PID.c         ****     pid->Kd = 40.0f;
+  23              		.loc 1 5 10
+  24 0008 B7060000 		lui	a3,%hi(.LC0)
+   6:PID.c         ****     pid->Kd = 40.0f;
+  25              		.loc 1 6 13
+  26 000c 37070000 		lui	a4,%hi(.LC1)
+   5:PID.c         ****     pid->Kd = 40.0f;
+  27              		.loc 1 5 10
+  28 0010 83A60600 		lw	a3,%lo(.LC0)(a3)
+   6:PID.c         ****     pid->Kd = 40.0f;
+  29              		.loc 1 6 13
+  30 0014 03270700 		lw	a4,%lo(.LC1)(a4)
+  31              		.loc 1 7 13
+  32 0018 5CC1     		sw	a5,4(a0)
+   8:PID.c         **** 	/* Clear controller variables */
+   9:PID.c         **** 	pid->integrator = 0.0f;
+  33              		.loc 1 9 18
+  34 001a 93070000 		mv	a5,zero
+   5:PID.c         ****     pid->Kd = 40.0f;
+  35              		.loc 1 5 10
+  36 001e 14C1     		sw	a3,0(a0)
+   6:PID.c         ****     pid->Ki = 0.10f;
+  37              		.loc 1 6 5 is_stmt 1
+   6:PID.c         ****     pid->Ki = 0.10f;
+  38              		.loc 1 6 13 is_stmt 0
+  39 0020 18C5     		sw	a4,8(a0)
+   7:PID.c         **** 	/* Clear controller variables */
+  40              		.loc 1 7 5 is_stmt 1
+  41              		.loc 1 9 2
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 2
+
+
+  42              		.loc 1 9 18 is_stmt 0
+  43 0022 5CCD     		sw	a5,28(a0)
+  10:PID.c         **** 	pid->prevError  = 0.0f;
+  44              		.loc 1 10 2 is_stmt 1
+  45              		.loc 1 10 18 is_stmt 0
+  46 0024 1CD1     		sw	a5,32(a0)
+  11:PID.c         **** 
+  12:PID.c         **** 	pid->differentiator  = 0.0f;
+  47              		.loc 1 12 2 is_stmt 1
+  48              		.loc 1 12 23 is_stmt 0
+  49 0026 5CD1     		sw	a5,36(a0)
+  13:PID.c         **** 	pid->prevMeasurement = 0.0f;
+  50              		.loc 1 13 2 is_stmt 1
+  51              		.loc 1 13 23 is_stmt 0
+  52 0028 1CD5     		sw	a5,40(a0)
+  14:PID.c         **** 
+  15:PID.c         **** 	pid->out = 0.0f;
+  53              		.loc 1 15 2 is_stmt 1
+  54              		.loc 1 15 11 is_stmt 0
+  55 002a 5CD5     		sw	a5,44(a0)
+  16:PID.c         **** 
+  17:PID.c         **** }
+  56              		.loc 1 17 1
+  57 002c 8280     		ret
+  58              		.cfi_endproc
+  59              	.LFE0:
+  61              		.globl	__subsf3
+  62              		.globl	__mulsf3
+  63              		.globl	__addsf3
+  64              		.globl	__gtsf2
+  65              		.globl	__ltsf2
+  66              		.section	.text.PIDController_Update,"ax",@progbits
+  67              		.align	1
+  68              		.globl	PIDController_Update
+  70              	PIDController_Update:
+  71              	.LFB1:
+  18:PID.c         **** 
+  19:PID.c         **** float PIDController_Update(PIDController *pid, float setpoint, float measurement) { 
+  72              		.loc 1 19 83 is_stmt 1
+  73              		.cfi_startproc
+  74              	.LVL1:
+  20:PID.c         **** 	/*
+  21:PID.c         **** 	* Error signal
+  22:PID.c         **** 	*/
+  23:PID.c         ****     float error = setpoint - measurement; //setpoint = börvärde, measurement = ärvärde
+  75              		.loc 1 23 5
+  19:PID.c         **** 	/*
+  76              		.loc 1 19 83 is_stmt 0
+  77 0000 0111     		addi	sp,sp,-32
+  78              	.LCFI0:
+  79              		.cfi_def_cfa_offset 32
+  80 0002 AE87     		mv	a5,a1
+  81 0004 22CC     		sw	s0,24(sp)
+  82              		.loc 1 23 11
+  83 0006 B285     		mv	a1,a2
+  84              	.LVL2:
+  85              		.cfi_offset 8, -8
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 3
+
+
+  19:PID.c         **** 	/*
+  86              		.loc 1 19 83
+  87 0008 2A84     		mv	s0,a0
+  88              		.loc 1 23 11
+  89 000a 3E85     		mv	a0,a5
+  90              	.LVL3:
+  19:PID.c         **** 	/*
+  91              		.loc 1 19 83
+  92 000c 06CE     		sw	ra,28(sp)
+  93 000e 26CA     		sw	s1,20(sp)
+  94 0010 4AC8     		sw	s2,16(sp)
+  95 0012 4EC6     		sw	s3,12(sp)
+  96              		.cfi_offset 1, -4
+  97              		.cfi_offset 9, -12
+  98              		.cfi_offset 18, -16
+  99              		.cfi_offset 19, -20
+ 100 0014 3289     		mv	s2,a2
+ 101 0016 52C4     		sw	s4,8(sp)
+ 102 0018 56C2     		sw	s5,4(sp)
+ 103              		.cfi_offset 20, -24
+ 104              		.cfi_offset 21, -28
+ 105              		.loc 1 23 11
+ 106 001a 97000000 		call	__subsf3
+ 106      E7800000 
+ 107              	.LVL4:
+  24:PID.c         **** 
+  25:PID.c         **** 	/*
+  26:PID.c         **** 	* Proportional
+  27:PID.c         **** 	*/
+  28:PID.c         ****     float proportional = pid->Kp * error;
+ 108              		.loc 1 28 11
+ 109 0022 0C40     		lw	a1,0(s0)
+  23:PID.c         **** 
+ 110              		.loc 1 23 11
+ 111 0024 2A8A     		mv	s4,a0
+ 112              	.LVL5:
+ 113              		.loc 1 28 5 is_stmt 1
+ 114              		.loc 1 28 11 is_stmt 0
+ 115 0026 97000000 		call	__mulsf3
+ 115      E7800000 
+ 116              	.LVL6:
+  29:PID.c         **** 
+  30:PID.c         **** 	/*
+  31:PID.c         **** 	* Integral
+  32:PID.c         **** 	*/
+  33:PID.c         ****     pid->integrator += (pid->Ki * error);
+ 117              		.loc 1 33 33
+ 118 002e 4C40     		lw	a1,4(s0)
+  28:PID.c         **** 
+ 119              		.loc 1 28 11
+ 120 0030 AA8A     		mv	s5,a0
+ 121              	.LVL7:
+ 122              		.loc 1 33 5 is_stmt 1
+ 123              		.loc 1 33 33 is_stmt 0
+ 124 0032 5285     		mv	a0,s4
+ 125              	.LVL8:
+ 126 0034 97000000 		call	__mulsf3
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 4
+
+
+ 126      E7800000 
+ 127              	.LVL9:
+ 128              		.loc 1 33 21
+ 129 003c 4C4C     		lw	a1,28(s0)
+ 130 003e 97000000 		call	__addsf3
+ 130      E7800000 
+ 131              	.LVL10:
+  34:PID.c         **** 	
+  35:PID.c         **** 	/* Anti-wind-up via integrator clamping */
+  36:PID.c         ****     if (pid->integrator > pid->limMaxInt) {
+ 132              		.loc 1 36 30
+ 133 0046 044C     		lw	s1,24(s0)
+  33:PID.c         **** 	
+ 134              		.loc 1 33 21
+ 135 0048 48CC     		sw	a0,28(s0)
+ 136              		.loc 1 36 5 is_stmt 1
+  33:PID.c         **** 	
+ 137              		.loc 1 33 21 is_stmt 0
+ 138 004a AA89     		mv	s3,a0
+ 139              		.loc 1 36 8
+ 140 004c A685     		mv	a1,s1
+ 141 004e 97000000 		call	__gtsf2
+ 141      E7800000 
+ 142              	.LVL11:
+ 143 0056 634BA000 		bgt	a0,zero,.L23
+  37:PID.c         **** 
+  38:PID.c         ****         pid->integrator = pid->limMaxInt;
+  39:PID.c         **** 
+  40:PID.c         ****     } else if (pid->integrator < pid->limMinInt) {
+ 144              		.loc 1 40 12 is_stmt 1
+ 145              		.loc 1 40 37 is_stmt 0
+ 146 005a 4448     		lw	s1,20(s0)
+ 147              		.loc 1 40 15
+ 148 005c 4E85     		mv	a0,s3
+ 149 005e A685     		mv	a1,s1
+ 150 0060 97000000 		call	__ltsf2
+ 150      E7800000 
+ 151              	.LVL12:
+ 152 0068 63530508 		bge	a0,zero,.L19
+ 153              	.L23:
+  41:PID.c         **** 
+  42:PID.c         ****         pid->integrator = pid->limMinInt;
+ 154              		.loc 1 42 9 is_stmt 1
+ 155              		.loc 1 42 25 is_stmt 0
+ 156 006c 44CC     		sw	s1,28(s0)
+ 157              	.L6:
+  43:PID.c         **** 
+  44:PID.c         ****     }
+  45:PID.c         **** 
+  46:PID.c         **** 	/*
+  47:PID.c         **** 	* Derivative (band-limited differentiator)
+  48:PID.c         **** 	*/
+  49:PID.c         **** 		
+  50:PID.c         ****     pid->differentiator = -(pid->Kd * (measurement - pid->prevMeasurement));
+ 158              		.loc 1 50 5 is_stmt 1
+ 159              		.loc 1 50 52 is_stmt 0
+ 160 006e 0C54     		lw	a1,40(s0)
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 5
+
+
+ 161 0070 4A85     		mv	a0,s2
+ 162 0072 97000000 		call	__subsf3
+ 162      E7800000 
+ 163              	.LVL13:
+ 164              		.loc 1 50 37
+ 165 007a 0C44     		lw	a1,8(s0)
+ 166 007c 97000000 		call	__mulsf3
+ 166      E7800000 
+ 167              	.LVL14:
+ 168              		.loc 1 50 27
+ 169 0084 B7070080 		li	a5,-2147483648
+ 170 0088 A98F     		xor	a5,a5,a0
+ 171              		.loc 1 50 37
+ 172 008a AA89     		mv	s3,a0
+  51:PID.c         **** 	/*
+  52:PID.c         **** 	* Compute output and apply limits
+  53:PID.c         **** 	*/
+  54:PID.c         ****     pid->out = proportional + pid->integrator + pid->differentiator;
+ 173              		.loc 1 54 29
+ 174 008c A685     		mv	a1,s1
+  50:PID.c         **** 	/*
+ 175              		.loc 1 50 25
+ 176 008e 5CD0     		sw	a5,36(s0)
+ 177              		.loc 1 54 5 is_stmt 1
+ 178              		.loc 1 54 29 is_stmt 0
+ 179 0090 5685     		mv	a0,s5
+ 180 0092 97000000 		call	__addsf3
+ 180      E7800000 
+ 181              	.LVL15:
+ 182 009a CE85     		mv	a1,s3
+ 183 009c 97000000 		call	__subsf3
+ 183      E7800000 
+ 184              	.LVL16:
+  55:PID.c         **** 
+  56:PID.c         ****     if (pid->out > pid->limMax) {
+ 185              		.loc 1 56 23
+ 186 00a4 0448     		lw	s1,16(s0)
+ 187 00a6 AA89     		mv	s3,a0
+  54:PID.c         **** 
+ 188              		.loc 1 54 14
+ 189 00a8 48D4     		sw	a0,44(s0)
+ 190              		.loc 1 56 5 is_stmt 1
+ 191              		.loc 1 56 8 is_stmt 0
+ 192 00aa AA85     		mv	a1,a0
+ 193 00ac 2685     		mv	a0,s1
+ 194 00ae 97000000 		call	__ltsf2
+ 194      E7800000 
+ 195              	.LVL17:
+ 196 00b6 634B0500 		blt	a0,zero,.L24
+  57:PID.c         **** 
+  58:PID.c         ****         pid->out = pid->limMax;
+  59:PID.c         **** 
+  60:PID.c         ****     } else if (pid->out < pid->limMin) {
+ 197              		.loc 1 60 12 is_stmt 1
+ 198              		.loc 1 60 30 is_stmt 0
+ 199 00ba 4444     		lw	s1,12(s0)
+ 200              		.loc 1 60 15
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 6
+
+
+ 201 00bc CE85     		mv	a1,s3
+ 202 00be 2685     		mv	a0,s1
+ 203 00c0 97000000 		call	__gtsf2
+ 203      E7800000 
+ 204              	.LVL18:
+ 205 00c8 6351A002 		ble	a0,zero,.L21
+ 206              	.L24:
+  61:PID.c         **** 
+  62:PID.c         ****         pid->out = pid->limMin;
+ 207              		.loc 1 62 9 is_stmt 1
+ 208              		.loc 1 62 18 is_stmt 0
+ 209 00cc 44D4     		sw	s1,44(s0)
+ 210              	.L10:
+  63:PID.c         **** 
+  64:PID.c         ****     }
+  65:PID.c         **** 
+  66:PID.c         **** 	/* Store error and measurement for later use */
+  67:PID.c         ****     pid->prevError       = error;
+ 211              		.loc 1 67 5 is_stmt 1
+ 212              		.loc 1 67 26 is_stmt 0
+ 213 00ce 23204403 		sw	s4,32(s0)
+  68:PID.c         ****     pid->prevMeasurement = measurement;
+ 214              		.loc 1 68 5 is_stmt 1
+ 215              		.loc 1 68 26 is_stmt 0
+ 216 00d2 23242403 		sw	s2,40(s0)
+  69:PID.c         **** 
+  70:PID.c         **** 	/* Return controller output */
+  71:PID.c         ****     return pid->out;
+ 217              		.loc 1 71 5 is_stmt 1
+  72:PID.c         **** 
+  73:PID.c         **** }...
+ 218              		.loc 1 73 1 is_stmt 0
+ 219 00d6 F240     		lw	ra,28(sp)
+ 220              		.cfi_remember_state
+ 221              		.cfi_restore 1
+ 222 00d8 6244     		lw	s0,24(sp)
+ 223              		.cfi_restore 8
+ 224              	.LVL19:
+ 225 00da 2685     		mv	a0,s1
+ 226 00dc 4249     		lw	s2,16(sp)
+ 227              		.cfi_restore 18
+ 228              	.LVL20:
+ 229 00de D244     		lw	s1,20(sp)
+ 230              		.cfi_restore 9
+ 231 00e0 B249     		lw	s3,12(sp)
+ 232              		.cfi_restore 19
+ 233 00e2 224A     		lw	s4,8(sp)
+ 234              		.cfi_restore 20
+ 235              	.LVL21:
+ 236 00e4 924A     		lw	s5,4(sp)
+ 237              		.cfi_restore 21
+ 238              	.LVL22:
+ 239 00e6 0561     		addi	sp,sp,32
+ 240              	.LCFI1:
+ 241              		.cfi_def_cfa_offset 0
+ 242 00e8 8280     		jr	ra
+ 243              	.LVL23:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 7
+
+
+ 244              	.L21:
+ 245              	.LCFI2:
+ 246              		.cfi_restore_state
+ 247 00ea CE84     		mv	s1,s3
+ 248 00ec CDB7     		j	.L10
+ 249              	.L19:
+ 250 00ee CE84     		mv	s1,s3
+ 251 00f0 BDBF     		j	.L6
+ 252              		.cfi_endproc
+ 253              	.LFE1:
+ 255              		.section	.rodata.PIDController_Init.cst4,"aM",@progbits,4
+ 256              		.align	2
+ 257              	.LC0:
+ 258 0000 00006040 		.word	1080033280
+ 259              	.LC1:
+ 260 0004 00002042 		.word	1109393408
+ 261              	.LC2:
+ 262 0008 CDCCCC3D 		.word	1036831949
+ 263              		.text
+ 264              	.Letext0:
+ 265              		.file 2 "PID.h"
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 PID.c
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:13     .text.PIDController_Init:0000000000000000 PIDController_Init
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:17     .text.PIDController_Init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:19     .text.PIDController_Init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:20     .text.PIDController_Init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:21     .text.PIDController_Init:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:24     .text.PIDController_Init:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:26     .text.PIDController_Init:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:28     .text.PIDController_Init:0000000000000010 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:30     .text.PIDController_Init:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:32     .text.PIDController_Init:0000000000000018 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:34     .text.PIDController_Init:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:36     .text.PIDController_Init:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:38     .text.PIDController_Init:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:39     .text.PIDController_Init:0000000000000020 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:41     .text.PIDController_Init:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:42     .text.PIDController_Init:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:43     .text.PIDController_Init:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:45     .text.PIDController_Init:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:46     .text.PIDController_Init:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:48     .text.PIDController_Init:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:49     .text.PIDController_Init:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:51     .text.PIDController_Init:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:52     .text.PIDController_Init:0000000000000028 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:54     .text.PIDController_Init:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:55     .text.PIDController_Init:000000000000002a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:57     .text.PIDController_Init:000000000000002c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:58     .text.PIDController_Init:000000000000002e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:70     .text.PIDController_Update:0000000000000000 PIDController_Update
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:73     .text.PIDController_Update:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:75     .text.PIDController_Update:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:76     .text.PIDController_Update:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:77     .text.PIDController_Update:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:79     .text.PIDController_Update:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:83     .text.PIDController_Update:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:85     .text.PIDController_Update:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:87     .text.PIDController_Update:0000000000000008 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:89     .text.PIDController_Update:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:92     .text.PIDController_Update:000000000000000c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:96     .text.PIDController_Update:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:97     .text.PIDController_Update:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:98     .text.PIDController_Update:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:99     .text.PIDController_Update:0000000000000014 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:103    .text.PIDController_Update:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:104    .text.PIDController_Update:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:106    .text.PIDController_Update:000000000000001a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:109    .text.PIDController_Update:0000000000000022 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:111    .text.PIDController_Update:0000000000000024 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:114    .text.PIDController_Update:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:115    .text.PIDController_Update:0000000000000026 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:118    .text.PIDController_Update:000000000000002e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:120    .text.PIDController_Update:0000000000000030 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:123    .text.PIDController_Update:0000000000000032 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:124    .text.PIDController_Update:0000000000000032 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:129    .text.PIDController_Update:000000000000003c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:133    .text.PIDController_Update:0000000000000046 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 9
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:135    .text.PIDController_Update:0000000000000048 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:137    .text.PIDController_Update:000000000000004a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:138    .text.PIDController_Update:000000000000004a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:140    .text.PIDController_Update:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:145    .text.PIDController_Update:000000000000005a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:146    .text.PIDController_Update:000000000000005a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:148    .text.PIDController_Update:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:155    .text.PIDController_Update:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:156    .text.PIDController_Update:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:159    .text.PIDController_Update:000000000000006e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:160    .text.PIDController_Update:000000000000006e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:165    .text.PIDController_Update:000000000000007a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:169    .text.PIDController_Update:0000000000000084 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:172    .text.PIDController_Update:000000000000008a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:174    .text.PIDController_Update:000000000000008c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:176    .text.PIDController_Update:000000000000008e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:178    .text.PIDController_Update:0000000000000090 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:179    .text.PIDController_Update:0000000000000090 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:186    .text.PIDController_Update:00000000000000a4 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:189    .text.PIDController_Update:00000000000000a8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:191    .text.PIDController_Update:00000000000000aa .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:192    .text.PIDController_Update:00000000000000aa .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:198    .text.PIDController_Update:00000000000000ba .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:199    .text.PIDController_Update:00000000000000ba .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:201    .text.PIDController_Update:00000000000000bc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:208    .text.PIDController_Update:00000000000000cc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:209    .text.PIDController_Update:00000000000000cc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:212    .text.PIDController_Update:00000000000000ce .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:213    .text.PIDController_Update:00000000000000ce .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:215    .text.PIDController_Update:00000000000000d2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:216    .text.PIDController_Update:00000000000000d2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:218    .text.PIDController_Update:00000000000000d6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:219    .text.PIDController_Update:00000000000000d6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:220    .text.PIDController_Update:00000000000000d8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:221    .text.PIDController_Update:00000000000000d8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:223    .text.PIDController_Update:00000000000000da .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:227    .text.PIDController_Update:00000000000000de .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:230    .text.PIDController_Update:00000000000000e0 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:232    .text.PIDController_Update:00000000000000e2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:234    .text.PIDController_Update:00000000000000e4 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:237    .text.PIDController_Update:00000000000000e6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:241    .text.PIDController_Update:00000000000000e8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:246    .text.PIDController_Update:00000000000000ea .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:252    .text.PIDController_Update:00000000000000f2 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:66     .text.PIDController_Init:000000000000002e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:255    .text.PIDController_Update:00000000000000f2 .L0 
+                     .debug_frame:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:261    .rodata.PIDController_Init.cst4:0000000000000008 .LC2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:257    .rodata.PIDController_Init.cst4:0000000000000000 .LC0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:259    .rodata.PIDController_Init.cst4:0000000000000004 .LC1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:153    .text.PIDController_Update:000000000000006c .L23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:249    .text.PIDController_Update:00000000000000ee .L19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:206    .text.PIDController_Update:00000000000000cc .L24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:244    .text.PIDController_Update:00000000000000ea .L21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:210    .text.PIDController_Update:00000000000000ce .L10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:157    .text.PIDController_Update:000000000000006e .L6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:482    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s 			page 10
+
+
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:878    .debug_str:0000000000000055 .LASF12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:888    .debug_str:00000000000000fd .LASF13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:894    .debug_str:000000000000011e .LASF14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:854    .debug_ranges:0000000000000000 .Ldebug_ranges0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:862    .debug_line:0000000000000000 .Ldebug_line0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:890    .debug_str:0000000000000103 .LASF15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:876    .debug_str:000000000000004e .LASF0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:882    .debug_str:00000000000000de .LASF1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:886    .debug_str:00000000000000f3 .LASF2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:874    .debug_str:0000000000000044 .LASF3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:864    .debug_str:0000000000000000 .LASF4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:866    .debug_str:000000000000000b .LASF5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:880    .debug_str:00000000000000cf .LASF6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:868    .debug_str:0000000000000015 .LASF7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:884    .debug_str:00000000000000e5 .LASF16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:892    .debug_str:0000000000000109 .LASF17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:71     .text.PIDController_Update:0000000000000000 .LFB1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:253    .text.PIDController_Update:00000000000000f2 .LFE1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:713    .debug_loc:0000000000000000 .LLST0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:736    .debug_loc:0000000000000038 .LLST1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:900    .debug_str:0000000000000172 .LASF8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:758    .debug_loc:000000000000006f .LLST2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:872    .debug_str:0000000000000038 .LASF9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:778    .debug_loc:000000000000009d .LLST3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:896    .debug_str:000000000000015f .LASF10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:801    .debug_loc:00000000000000d5 .LLST4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:898    .debug_str:0000000000000165 .LASF11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:824    .debug_loc:000000000000010d .LLST5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:870    .debug_str:0000000000000025 .LASF18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:14     .text.PIDController_Init:0000000000000000 .LFB0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:59     .text.PIDController_Init:000000000000002e .LFE0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:78     .text.PIDController_Update:0000000000000002 .LCFI0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:240    .text.PIDController_Update:00000000000000e8 .LCFI1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:245    .text.PIDController_Update:00000000000000ea .LCFI2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:74     .text.PIDController_Update:0000000000000000 .LVL1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:90     .text.PIDController_Update:000000000000000c .LVL3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:224    .text.PIDController_Update:00000000000000da .LVL19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:243    .text.PIDController_Update:00000000000000ea .LVL23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:84     .text.PIDController_Update:0000000000000008 .LVL2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:107    .text.PIDController_Update:0000000000000022 .LVL4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:228    .text.PIDController_Update:00000000000000de .LVL20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:112    .text.PIDController_Update:0000000000000026 .LVL5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:116    .text.PIDController_Update:000000000000002e .LVL6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:235    .text.PIDController_Update:00000000000000e4 .LVL21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:121    .text.PIDController_Update:0000000000000032 .LVL7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:125    .text.PIDController_Update:0000000000000034 .LVL8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:238    .text.PIDController_Update:00000000000000e6 .LVL22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccDKOtWY.s:267    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+__subsf3
+__mulsf3
+__addsf3
+__gtsf2
+__ltsf2
