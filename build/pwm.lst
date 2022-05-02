@@ -1,4 +1,4 @@
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 1
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 1
 
 
    1              		.file	"pwm.c"
@@ -9,1348 +9,434 @@ GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page
    6              		.text
    7              	.Ltext0:
    8              		.cfi_sections	.debug_frame
-   9              		.section	.text.InitPWM,"ax",@progbits
+   9              		.section	.text.initMotorA,"ax",@progbits
   10              		.align	1
-  11              		.globl	InitPWM
-  13              	InitPWM:
+  11              		.globl	initMotorA
+  13              	initMotorA:
   14              	.LFB2:
   15              		.file 1 "pwm.c"
    1:pwm.c         **** #include "pwm.h"
    2:pwm.c         **** #include "delay.h"
    3:pwm.c         **** 
-   4:pwm.c         **** /****************************PWM-CODE************************************/
+   4:pwm.c         **** /****************************SERVO-CODE************************************/
    5:pwm.c         **** 
-   6:pwm.c         **** void InitPWM(void){
-  16              		.loc 1 6 19
+   6:pwm.c         **** void initMotorA(void){
+  16              		.loc 1 6 22
   17              		.cfi_startproc
-   7:pwm.c         ****     timer_oc_parameter_struct timer_ocinitpara;
+   7:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
   18              		.loc 1 7 5
-   8:pwm.c         ****     timer_parameter_struct timer_initpara;
-  19              		.loc 1 8 5
-   9:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
-  20              		.loc 1 9 5
-   6:pwm.c         ****     timer_oc_parameter_struct timer_ocinitpara;
-  21              		.loc 1 6 19 is_stmt 0
-  22 0000 7971     		addi	sp,sp,-48
-  23              	.LCFI0:
-  24              		.cfi_def_cfa_offset 48
-  25              		.loc 1 9 5
-  26 0002 13052060 		li	a0,1538
-   6:pwm.c         ****     timer_oc_parameter_struct timer_ocinitpara;
-  27              		.loc 1 6 19
-  28 0006 06D6     		sw	ra,44(sp)
-  29              		.cfi_offset 1, -4
-  30              		.loc 1 9 5
-  31 0008 97000000 		call	rcu_periph_clock_enable
+   6:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
+  19              		.loc 1 6 22 is_stmt 0
+  20 0000 7971     		addi	sp,sp,-48
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 48
+  23              		.loc 1 7 5
+  24 0002 13052060 		li	a0,1538
+   6:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
+  25              		.loc 1 6 22
+  26 0006 06D6     		sw	ra,44(sp)
+  27 0008 22D4     		sw	s0,40(sp)
+  28              		.cfi_offset 1, -4
+  29              		.cfi_offset 8, -8
+  30              		.loc 1 7 5
+  31 000a 97000000 		call	rcu_periph_clock_enable
   31      E7800000 
   32              	.LVL0:
-  10:pwm.c         ****     rcu_periph_clock_enable(RCU_AF);
-  33              		.loc 1 10 5 is_stmt 1
-  34 0010 13050060 		li	a0,1536
-  35 0014 97000000 		call	rcu_periph_clock_enable
+   8:pwm.c         ****     rcu_periph_clock_enable(RCU_TIMER0);
+  33              		.loc 1 8 5 is_stmt 1
+  34 0012 1305B060 		li	a0,1547
+  35 0016 97000000 		call	rcu_periph_clock_enable
   35      E7800000 
   36              	.LVL1:
-  11:pwm.c         ****     gpio_init(GPIOA, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
-  37              		.loc 1 11 5
-  38 001c 37150140 		li	a0,1073811456
-  39 0020 9D46     		li	a3,7
-  40 0022 0D46     		li	a2,3
-  41 0024 E145     		li	a1,24
-  42 0026 13050580 		addi	a0,a0,-2048
-  43 002a 97000000 		call	gpio_init
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 2
-
-
+   9:pwm.c         **** 
+  10:pwm.c         ****     gpio_init(GPIOA, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
+  37              		.loc 1 10 5
+  38 001e 37150140 		li	a0,1073811456
+  39 0022 93060010 		li	a3,256
+  40 0026 0D46     		li	a2,3
+  41 0028 E145     		li	a1,24
+  42 002a 13050580 		addi	a0,a0,-2048
+  43 002e 97000000 		call	gpio_init
   43      E7800000 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 2
+
+
   44              	.LVL2:
-  12:pwm.c         ****     rcu_periph_clock_enable(RCU_TIMER1);
+  11:pwm.c         **** 
+  12:pwm.c         ****     timer_parameter_struct timer_initpara;
   45              		.loc 1 12 5
-  46 0032 13050070 		li	a0,1792
-  47 0036 97000000 		call	rcu_periph_clock_enable
-  47      E7800000 
-  48              	.LVL3:
-  13:pwm.c         **** 
-  14:pwm.c         ****     timer_deinit(TIMER1);
-  49              		.loc 1 14 5
-  50 003e 37050040 		li	a0,1073741824
-  51 0042 97000000 		call	timer_deinit
-  51      E7800000 
-  52              	.LVL4:
-  15:pwm.c         ****     timer_struct_para_init(&timer_initpara);
-  53              		.loc 1 15 5
-  54 004a 0808     		addi	a0,sp,16
-  55 004c 97000000 		call	timer_struct_para_init
-  55      E7800000 
-  56              	.LVL5:
-  16:pwm.c         ****     timer_initpara.prescaler         = 107; 
-  57              		.loc 1 16 5
-  17:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
-  58              		.loc 1 17 5
-  18:pwm.c         ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
-  59              		.loc 1 18 5
-  19:pwm.c         ****     timer_initpara.period            = 0;
-  20:pwm.c         ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
-  21:pwm.c         ****     timer_initpara.repetitioncounter = 0;
-  22:pwm.c         ****     timer_init(TIMER1, &timer_initpara);
-  60              		.loc 1 22 5 is_stmt 0
-  61 0054 0C08     		addi	a1,sp,16
-  16:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
-  62              		.loc 1 16 38
-  63 0056 9307B006 		li	a5,107
-  64              		.loc 1 22 5
-  65 005a 37050040 		li	a0,1073741824
-  16:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
-  66              		.loc 1 16 38
-  67 005e 3EC8     		sw	a5,16(sp)
-  18:pwm.c         ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
-  68              		.loc 1 18 38
-  69 0060 231A0100 		sh	zero,20(sp)
-  19:pwm.c         ****     timer_initpara.period            = 0;
-  70              		.loc 1 19 5 is_stmt 1
-  19:pwm.c         ****     timer_initpara.period            = 0;
-  71              		.loc 1 19 38 is_stmt 0
-  72 0064 02CC     		sw	zero,24(sp)
-  20:pwm.c         ****     timer_initpara.repetitioncounter = 0;
-  73              		.loc 1 20 5 is_stmt 1
-  20:pwm.c         ****     timer_initpara.repetitioncounter = 0;
-  74              		.loc 1 20 38 is_stmt 0
-  75 0066 231E0100 		sh	zero,28(sp)
-  21:pwm.c         ****     timer_init(TIMER1, &timer_initpara);
-  76              		.loc 1 21 5 is_stmt 1
-  21:pwm.c         ****     timer_init(TIMER1, &timer_initpara);
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 3
+  13:pwm.c         ****     timer_initpara.prescaler         = 107;                         //SCALE CLOCK TO 1MHz
+  46              		.loc 1 13 5
+  14:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+  47              		.loc 1 14 5
+  15:pwm.c         ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+  48              		.loc 1 15 5
+  16:pwm.c         ****     timer_initpara.period            = 0;
+  17:pwm.c         ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
+  18:pwm.c         ****     timer_initpara.repetitioncounter = 0;
+  19:pwm.c         ****     timer_init(TIMER0, &timer_initpara);
+  49              		.loc 1 19 5 is_stmt 0
+  50 0036 37340140 		li	s0,1073819648
+  51 003a 0C08     		addi	a1,sp,16
+  52 003c 130504C0 		addi	a0,s0,-1024
+  13:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
+  53              		.loc 1 13 38
+  54 0040 9307B006 		li	a5,107
+  55 0044 3EC8     		sw	a5,16(sp)
+  15:pwm.c         ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
+  56              		.loc 1 15 38
+  57 0046 231A0100 		sh	zero,20(sp)
+  16:pwm.c         ****     timer_initpara.period            = 0;
+  58              		.loc 1 16 5 is_stmt 1
+  16:pwm.c         ****     timer_initpara.period            = 0;
+  59              		.loc 1 16 38 is_stmt 0
+  60 004a 02CC     		sw	zero,24(sp)
+  17:pwm.c         ****     timer_initpara.repetitioncounter = 0;
+  61              		.loc 1 17 5 is_stmt 1
+  17:pwm.c         ****     timer_initpara.repetitioncounter = 0;
+  62              		.loc 1 17 38 is_stmt 0
+  63 004c 231E0100 		sh	zero,28(sp)
+  18:pwm.c         ****     timer_init(TIMER0, &timer_initpara);
+  64              		.loc 1 18 5 is_stmt 1
+  18:pwm.c         ****     timer_init(TIMER0, &timer_initpara);
+  65              		.loc 1 18 38 is_stmt 0
+  66 0050 230F0100 		sb	zero,30(sp)
+  67              		.loc 1 19 5 is_stmt 1
+  68 0054 97000000 		call	timer_init
+  68      E7800000 
+  69              	.LVL3:
+  20:pwm.c         **** 
+  21:pwm.c         ****     timer_oc_parameter_struct timer_ocinitpara;
+  70              		.loc 1 21 5
+  22:pwm.c         ****     timer_ocinitpara.outputstate    = TIMER_CCX_ENABLE;
+  71              		.loc 1 22 5
+  23:pwm.c         ****     timer_ocinitpara.outputnstate   = TIMER_CCXN_DISABLE;
+  72              		.loc 1 23 5
+  24:pwm.c         ****     timer_ocinitpara.ocpolarity     = TIMER_OC_POLARITY_HIGH;
+  73              		.loc 1 24 5
+  25:pwm.c         ****     timer_ocinitpara.ocnpolarity    = TIMER_OCN_POLARITY_HIGH;
+  74              		.loc 1 25 5
+  26:pwm.c         ****     timer_ocinitpara.ocidlestate    = TIMER_OC_IDLE_STATE_LOW;
+  75              		.loc 1 26 5
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 3
 
 
-  77              		.loc 1 21 38 is_stmt 0
-  78 006a 230F0100 		sb	zero,30(sp)
-  79              		.loc 1 22 5 is_stmt 1
-  80 006e 97000000 		call	timer_init
-  80      E7800000 
-  81              	.LVL6:
-  23:pwm.c         **** 
-  24:pwm.c         ****     timer_channel_output_struct_para_init(&timer_ocinitpara);
-  82              		.loc 1 24 5
-  83 0076 4800     		addi	a0,sp,4
-  84 0078 97000000 		call	timer_channel_output_struct_para_init
-  84      E7800000 
-  85              	.LVL7:
-  25:pwm.c         ****     timer_ocinitpara.outputstate  = TIMER_CCX_ENABLE;
-  86              		.loc 1 25 5
-  26:pwm.c         ****     timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
-  87              		.loc 1 26 5
-  27:pwm.c         ****     timer_ocinitpara.ocpolarity   = TIMER_OC_POLARITY_HIGH;
-  88              		.loc 1 27 5
-  28:pwm.c         ****     timer_ocinitpara.ocnpolarity  = TIMER_OCN_POLARITY_HIGH;
-  89              		.loc 1 28 5
-  29:pwm.c         ****     timer_ocinitpara.ocidlestate  = TIMER_OC_IDLE_STATE_LOW;
-  90              		.loc 1 29 5
-  30:pwm.c         ****     timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
-  91              		.loc 1 30 5
-  25:pwm.c         ****     timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
-  92              		.loc 1 25 35 is_stmt 0
-  93 0080 8547     		li	a5,1
-  31:pwm.c         ****     timer_channel_output_config(TIMER1,TIMER_CH_0,&timer_ocinitpara);
-  94              		.loc 1 31 5
-  95 0082 5000     		addi	a2,sp,4
-  96 0084 8145     		li	a1,0
-  97 0086 37050040 		li	a0,1073741824
-  25:pwm.c         ****     timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
-  98              		.loc 1 25 35
-  99 008a 3EC2     		sw	a5,4(sp)
-  27:pwm.c         ****     timer_ocinitpara.ocnpolarity  = TIMER_OCN_POLARITY_HIGH;
- 100              		.loc 1 27 35
- 101 008c 02C4     		sw	zero,8(sp)
-  29:pwm.c         ****     timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
- 102              		.loc 1 29 35
- 103 008e 02C6     		sw	zero,12(sp)
- 104              		.loc 1 31 5 is_stmt 1
- 105 0090 97000000 		call	timer_channel_output_config
- 105      E7800000 
- 106              	.LVL8:
-  32:pwm.c         ****     timer_channel_output_config(TIMER1,TIMER_CH_1,&timer_ocinitpara);
- 107              		.loc 1 32 5
- 108 0098 5000     		addi	a2,sp,4
- 109 009a 8545     		li	a1,1
- 110 009c 37050040 		li	a0,1073741824
- 111 00a0 97000000 		call	timer_channel_output_config
- 111      E7800000 
- 112              	.LVL9:
-  33:pwm.c         ****     timer_channel_output_config(TIMER1,TIMER_CH_2,&timer_ocinitpara);
- 113              		.loc 1 33 5
- 114 00a8 5000     		addi	a2,sp,4
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 4
+  27:pwm.c         ****     timer_ocinitpara.ocnidlestate   = TIMER_OC_IDLE_STATE_LOW;
+  76              		.loc 1 27 5
+  22:pwm.c         ****     timer_ocinitpara.outputnstate   = TIMER_CCXN_DISABLE;
+  77              		.loc 1 22 37 is_stmt 0
+  78 005c 8547     		li	a5,1
+  28:pwm.c         ****     timer_channel_output_config(TIMER0, TIMER_CH_0, &timer_ocinitpara);
+  79              		.loc 1 28 5
+  80 005e 5000     		addi	a2,sp,4
+  81 0060 130504C0 		addi	a0,s0,-1024
+  82 0064 8145     		li	a1,0
+  22:pwm.c         ****     timer_ocinitpara.outputnstate   = TIMER_CCXN_DISABLE;
+  83              		.loc 1 22 37
+  84 0066 3EC2     		sw	a5,4(sp)
+  24:pwm.c         ****     timer_ocinitpara.ocnpolarity    = TIMER_OCN_POLARITY_HIGH;
+  85              		.loc 1 24 37
+  86 0068 02C4     		sw	zero,8(sp)
+  26:pwm.c         ****     timer_ocinitpara.ocnidlestate   = TIMER_OC_IDLE_STATE_LOW;
+  87              		.loc 1 26 37
+  88 006a 02C6     		sw	zero,12(sp)
+  89              		.loc 1 28 5 is_stmt 1
+  90 006c 97000000 		call	timer_channel_output_config
+  90      E7800000 
+  91              	.LVL4:
+  29:pwm.c         **** 
+  30:pwm.c         ****     timer_autoreload_value_config(TIMER0, 19999);                   //PERIOD IS 50MS LONG
+  92              		.loc 1 30 5
+  93 0074 9565     		li	a1,20480
+  94 0076 130504C0 		addi	a0,s0,-1024
+  95 007a 9385F5E1 		addi	a1,a1,-481
+  96 007e 97000000 		call	timer_autoreload_value_config
+  96      E7800000 
+  97              	.LVL5:
+  31:pwm.c         **** 
+  32:pwm.c         ****     timer_channel_output_mode_config(TIMER0, TIMER_CH_0, TIMER_OC_MODE_PWM0);
+  98              		.loc 1 32 5
+  99 0086 130504C0 		addi	a0,s0,-1024
+ 100 008a 13060006 		li	a2,96
+ 101 008e 8145     		li	a1,0
+ 102 0090 97000000 		call	timer_channel_output_mode_config
+ 102      E7800000 
+ 103              	.LVL6:
+  33:pwm.c         ****     timer_channel_output_shadow_config(TIMER0, TIMER_CH_0, TIMER_OC_SHADOW_DISABLE);
+ 104              		.loc 1 33 5
+ 105 0098 130504C0 		addi	a0,s0,-1024
+ 106 009c 0146     		li	a2,0
+ 107 009e 8145     		li	a1,0
+ 108 00a0 97000000 		call	timer_channel_output_shadow_config
+ 108      E7800000 
+ 109              	.LVL7:
+  34:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_0, 1000);
+ 110              		.loc 1 34 5
+ 111 00a8 1306803E 		li	a2,1000
+ 112 00ac 130504C0 		addi	a0,s0,-1024
+ 113 00b0 8145     		li	a1,0
+ 114 00b2 97000000 		call	timer_channel_output_pulse_value_config
+ 114      E7800000 
+ 115              	.LVL8:
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 4
 
 
- 115 00aa 8945     		li	a1,2
- 116 00ac 37050040 		li	a0,1073741824
- 117 00b0 97000000 		call	timer_channel_output_config
- 117      E7800000 
- 118              	.LVL10:
-  34:pwm.c         **** 
-  35:pwm.c         ****     timer_autoreload_value_config(TIMER1, 19999);
- 119              		.loc 1 35 5
- 120 00b8 9565     		li	a1,20480
- 121 00ba 9385F5E1 		addi	a1,a1,-481
- 122 00be 37050040 		li	a0,1073741824
- 123 00c2 97000000 		call	timer_autoreload_value_config
+  35:pwm.c         **** 
+  36:pwm.c         ****     timer_primary_output_config(TIMER0, ENABLE);
+ 116              		.loc 1 36 5
+ 117 00ba 130504C0 		addi	a0,s0,-1024
+ 118 00be 8545     		li	a1,1
+ 119 00c0 97000000 		call	timer_primary_output_config
+ 119      E7800000 
+ 120              	.LVL9:
+  37:pwm.c         ****     timer_enable(TIMER0);
+ 121              		.loc 1 37 5
+ 122 00c8 130504C0 		addi	a0,s0,-1024
+ 123 00cc 97000000 		call	timer_enable
  123      E7800000 
- 124              	.LVL11:
-  36:pwm.c         **** 
-  37:pwm.c         ****     timer_channel_output_config(TIMER1,TIMER_CH_0,&timer_ocinitpara);
- 125              		.loc 1 37 5
- 126 00ca 5000     		addi	a2,sp,4
- 127 00cc 8145     		li	a1,0
- 128 00ce 37050040 		li	a0,1073741824
- 129 00d2 97000000 		call	timer_channel_output_config
- 129      E7800000 
- 130              	.LVL12:
-  38:pwm.c         ****     timer_channel_output_config(TIMER1,TIMER_CH_1,&timer_ocinitpara);
- 131              		.loc 1 38 5
- 132 00da 5000     		addi	a2,sp,4
- 133 00dc 8545     		li	a1,1
- 134 00de 37050040 		li	a0,1073741824
- 135 00e2 97000000 		call	timer_channel_output_config
- 135      E7800000 
- 136              	.LVL13:
-  39:pwm.c         ****     timer_channel_output_config(TIMER1,TIMER_CH_2,&timer_ocinitpara);
- 137              		.loc 1 39 5
- 138 00ea 5000     		addi	a2,sp,4
- 139 00ec 8945     		li	a1,2
- 140 00ee 37050040 		li	a0,1073741824
- 141 00f2 97000000 		call	timer_channel_output_config
- 141      E7800000 
- 142              	.LVL14:
-  40:pwm.c         **** 
-  41:pwm.c         ****     
-  42:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER1,TIMER_CH_0,0);
- 143              		.loc 1 42 5
- 144 00fa 0146     		li	a2,0
- 145 00fc 8145     		li	a1,0
- 146 00fe 37050040 		li	a0,1073741824
- 147 0102 97000000 		call	timer_channel_output_pulse_value_config
- 147      E7800000 
- 148              	.LVL15:
-  43:pwm.c         ****     timer_channel_output_mode_config(TIMER1,TIMER_CH_0,TIMER_OC_MODE_PWM0);
- 149              		.loc 1 43 5
- 150 010a 13060006 		li	a2,96
- 151 010e 8145     		li	a1,0
- 152 0110 37050040 		li	a0,1073741824
- 153 0114 97000000 		call	timer_channel_output_mode_config
- 153      E7800000 
- 154              	.LVL16:
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 5
+ 124              	.LVL10:
+  38:pwm.c         **** }
+ 125              		.loc 1 38 1 is_stmt 0
+ 126 00d4 B250     		lw	ra,44(sp)
+ 127              		.cfi_restore 1
+ 128 00d6 2254     		lw	s0,40(sp)
+ 129              		.cfi_restore 8
+ 130 00d8 4561     		addi	sp,sp,48
+ 131              	.LCFI1:
+ 132              		.cfi_def_cfa_offset 0
+ 133 00da 8280     		jr	ra
+ 134              		.cfi_endproc
+ 135              	.LFE2:
+ 137              		.section	.text.SetMotorA,"ax",@progbits
+ 138              		.align	1
+ 139              		.globl	SetMotorA
+ 141              	SetMotorA:
+ 142              	.LFB3:
+  39:pwm.c         **** 
+  40:pwm.c         **** void SetMotorA(int throttle){ 
+ 143              		.loc 1 40 29 is_stmt 1
+ 144              		.cfi_startproc
+ 145              	.LVL11:
+  41:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_0, throttle+1000);
+ 146              		.loc 1 41 5
+ 147 0000 1306853E 		addi	a2,a0,1000
+ 148 0004 37350140 		li	a0,1073819648
+ 149              	.LVL12:
+ 150 0008 8145     		li	a1,0
+ 151 000a 130505C0 		addi	a0,a0,-1024
+ 152 000e 17030000 		tail	timer_channel_output_pulse_value_config
+ 152      67000300 
+ 153              	.LVL13:
+ 154              		.cfi_endproc
+ 155              	.LFE3:
+ 157              		.text
+ 158              	.Letext0:
+ 159              		.file 2 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/machine/_de
+ 160              		.file 3 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/_stdint
+ 161              		.file 4 "../../firmware/GD32VF103_standard_peripheral/gd32vf103.h"
+ 162              		.file 5 "../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu.h"
+ 163              		.file 6 "../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_timer.h"
+ 164              		.file 7 "../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpio.h"
+ 165              		.file 8 "../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 5
 
 
-  44:pwm.c         ****     timer_channel_output_shadow_config(TIMER1,TIMER_CH_0,TIMER_OC_SHADOW_DISABLE);
- 155              		.loc 1 44 5
- 156 011c 0146     		li	a2,0
- 157 011e 8145     		li	a1,0
- 158 0120 37050040 		li	a0,1073741824
- 159 0124 97000000 		call	timer_channel_output_shadow_config
- 159      E7800000 
- 160              	.LVL17:
-  45:pwm.c         **** 
-  46:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER1,TIMER_CH_1,0);
- 161              		.loc 1 46 5
- 162 012c 0146     		li	a2,0
- 163 012e 8545     		li	a1,1
- 164 0130 37050040 		li	a0,1073741824
- 165 0134 97000000 		call	timer_channel_output_pulse_value_config
- 165      E7800000 
- 166              	.LVL18:
-  47:pwm.c         ****     timer_channel_output_mode_config(TIMER1,TIMER_CH_1,TIMER_OC_MODE_PWM0);
- 167              		.loc 1 47 5
- 168 013c 13060006 		li	a2,96
- 169 0140 8545     		li	a1,1
- 170 0142 37050040 		li	a0,1073741824
- 171 0146 97000000 		call	timer_channel_output_mode_config
- 171      E7800000 
- 172              	.LVL19:
-  48:pwm.c         ****     timer_channel_output_shadow_config(TIMER1,TIMER_CH_1,TIMER_OC_SHADOW_DISABLE);
- 173              		.loc 1 48 5
- 174 014e 0146     		li	a2,0
- 175 0150 8545     		li	a1,1
- 176 0152 37050040 		li	a0,1073741824
- 177 0156 97000000 		call	timer_channel_output_shadow_config
- 177      E7800000 
- 178              	.LVL20:
-  49:pwm.c         **** 
-  50:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER1,TIMER_CH_2,1000);
- 179              		.loc 1 50 5
- 180 015e 1306803E 		li	a2,1000
- 181 0162 8945     		li	a1,2
- 182 0164 37050040 		li	a0,1073741824
- 183 0168 97000000 		call	timer_channel_output_pulse_value_config
- 183      E7800000 
- 184              	.LVL21:
-  51:pwm.c         ****     timer_channel_output_mode_config(TIMER1,TIMER_CH_2,TIMER_OC_MODE_PWM0);
- 185              		.loc 1 51 5
- 186 0170 13060006 		li	a2,96
- 187 0174 8945     		li	a1,2
- 188 0176 37050040 		li	a0,1073741824
- 189 017a 97000000 		call	timer_channel_output_mode_config
- 189      E7800000 
- 190              	.LVL22:
-  52:pwm.c         ****     timer_channel_output_shadow_config(TIMER1,TIMER_CH_2,TIMER_OC_SHADOW_DISABLE);
- 191              		.loc 1 52 5
- 192 0182 0146     		li	a2,0
- 193 0184 8945     		li	a1,2
- 194 0186 37050040 		li	a0,1073741824
- 195 018a 97000000 		call	timer_channel_output_shadow_config
- 195      E7800000 
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 6
-
-
- 196              	.LVL23:
-  53:pwm.c         **** 
-  54:pwm.c         ****     timer_auto_reload_shadow_enable(TIMER1);
- 197              		.loc 1 54 5
- 198 0192 37050040 		li	a0,1073741824
- 199 0196 97000000 		call	timer_auto_reload_shadow_enable
- 199      E7800000 
- 200              	.LVL24:
-  55:pwm.c         ****     timer_enable(TIMER1);
- 201              		.loc 1 55 5
- 202 019e 37050040 		li	a0,1073741824
- 203 01a2 97000000 		call	timer_enable
- 203      E7800000 
- 204              	.LVL25:
-  56:pwm.c         **** }
- 205              		.loc 1 56 1 is_stmt 0
- 206 01aa B250     		lw	ra,44(sp)
- 207              		.cfi_restore 1
- 208 01ac 4561     		addi	sp,sp,48
- 209              	.LCFI1:
- 210              		.cfi_def_cfa_offset 0
- 211 01ae 8280     		jr	ra
- 212              		.cfi_endproc
- 213              	.LFE2:
- 215              		.section	.text.SetMotorA,"ax",@progbits
- 216              		.align	1
- 217              		.globl	SetMotorA
- 219              	SetMotorA:
- 220              	.LFB3:
-  57:pwm.c         **** 
-  58:pwm.c         **** void SetMotorA(int value){
- 221              		.loc 1 58 26 is_stmt 1
- 222              		.cfi_startproc
- 223              	.LVL26:
-  59:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER1,TIMER_CH_0,value);
- 224              		.loc 1 59 5
- 225 0000 2A86     		mv	a2,a0
- 226 0002 8145     		li	a1,0
- 227 0004 37050040 		li	a0,1073741824
- 228              	.LVL27:
- 229 0008 17030000 		tail	timer_channel_output_pulse_value_config
- 229      67000300 
- 230              	.LVL28:
- 231              		.cfi_endproc
- 232              	.LFE3:
- 234              		.section	.text.SetMotorB,"ax",@progbits
- 235              		.align	1
- 236              		.globl	SetMotorB
- 238              	SetMotorB:
- 239              	.LFB4:
-  60:pwm.c         **** }
-  61:pwm.c         **** 
-  62:pwm.c         **** void SetMotorB(int value){
- 240              		.loc 1 62 26
- 241              		.cfi_startproc
- 242              	.LVL29:
-  63:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER1,TIMER_CH_1,value);
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 7
-
-
- 243              		.loc 1 63 5
- 244 0000 2A86     		mv	a2,a0
- 245 0002 8545     		li	a1,1
- 246 0004 37050040 		li	a0,1073741824
- 247              	.LVL30:
- 248 0008 17030000 		tail	timer_channel_output_pulse_value_config
- 248      67000300 
- 249              	.LVL31:
- 250              		.cfi_endproc
- 251              	.LFE4:
- 253              		.section	.text.motorStartupSeq,"ax",@progbits
- 254              		.align	1
- 255              		.globl	motorStartupSeq
- 257              	motorStartupSeq:
- 258              	.LFB5:
-  64:pwm.c         **** }
-  65:pwm.c         **** 
-  66:pwm.c         **** void motorStartupSeq(int endThrottle){
- 259              		.loc 1 66 38
- 260              		.cfi_startproc
- 261              	.LVL32:
-  67:pwm.c         ****     SetMotorA(2000);
- 262              		.loc 1 67 5
- 263              	.LBB14:
- 264              	.LBB15:
-  59:pwm.c         **** }
- 265              		.loc 1 59 5
- 266              	.LBE15:
- 267              	.LBE14:
-  66:pwm.c         ****     SetMotorA(2000);
- 268              		.loc 1 66 38 is_stmt 0
- 269 0000 4111     		addi	sp,sp,-16
- 270              	.LCFI2:
- 271              		.cfi_def_cfa_offset 16
- 272 0002 22C4     		sw	s0,8(sp)
- 273              	.LBB19:
- 274              	.LBB16:
-  59:pwm.c         **** }
- 275              		.loc 1 59 5
- 276 0004 1306007D 		li	a2,2000
- 277              		.cfi_offset 8, -8
- 278              	.LBE16:
- 279              	.LBE19:
-  66:pwm.c         ****     SetMotorA(2000);
- 280              		.loc 1 66 38
- 281 0008 2A84     		mv	s0,a0
- 282              	.LBB20:
- 283              	.LBB17:
-  59:pwm.c         **** }
- 284              		.loc 1 59 5
- 285 000a 8145     		li	a1,0
- 286 000c 37050040 		li	a0,1073741824
- 287              	.LVL33:
- 288              	.LBE17:
- 289              	.LBE20:
-  66:pwm.c         ****     SetMotorA(2000);
- 290              		.loc 1 66 38
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 8
-
-
- 291 0010 06C6     		sw	ra,12(sp)
- 292 0012 26C2     		sw	s1,4(sp)
- 293              		.cfi_offset 1, -4
- 294              		.cfi_offset 9, -12
- 295              	.LBB21:
- 296              	.LBB18:
-  59:pwm.c         **** }
- 297              		.loc 1 59 5
- 298 0014 97000000 		call	timer_channel_output_pulse_value_config
- 298      E7800000 
- 299              	.LVL34:
- 300              	.LBE18:
- 301              	.LBE21:
-  68:pwm.c         ****     SetMotorB(2000);
- 302              		.loc 1 68 5 is_stmt 1
- 303              	.LBB22:
- 304              	.LBB23:
-  63:pwm.c         **** }
- 305              		.loc 1 63 5
- 306 001c 1306007D 		li	a2,2000
- 307 0020 8545     		li	a1,1
- 308 0022 37050040 		li	a0,1073741824
- 309 0026 97000000 		call	timer_channel_output_pulse_value_config
- 309      E7800000 
- 310              	.LVL35:
- 311              	.LBE23:
- 312              	.LBE22:
-  69:pwm.c         ****     delay_1ms(3000);
- 313              		.loc 1 69 5
- 314 002e 8564     		li	s1,4096
- 315 0030 138584BB 		addi	a0,s1,-1096
- 316 0034 97000000 		call	delay_1ms
- 316      E7800000 
- 317              	.LVL36:
-  70:pwm.c         ****     SetMotorA(1000);
- 318              		.loc 1 70 5
- 319              	.LBB24:
- 320              	.LBB25:
-  59:pwm.c         **** }
- 321              		.loc 1 59 5
- 322 003c 1306803E 		li	a2,1000
- 323 0040 8145     		li	a1,0
- 324 0042 37050040 		li	a0,1073741824
- 325 0046 97000000 		call	timer_channel_output_pulse_value_config
- 325      E7800000 
- 326              	.LVL37:
- 327              	.LBE25:
- 328              	.LBE24:
-  71:pwm.c         ****     SetMotorB(1000);
- 329              		.loc 1 71 5
- 330              	.LBB26:
- 331              	.LBB27:
-  63:pwm.c         **** }
- 332              		.loc 1 63 5
- 333 004e 1306803E 		li	a2,1000
- 334 0052 8545     		li	a1,1
- 335 0054 37050040 		li	a0,1073741824
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 9
-
-
- 336 0058 97000000 		call	timer_channel_output_pulse_value_config
- 336      E7800000 
- 337              	.LVL38:
- 338              	.LBE27:
- 339              	.LBE26:
-  72:pwm.c         ****     delay_1ms(3000);
- 340              		.loc 1 72 5
- 341 0060 138584BB 		addi	a0,s1,-1096
- 342 0064 97000000 		call	delay_1ms
- 342      E7800000 
- 343              	.LVL39:
-  73:pwm.c         ****     SetMotorA(1000 + endThrottle);
- 344              		.loc 1 73 5
- 345              	.LBB28:
- 346              	.LBB29:
-  59:pwm.c         **** }
- 347              		.loc 1 59 5
- 348              	.LBE29:
- 349              	.LBE28:
- 350              		.loc 1 73 5 is_stmt 0
- 351 006c 1304843E 		addi	s0,s0,1000
- 352              	.LVL40:
- 353              	.LBB31:
- 354              	.LBB30:
-  59:pwm.c         **** }
- 355              		.loc 1 59 5
- 356 0070 2286     		mv	a2,s0
- 357 0072 8145     		li	a1,0
- 358 0074 37050040 		li	a0,1073741824
- 359 0078 97000000 		call	timer_channel_output_pulse_value_config
- 359      E7800000 
- 360              	.LVL41:
- 361              	.LBE30:
- 362              	.LBE31:
-  74:pwm.c         ****     SetMotorB(1000 + endThrottle);
- 363              		.loc 1 74 5 is_stmt 1
- 364              	.LBB32:
- 365              	.LBB33:
-  63:pwm.c         **** }
- 366              		.loc 1 63 5
- 367 0080 2286     		mv	a2,s0
- 368              	.LBE33:
- 369              	.LBE32:
-  75:pwm.c         **** }
- 370              		.loc 1 75 1 is_stmt 0
- 371 0082 2244     		lw	s0,8(sp)
- 372              		.cfi_restore 8
- 373              	.LVL42:
- 374 0084 B240     		lw	ra,12(sp)
- 375              		.cfi_restore 1
- 376 0086 9244     		lw	s1,4(sp)
- 377              		.cfi_restore 9
- 378              	.LBB37:
- 379              	.LBB34:
-  63:pwm.c         **** }
- 380              		.loc 1 63 5
- 381 0088 8545     		li	a1,1
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 10
-
-
- 382              	.LBE34:
- 383              	.LBE37:
- 384              		.loc 1 75 1
- 385              	.LBB38:
- 386              	.LBB35:
-  63:pwm.c         **** }
- 387              		.loc 1 63 5
- 388 008a 37050040 		li	a0,1073741824
- 389              	.LBE35:
- 390              	.LBE38:
- 391              		.loc 1 75 1
- 392 008e 4101     		addi	sp,sp,16
- 393              	.LCFI3:
- 394              		.cfi_def_cfa_offset 0
- 395              	.LBB39:
- 396              	.LBB36:
-  63:pwm.c         **** }
- 397              		.loc 1 63 5
- 398 0090 17030000 		tail	timer_channel_output_pulse_value_config
- 398      67000300 
- 399              	.LVL43:
- 400              	.LBE36:
- 401              	.LBE39:
- 402              		.cfi_endproc
- 403              	.LFE5:
- 405              		.section	.text.initServoA,"ax",@progbits
- 406              		.align	1
- 407              		.globl	initServoA
- 409              	initServoA:
- 410              	.LFB6:
-  76:pwm.c         **** 
-  77:pwm.c         **** 
-  78:pwm.c         **** /****************************SERVO-CODE************************************/
-  79:pwm.c         **** 
-  80:pwm.c         **** void initServoA(void){
- 411              		.loc 1 80 22 is_stmt 1
- 412              		.cfi_startproc
-  81:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
- 413              		.loc 1 81 5
-  80:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
- 414              		.loc 1 80 22 is_stmt 0
- 415 0000 7971     		addi	sp,sp,-48
- 416              	.LCFI4:
- 417              		.cfi_def_cfa_offset 48
- 418              		.loc 1 81 5
- 419 0002 13052060 		li	a0,1538
-  80:pwm.c         ****     rcu_periph_clock_enable(RCU_GPIOA);
- 420              		.loc 1 80 22
- 421 0006 06D6     		sw	ra,44(sp)
- 422 0008 22D4     		sw	s0,40(sp)
- 423              		.cfi_offset 1, -4
- 424              		.cfi_offset 8, -8
- 425              		.loc 1 81 5
- 426 000a 97000000 		call	rcu_periph_clock_enable
- 426      E7800000 
- 427              	.LVL44:
-  82:pwm.c         ****     rcu_periph_clock_enable(RCU_TIMER0);
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 11
-
-
- 428              		.loc 1 82 5 is_stmt 1
- 429 0012 1305B060 		li	a0,1547
- 430 0016 97000000 		call	rcu_periph_clock_enable
- 430      E7800000 
- 431              	.LVL45:
-  83:pwm.c         **** 
-  84:pwm.c         ****     gpio_init(GPIOA, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
- 432              		.loc 1 84 5
- 433 001e 37150140 		li	a0,1073811456
- 434 0022 93060010 		li	a3,256
- 435 0026 0D46     		li	a2,3
- 436 0028 E145     		li	a1,24
- 437 002a 13050580 		addi	a0,a0,-2048
- 438 002e 97000000 		call	gpio_init
- 438      E7800000 
- 439              	.LVL46:
-  85:pwm.c         **** 
-  86:pwm.c         ****     timer_parameter_struct timer_initpara;
- 440              		.loc 1 86 5
-  87:pwm.c         ****     timer_initpara.prescaler         = 107;                         //SCALE CLOCK TO 1MHz
- 441              		.loc 1 87 5
-  88:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
- 442              		.loc 1 88 5
-  89:pwm.c         ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
- 443              		.loc 1 89 5
-  90:pwm.c         ****     timer_initpara.period            = 0;
-  91:pwm.c         ****     timer_initpara.clockdivision     = TIMER_CKDIV_DIV1;
-  92:pwm.c         ****     timer_initpara.repetitioncounter = 0;
-  93:pwm.c         ****     timer_init(TIMER0, &timer_initpara);
- 444              		.loc 1 93 5 is_stmt 0
- 445 0036 37340140 		li	s0,1073819648
- 446 003a 0C08     		addi	a1,sp,16
- 447 003c 130504C0 		addi	a0,s0,-1024
-  87:pwm.c         ****     timer_initpara.alignedmode       = TIMER_COUNTER_EDGE;
- 448              		.loc 1 87 38
- 449 0040 9307B006 		li	a5,107
- 450 0044 3EC8     		sw	a5,16(sp)
-  89:pwm.c         ****     timer_initpara.counterdirection  = TIMER_COUNTER_UP;
- 451              		.loc 1 89 38
- 452 0046 231A0100 		sh	zero,20(sp)
-  90:pwm.c         ****     timer_initpara.period            = 0;
- 453              		.loc 1 90 5 is_stmt 1
-  90:pwm.c         ****     timer_initpara.period            = 0;
- 454              		.loc 1 90 38 is_stmt 0
- 455 004a 02CC     		sw	zero,24(sp)
-  91:pwm.c         ****     timer_initpara.repetitioncounter = 0;
- 456              		.loc 1 91 5 is_stmt 1
-  91:pwm.c         ****     timer_initpara.repetitioncounter = 0;
- 457              		.loc 1 91 38 is_stmt 0
- 458 004c 231E0100 		sh	zero,28(sp)
-  92:pwm.c         ****     timer_init(TIMER0, &timer_initpara);
- 459              		.loc 1 92 5 is_stmt 1
-  92:pwm.c         ****     timer_init(TIMER0, &timer_initpara);
- 460              		.loc 1 92 38 is_stmt 0
- 461 0050 230F0100 		sb	zero,30(sp)
- 462              		.loc 1 93 5 is_stmt 1
- 463 0054 97000000 		call	timer_init
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 12
-
-
- 463      E7800000 
- 464              	.LVL47:
-  94:pwm.c         **** 
-  95:pwm.c         ****     timer_oc_parameter_struct timer_ocinitpara;
- 465              		.loc 1 95 5
-  96:pwm.c         ****     timer_ocinitpara.outputstate    = TIMER_CCX_ENABLE;
- 466              		.loc 1 96 5
-  97:pwm.c         ****     timer_ocinitpara.outputnstate   = TIMER_CCXN_DISABLE;
- 467              		.loc 1 97 5
-  98:pwm.c         ****     timer_ocinitpara.ocpolarity     = TIMER_OC_POLARITY_HIGH;
- 468              		.loc 1 98 5
-  99:pwm.c         ****     timer_ocinitpara.ocnpolarity    = TIMER_OCN_POLARITY_HIGH;
- 469              		.loc 1 99 5
- 100:pwm.c         ****     timer_ocinitpara.ocidlestate    = TIMER_OC_IDLE_STATE_LOW;
- 470              		.loc 1 100 5
- 101:pwm.c         ****     timer_ocinitpara.ocnidlestate   = TIMER_OC_IDLE_STATE_LOW;
- 471              		.loc 1 101 5
-  96:pwm.c         ****     timer_ocinitpara.outputnstate   = TIMER_CCXN_DISABLE;
- 472              		.loc 1 96 37 is_stmt 0
- 473 005c 8547     		li	a5,1
- 102:pwm.c         ****     timer_channel_output_config(TIMER0, TIMER_CH_0, &timer_ocinitpara);
- 474              		.loc 1 102 5
- 475 005e 5000     		addi	a2,sp,4
- 476 0060 130504C0 		addi	a0,s0,-1024
- 477 0064 8145     		li	a1,0
-  96:pwm.c         ****     timer_ocinitpara.outputnstate   = TIMER_CCXN_DISABLE;
- 478              		.loc 1 96 37
- 479 0066 3EC2     		sw	a5,4(sp)
-  98:pwm.c         ****     timer_ocinitpara.ocnpolarity    = TIMER_OCN_POLARITY_HIGH;
- 480              		.loc 1 98 37
- 481 0068 02C4     		sw	zero,8(sp)
- 100:pwm.c         ****     timer_ocinitpara.ocnidlestate   = TIMER_OC_IDLE_STATE_LOW;
- 482              		.loc 1 100 37
- 483 006a 02C6     		sw	zero,12(sp)
- 484              		.loc 1 102 5 is_stmt 1
- 485 006c 97000000 		call	timer_channel_output_config
- 485      E7800000 
- 486              	.LVL48:
- 103:pwm.c         **** 
- 104:pwm.c         ****     timer_autoreload_value_config(TIMER0, 19999);                   //PERIOD IS 50MS LONG
- 487              		.loc 1 104 5
- 488 0074 9565     		li	a1,20480
- 489 0076 130504C0 		addi	a0,s0,-1024
- 490 007a 9385F5E1 		addi	a1,a1,-481
- 491 007e 97000000 		call	timer_autoreload_value_config
- 491      E7800000 
- 492              	.LVL49:
- 105:pwm.c         **** 
- 106:pwm.c         ****     timer_channel_output_mode_config(TIMER0, TIMER_CH_0, TIMER_OC_MODE_PWM0);
- 493              		.loc 1 106 5
- 494 0086 130504C0 		addi	a0,s0,-1024
- 495 008a 13060006 		li	a2,96
- 496 008e 8145     		li	a1,0
- 497 0090 97000000 		call	timer_channel_output_mode_config
- 497      E7800000 
- 498              	.LVL50:
- 107:pwm.c         ****     timer_channel_output_shadow_config(TIMER0, TIMER_CH_0, TIMER_OC_SHADOW_DISABLE);
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 13
-
-
- 499              		.loc 1 107 5
- 500 0098 130504C0 		addi	a0,s0,-1024
- 501 009c 0146     		li	a2,0
- 502 009e 8145     		li	a1,0
- 503 00a0 97000000 		call	timer_channel_output_shadow_config
- 503      E7800000 
- 504              	.LVL51:
- 108:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_0, 1000);
- 505              		.loc 1 108 5
- 506 00a8 1306803E 		li	a2,1000
- 507 00ac 130504C0 		addi	a0,s0,-1024
- 508 00b0 8145     		li	a1,0
- 509 00b2 97000000 		call	timer_channel_output_pulse_value_config
- 509      E7800000 
- 510              	.LVL52:
- 109:pwm.c         **** 
- 110:pwm.c         ****     timer_primary_output_config(TIMER0, ENABLE);
- 511              		.loc 1 110 5
- 512 00ba 130504C0 		addi	a0,s0,-1024
- 513 00be 8545     		li	a1,1
- 514 00c0 97000000 		call	timer_primary_output_config
- 514      E7800000 
- 515              	.LVL53:
- 111:pwm.c         ****     timer_enable(TIMER0);
- 516              		.loc 1 111 5
- 517 00c8 130504C0 		addi	a0,s0,-1024
- 518 00cc 97000000 		call	timer_enable
- 518      E7800000 
- 519              	.LVL54:
- 112:pwm.c         **** }
- 520              		.loc 1 112 1 is_stmt 0
- 521 00d4 B250     		lw	ra,44(sp)
- 522              		.cfi_restore 1
- 523 00d6 2254     		lw	s0,40(sp)
- 524              		.cfi_restore 8
- 525 00d8 4561     		addi	sp,sp,48
- 526              	.LCFI5:
- 527              		.cfi_def_cfa_offset 0
- 528 00da 8280     		jr	ra
- 529              		.cfi_endproc
- 530              	.LFE6:
- 532              		.section	.text.MoveServoA,"ax",@progbits
- 533              		.align	1
- 534              		.globl	MoveServoA
- 536              	MoveServoA:
- 537              	.LFB7:
- 113:pwm.c         **** 
- 114:pwm.c         **** void MoveServoA(int degree){ 
- 538              		.loc 1 114 28 is_stmt 1
- 539              		.cfi_startproc
- 540              	.LVL55:
- 115:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 541              		.loc 1 115 5
- 116:pwm.c         ****     if(move<550){
- 542              		.loc 1 116 5
- 115:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 543              		.loc 1 115 20 is_stmt 0
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 14
-
-
- 544 0000 13162500 		slli	a2,a0,2
- 545 0004 2A96     		add	a2,a2,a0
- 546 0006 0606     		slli	a2,a2,1
- 115:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 547              		.loc 1 115 28
- 548 0008 2186     		srai	a2,a2,8
- 549 000a 8567     		li	a5,4096
- 115:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 550              		.loc 1 115 9
- 551 000c 1306A65A 		addi	a2,a2,1450
- 552 0010 9387E792 		addi	a5,a5,-1746
- 553 0014 63D3C700 		ble	a2,a5,.L11
- 554 0018 3E86     		mv	a2,a5
- 555              	.L11:
- 556              	.LVL56:
- 117:pwm.c         ****         move=550;
- 118:pwm.c         ****     }else if(move>2350){
- 119:pwm.c         ****         move=2350;
- 120:pwm.c         ****     }
- 121:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_0, move);
- 557              		.loc 1 121 5 is_stmt 1
- 558 001a 93076022 		li	a5,550
- 559 001e 6354F600 		bge	a2,a5,.L12
- 560 0022 13066022 		li	a2,550
- 561              	.LVL57:
- 562              	.L12:
- 563 0026 37350140 		li	a0,1073819648
- 564              	.LVL58:
- 565 002a 8145     		li	a1,0
- 566 002c 130505C0 		addi	a0,a0,-1024
- 567 0030 17030000 		tail	timer_channel_output_pulse_value_config
- 567      67000300 
- 568              	.LVL59:
- 569              		.cfi_endproc
- 570              	.LFE7:
- 572              		.section	.text.MoveServoB,"ax",@progbits
- 573              		.align	1
- 574              		.globl	MoveServoB
- 576              	MoveServoB:
- 577              	.LFB8:
- 122:pwm.c         **** }
- 123:pwm.c         **** 
- 124:pwm.c         **** void MoveServoB(int degree){
- 578              		.loc 1 124 28
- 579              		.cfi_startproc
- 580              	.LVL60:
- 125:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 581              		.loc 1 125 5
- 126:pwm.c         ****     if(move<550){
- 582              		.loc 1 126 5
- 125:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 583              		.loc 1 125 20 is_stmt 0
- 584 0000 13162500 		slli	a2,a0,2
- 585 0004 2A96     		add	a2,a2,a0
- 586 0006 0606     		slli	a2,a2,1
- 125:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 587              		.loc 1 125 28
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 15
-
-
- 588 0008 2186     		srai	a2,a2,8
- 589 000a 8567     		li	a5,4096
- 125:pwm.c         ****     int move = ((10*degree)>>8)+1450;
- 590              		.loc 1 125 9
- 591 000c 1306A65A 		addi	a2,a2,1450
- 592 0010 9387E792 		addi	a5,a5,-1746
- 593 0014 63D3C700 		ble	a2,a5,.L14
- 594 0018 3E86     		mv	a2,a5
- 595              	.L14:
- 596              	.LVL61:
- 127:pwm.c         ****         move=550;
- 128:pwm.c         ****     }else if(move>2350){
- 129:pwm.c         ****         move=2350;
- 130:pwm.c         ****     }
- 131:pwm.c         ****     timer_channel_output_pulse_value_config(TIMER1,TIMER_CH_2,move);
- 597              		.loc 1 131 5 is_stmt 1
- 598 001a 93076022 		li	a5,550
- 599 001e 6354F600 		bge	a2,a5,.L15
- 600 0022 13066022 		li	a2,550
- 601              	.LVL62:
- 602              	.L15:
- 603 0026 8945     		li	a1,2
- 604 0028 37050040 		li	a0,1073741824
- 605              	.LVL63:
- 606 002c 17030000 		tail	timer_channel_output_pulse_value_config
- 606      67000300 
- 607              	.LVL64:
- 608              		.cfi_endproc
- 609              	.LFE8:
- 611              		.text
- 612              	.Letext0:
- 613              		.file 2 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/machine/_de
- 614              		.file 3 "/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/riscv64-unknown-elf/include/sys/_stdint
- 615              		.file 4 "../../firmware/GD32VF103_standard_peripheral/gd32vf103.h"
- 616              		.file 5 "../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu.h"
- 617              		.file 6 "../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_timer.h"
- 618              		.file 7 "../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpio.h"
- 619              		.file 8 "lib/delay/include/delay.h"
- 620              		.file 9 "../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 16
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pwm.c
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:13     .text.InitPWM:0000000000000000 InitPWM
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:17     .text.InitPWM:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:18     .text.InitPWM:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:19     .text.InitPWM:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:20     .text.InitPWM:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:21     .text.InitPWM:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:22     .text.InitPWM:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:24     .text.InitPWM:0000000000000002 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:26     .text.InitPWM:0000000000000002 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:28     .text.InitPWM:0000000000000006 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:29     .text.InitPWM:0000000000000008 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:31     .text.InitPWM:0000000000000008 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:34     .text.InitPWM:0000000000000010 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:38     .text.InitPWM:000000000000001c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:46     .text.InitPWM:0000000000000032 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:50     .text.InitPWM:000000000000003e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:54     .text.InitPWM:000000000000004a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:58     .text.InitPWM:0000000000000054 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:59     .text.InitPWM:0000000000000054 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:60     .text.InitPWM:0000000000000054 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:61     .text.InitPWM:0000000000000054 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:63     .text.InitPWM:0000000000000056 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:65     .text.InitPWM:000000000000005a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:67     .text.InitPWM:000000000000005e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:69     .text.InitPWM:0000000000000060 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:71     .text.InitPWM:0000000000000064 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:72     .text.InitPWM:0000000000000064 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:74     .text.InitPWM:0000000000000066 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:75     .text.InitPWM:0000000000000066 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:77     .text.InitPWM:000000000000006a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:78     .text.InitPWM:000000000000006a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:80     .text.InitPWM:000000000000006e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:83     .text.InitPWM:0000000000000076 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:87     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:88     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:89     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:90     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:91     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:92     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:93     .text.InitPWM:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:95     .text.InitPWM:0000000000000082 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:99     .text.InitPWM:000000000000008a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:101    .text.InitPWM:000000000000008c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:103    .text.InitPWM:000000000000008e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:105    .text.InitPWM:0000000000000090 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:108    .text.InitPWM:0000000000000098 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:114    .text.InitPWM:00000000000000a8 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:120    .text.InitPWM:00000000000000b8 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:126    .text.InitPWM:00000000000000ca .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:132    .text.InitPWM:00000000000000da .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:138    .text.InitPWM:00000000000000ea .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:144    .text.InitPWM:00000000000000fa .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:150    .text.InitPWM:000000000000010a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:156    .text.InitPWM:000000000000011c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:162    .text.InitPWM:000000000000012c .L0 
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:13     .text.initMotorA:0000000000000000 initMotorA
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:17     .text.initMotorA:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:18     .text.initMotorA:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:19     .text.initMotorA:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:20     .text.initMotorA:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:22     .text.initMotorA:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:24     .text.initMotorA:0000000000000002 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:26     .text.initMotorA:0000000000000006 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:28     .text.initMotorA:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:29     .text.initMotorA:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:31     .text.initMotorA:000000000000000a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:34     .text.initMotorA:0000000000000012 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:38     .text.initMotorA:000000000000001e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:46     .text.initMotorA:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:47     .text.initMotorA:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:48     .text.initMotorA:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:49     .text.initMotorA:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:50     .text.initMotorA:0000000000000036 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:54     .text.initMotorA:0000000000000040 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:57     .text.initMotorA:0000000000000046 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:59     .text.initMotorA:000000000000004a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:60     .text.initMotorA:000000000000004a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:62     .text.initMotorA:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:63     .text.initMotorA:000000000000004c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:65     .text.initMotorA:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:66     .text.initMotorA:0000000000000050 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:68     .text.initMotorA:0000000000000054 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:71     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:72     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:73     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:74     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:75     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:76     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:77     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:78     .text.initMotorA:000000000000005c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:80     .text.initMotorA:000000000000005e .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:84     .text.initMotorA:0000000000000066 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:86     .text.initMotorA:0000000000000068 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:88     .text.initMotorA:000000000000006a .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:90     .text.initMotorA:000000000000006c .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:93     .text.initMotorA:0000000000000074 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:99     .text.initMotorA:0000000000000086 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:105    .text.initMotorA:0000000000000098 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:111    .text.initMotorA:00000000000000a8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:117    .text.initMotorA:00000000000000ba .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:122    .text.initMotorA:00000000000000c8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:126    .text.initMotorA:00000000000000d4 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:127    .text.initMotorA:00000000000000d6 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:129    .text.initMotorA:00000000000000d8 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:132    .text.initMotorA:00000000000000da .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:134    .text.initMotorA:00000000000000dc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:141    .text.SetMotorA:0000000000000000 SetMotorA
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:144    .text.SetMotorA:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:146    .text.SetMotorA:0000000000000000 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:147    .text.SetMotorA:0000000000000000 .L0 
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 7
 
 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:168    .text.InitPWM:000000000000013c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:174    .text.InitPWM:000000000000014e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:180    .text.InitPWM:000000000000015e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:186    .text.InitPWM:0000000000000170 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:192    .text.InitPWM:0000000000000182 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:198    .text.InitPWM:0000000000000192 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:202    .text.InitPWM:000000000000019e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:206    .text.InitPWM:00000000000001aa .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:207    .text.InitPWM:00000000000001ac .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:210    .text.InitPWM:00000000000001ae .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:212    .text.InitPWM:00000000000001b0 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:219    .text.SetMotorA:0000000000000000 SetMotorA
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:222    .text.SetMotorA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:224    .text.SetMotorA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:225    .text.SetMotorA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:231    .text.SetMotorA:0000000000000010 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:238    .text.SetMotorB:0000000000000000 SetMotorB
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:241    .text.SetMotorB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:243    .text.SetMotorB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:244    .text.SetMotorB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:250    .text.SetMotorB:0000000000000010 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:257    .text.motorStartupSeq:0000000000000000 motorStartupSeq
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:260    .text.motorStartupSeq:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:262    .text.motorStartupSeq:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:265    .text.motorStartupSeq:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:268    .text.motorStartupSeq:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:269    .text.motorStartupSeq:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:271    .text.motorStartupSeq:0000000000000002 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:276    .text.motorStartupSeq:0000000000000004 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:277    .text.motorStartupSeq:0000000000000008 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:281    .text.motorStartupSeq:0000000000000008 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:285    .text.motorStartupSeq:000000000000000a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:291    .text.motorStartupSeq:0000000000000010 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:293    .text.motorStartupSeq:0000000000000014 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:294    .text.motorStartupSeq:0000000000000014 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:298    .text.motorStartupSeq:0000000000000014 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:305    .text.motorStartupSeq:000000000000001c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:306    .text.motorStartupSeq:000000000000001c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:314    .text.motorStartupSeq:000000000000002e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:321    .text.motorStartupSeq:000000000000003c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:322    .text.motorStartupSeq:000000000000003c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:332    .text.motorStartupSeq:000000000000004e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:333    .text.motorStartupSeq:000000000000004e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:341    .text.motorStartupSeq:0000000000000060 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:347    .text.motorStartupSeq:000000000000006c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:350    .text.motorStartupSeq:000000000000006c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:351    .text.motorStartupSeq:000000000000006c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:356    .text.motorStartupSeq:0000000000000070 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:366    .text.motorStartupSeq:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:367    .text.motorStartupSeq:0000000000000080 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:371    .text.motorStartupSeq:0000000000000082 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:372    .text.motorStartupSeq:0000000000000084 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:375    .text.motorStartupSeq:0000000000000086 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:377    .text.motorStartupSeq:0000000000000088 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:381    .text.motorStartupSeq:0000000000000088 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:387    .text.motorStartupSeq:000000000000008a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:388    .text.motorStartupSeq:000000000000008a .L0 
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 18
-
-
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:392    .text.motorStartupSeq:000000000000008e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:394    .text.motorStartupSeq:0000000000000090 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:398    .text.motorStartupSeq:0000000000000090 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:402    .text.motorStartupSeq:0000000000000098 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:409    .text.initServoA:0000000000000000 initServoA
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:412    .text.initServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:413    .text.initServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:414    .text.initServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:415    .text.initServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:417    .text.initServoA:0000000000000002 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:419    .text.initServoA:0000000000000002 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:421    .text.initServoA:0000000000000006 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:423    .text.initServoA:000000000000000a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:424    .text.initServoA:000000000000000a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:426    .text.initServoA:000000000000000a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:429    .text.initServoA:0000000000000012 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:433    .text.initServoA:000000000000001e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:441    .text.initServoA:0000000000000036 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:442    .text.initServoA:0000000000000036 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:443    .text.initServoA:0000000000000036 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:444    .text.initServoA:0000000000000036 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:445    .text.initServoA:0000000000000036 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:449    .text.initServoA:0000000000000040 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:452    .text.initServoA:0000000000000046 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:454    .text.initServoA:000000000000004a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:455    .text.initServoA:000000000000004a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:457    .text.initServoA:000000000000004c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:458    .text.initServoA:000000000000004c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:460    .text.initServoA:0000000000000050 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:461    .text.initServoA:0000000000000050 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:463    .text.initServoA:0000000000000054 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:466    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:467    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:468    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:469    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:470    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:471    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:472    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:473    .text.initServoA:000000000000005c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:475    .text.initServoA:000000000000005e .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:479    .text.initServoA:0000000000000066 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:481    .text.initServoA:0000000000000068 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:483    .text.initServoA:000000000000006a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:485    .text.initServoA:000000000000006c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:488    .text.initServoA:0000000000000074 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:494    .text.initServoA:0000000000000086 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:500    .text.initServoA:0000000000000098 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:506    .text.initServoA:00000000000000a8 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:512    .text.initServoA:00000000000000ba .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:517    .text.initServoA:00000000000000c8 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:521    .text.initServoA:00000000000000d4 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:522    .text.initServoA:00000000000000d6 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:524    .text.initServoA:00000000000000d8 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:527    .text.initServoA:00000000000000da .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:529    .text.initServoA:00000000000000dc .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:536    .text.MoveServoA:0000000000000000 MoveServoA
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:539    .text.MoveServoA:0000000000000000 .L0 
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 19
-
-
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:541    .text.MoveServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:542    .text.MoveServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:543    .text.MoveServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:544    .text.MoveServoA:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:548    .text.MoveServoA:0000000000000008 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:551    .text.MoveServoA:000000000000000c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:558    .text.MoveServoA:000000000000001a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:569    .text.MoveServoA:0000000000000038 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:576    .text.MoveServoB:0000000000000000 MoveServoB
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:579    .text.MoveServoB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:581    .text.MoveServoB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:582    .text.MoveServoB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:583    .text.MoveServoB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:584    .text.MoveServoB:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:588    .text.MoveServoB:0000000000000008 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:591    .text.MoveServoB:000000000000000c .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:598    .text.MoveServoB:000000000000001a .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:608    .text.MoveServoB:0000000000000034 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:215    .text.InitPWM:00000000000001b0 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:234    .text.SetMotorA:0000000000000010 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:253    .text.SetMotorB:0000000000000010 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:405    .text.motorStartupSeq:0000000000000098 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:532    .text.initServoA:00000000000000dc .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:572    .text.MoveServoA:0000000000000038 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:611    .text.MoveServoB:0000000000000034 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:154    .text.SetMotorA:0000000000000016 .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:137    .text.initMotorA:00000000000000dc .L0 
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:157    .text.SetMotorA:0000000000000016 .L0 
                      .debug_frame:0000000000000000 .L0 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:555    .text.MoveServoA:000000000000001a .L11
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:562    .text.MoveServoA:0000000000000026 .L12
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:595    .text.MoveServoB:000000000000001a .L14
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:602    .text.MoveServoB:0000000000000026 .L15
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2311   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3272   .debug_str:0000000000000318 .LASF97
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3212   .debug_str:0000000000000169 .LASF98
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3160   .debug_str:0000000000000000 .LASF99
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3114   .debug_ranges:0000000000000000 .Ldebug_ranges0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3158   .debug_line:0000000000000000 .Ldebug_line0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3276   .debug_str:000000000000039b .LASF0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3268   .debug_str:00000000000002f5 .LASF1
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3360   .debug_str:00000000000005c7 .LASF4
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3254   .debug_str:00000000000002a2 .LASF2
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3230   .debug_str:00000000000001bd .LASF3
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3184   .debug_str:00000000000000b7 .LASF5
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3288   .debug_str:00000000000003e0 .LASF6
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3346   .debug_str:000000000000056f .LASF7
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3180   .debug_str:00000000000000a4 .LASF8
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3310   .debug_str:0000000000000478 .LASF9
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3178   .debug_str:0000000000000096 .LASF10
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3270   .debug_str:0000000000000301 .LASF11
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3196   .debug_str:000000000000011a .LASF12
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3280   .debug_str:00000000000003b2 .LASF13
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3274   .debug_str:0000000000000392 .LASF14
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3302   .debug_str:0000000000000450 .LASF100
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3202   .debug_str:0000000000000137 .LASF15
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3356   .debug_str:000000000000059f .LASF16
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3198   .debug_str:0000000000000122 .LASF17
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3304   .debug_str:0000000000000460 .LASF18
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3314   .debug_str:0000000000000497 .LASF19
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:894    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1420   .debug_str:00000000000002bf .LASF83
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1362   .debug_str:0000000000000100 .LASF84
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1398   .debug_str:00000000000001d1 .LASF85
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1310   .debug_ranges:0000000000000000 .Ldebug_ranges0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1318   .debug_line:0000000000000000 .Ldebug_line0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1424   .debug_str:0000000000000342 .LASF0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1416   .debug_str:000000000000029c .LASF1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1492   .debug_str:00000000000004fc .LASF4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1406   .debug_str:000000000000025c .LASF2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1380   .debug_str:0000000000000152 .LASF3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1338   .debug_str:0000000000000060 .LASF5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1434   .debug_str:000000000000037d .LASF6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1368   .debug_str:000000000000011b .LASF7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1334   .debug_str:000000000000004d .LASF8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1454   .debug_str:00000000000003fe .LASF9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1332   .debug_str:000000000000003f .LASF10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1418   .debug_str:00000000000002a8 .LASF11
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1348   .debug_str:00000000000000bd .LASF12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1426   .debug_str:000000000000034f .LASF13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1422   .debug_str:0000000000000339 .LASF14
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1446   .debug_str:00000000000003d6 .LASF86
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1354   .debug_str:00000000000000da .LASF15
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1488   .debug_str:00000000000004d4 .LASF16
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1350   .debug_str:00000000000000c5 .LASF17
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1448   .debug_str:00000000000003e6 .LASF18
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1486   .debug_str:00000000000004cc .LASF19
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1482   .debug_str:00000000000004b7 .LASF20
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1468   .debug_str:0000000000000455 .LASF21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1386   .debug_str:000000000000018f .LASF22
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1388   .debug_str:000000000000019a .LASF23
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1390   .debug_str:00000000000001a5 .LASF24
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1392   .debug_str:00000000000001b0 .LASF25
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1394   .debug_str:00000000000001bb .LASF26
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1396   .debug_str:00000000000001c6 .LASF27
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1364   .debug_str:0000000000000106 .LASF28
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1372   .debug_str:000000000000012d .LASF29
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1374   .debug_str:0000000000000136 .LASF30
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1464   .debug_str:000000000000043f .LASF31
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1466   .debug_str:000000000000044a .LASF32
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1470   .debug_str:000000000000045f .LASF33
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1472   .debug_str:0000000000000469 .LASF34
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1438   .debug_str:00000000000003aa .LASF35
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1440   .debug_str:00000000000003b3 .LASF36
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1358   .debug_str:00000000000000ee .LASF37
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1360   .debug_str:00000000000000f7 .LASF38
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1414   .debug_str:0000000000000293 .LASF39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1412   .debug_str:000000000000028b .LASF40
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1450   .debug_str:00000000000003ef .LASF41
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1336   .debug_str:0000000000000058 .LASF42
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1452   .debug_str:00000000000003f7 .LASF43
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1322   .debug_str:000000000000000d .LASF44
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1324   .debug_str:0000000000000017 .LASF45
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 8
 
 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3350   .debug_str:0000000000000585 .LASF20
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3328   .debug_str:00000000000004e1 .LASF21
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3218   .debug_str:0000000000000184 .LASF22
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3238   .debug_str:0000000000000220 .LASF23
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3240   .debug_str:000000000000022b .LASF24
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3242   .debug_str:0000000000000236 .LASF25
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3244   .debug_str:0000000000000241 .LASF26
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3246   .debug_str:000000000000024c .LASF27
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3214   .debug_str:000000000000016f .LASF28
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3222   .debug_str:0000000000000198 .LASF29
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3224   .debug_str:00000000000001a1 .LASF30
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3324   .debug_str:00000000000004cb .LASF31
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3326   .debug_str:00000000000004d6 .LASF32
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3330   .debug_str:00000000000004eb .LASF33
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3332   .debug_str:00000000000004f5 .LASF34
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3294   .debug_str:0000000000000424 .LASF35
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3296   .debug_str:000000000000042d .LASF36
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3206   .debug_str:000000000000014b .LASF37
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3208   .debug_str:0000000000000154 .LASF38
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3264   .debug_str:00000000000002e4 .LASF39
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3260   .debug_str:00000000000002d1 .LASF40
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3306   .debug_str:0000000000000469 .LASF41
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3182   .debug_str:00000000000000af .LASF42
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3308   .debug_str:0000000000000471 .LASF43
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3164   .debug_str:000000000000004e .LASF44
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3166   .debug_str:0000000000000058 .LASF45
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3168   .debug_str:0000000000000062 .LASF46
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3170   .debug_str:000000000000006c .LASF47
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3172   .debug_str:0000000000000076 .LASF48
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3258   .debug_str:00000000000002c8 .LASF49
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3300   .debug_str:0000000000000447 .LASF50
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3234   .debug_str:00000000000001ef .LASF51
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3220   .debug_str:000000000000018f .LASF52
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3322   .debug_str:00000000000004c0 .LASF53
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3284   .debug_str:00000000000003cc .LASF54
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3226   .debug_str:00000000000001aa .LASF55
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3298   .debug_str:0000000000000436 .LASF56
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3228   .debug_str:00000000000001b6 .LASF57
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3188   .debug_str:00000000000000d9 .LASF58
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3334   .debug_str:00000000000004ff .LASF59
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3186   .debug_str:00000000000000c2 .LASF60
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3204   .debug_str:000000000000013f .LASF61
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3320   .debug_str:00000000000004b3 .LASF62
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3338   .debug_str:0000000000000531 .LASF63
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3352   .debug_str:000000000000058e .LASF64
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3200   .debug_str:000000000000012b .LASF65
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3312   .debug_str:000000000000048a .LASF66
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3292   .debug_str:000000000000040a .LASF67
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3210   .debug_str:000000000000015d .LASF68
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3176   .debug_str:000000000000008b .LASF69
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:577    .text.MoveServoB:0000000000000000 .LFB8
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:609    .text.MoveServoB:0000000000000034 .LFE8
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3344   .debug_str:0000000000000568 .LASF71
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2810   .debug_loc:0000000000000000 .LLST14
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3354   .debug_str:000000000000059a .LASF72
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2824   .debug_loc:0000000000000021 .LLST15
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:607    .text.MoveServoB:0000000000000034 .LVL64
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 21
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1326   .debug_str:0000000000000021 .LASF46
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1328   .debug_str:000000000000002b .LASF47
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1330   .debug_str:0000000000000035 .LASF48
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1410   .debug_str:0000000000000282 .LASF49
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1444   .debug_str:00000000000003cd .LASF50
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1384   .debug_str:0000000000000184 .LASF51
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1370   .debug_str:0000000000000124 .LASF52
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1462   .debug_str:0000000000000434 .LASF53
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1430   .debug_str:0000000000000369 .LASF54
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1376   .debug_str:000000000000013f .LASF55
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1442   .debug_str:00000000000003bc .LASF56
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1378   .debug_str:000000000000014b .LASF57
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1342   .debug_str:0000000000000082 .LASF58
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1474   .debug_str:0000000000000473 .LASF59
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1340   .debug_str:000000000000006b .LASF60
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1356   .debug_str:00000000000000e2 .LASF61
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1460   .debug_str:0000000000000427 .LASF62
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1476   .debug_str:0000000000000485 .LASF63
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1484   .debug_str:00000000000004c0 .LASF64
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1352   .debug_str:00000000000000ce .LASF65
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1456   .debug_str:0000000000000410 .LASF66
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1436   .debug_str:0000000000000390 .LASF67
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1402   .debug_str:000000000000022d .LASF68
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1432   .debug_str:0000000000000373 .LASF69
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:142    .text.SetMotorA:0000000000000000 .LFB3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:155    .text.SetMotorA:0000000000000016 .LFE3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1494   .debug_str:0000000000000506 .LASF87
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1257   .debug_loc:0000000000000000 .LLST1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:153    .text.SetMotorA:0000000000000016 .LVL13
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1480   .debug_str:00000000000004ac .LASF70
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:14     .text.initMotorA:0000000000000000 .LFB2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:135    .text.initMotorA:00000000000000dc .LFE2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1277   .debug_loc:000000000000002f .LLST0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1346   .debug_str:00000000000000ae .LASF71
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1428   .debug_str:0000000000000358 .LASF72
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:32     .text.initMotorA:0000000000000012 .LVL0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:36     .text.initMotorA:000000000000001e .LVL1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:44     .text.initMotorA:0000000000000036 .LVL2
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:69     .text.initMotorA:000000000000005c .LVL3
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:91     .text.initMotorA:0000000000000074 .LVL4
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:97     .text.initMotorA:0000000000000086 .LVL5
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:103    .text.initMotorA:0000000000000098 .LVL6
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:109    .text.initMotorA:00000000000000a8 .LVL7
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:115    .text.initMotorA:00000000000000ba .LVL8
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:120    .text.initMotorA:00000000000000c8 .LVL9
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:124    .text.initMotorA:00000000000000d4 .LVL10
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1382   .debug_str:000000000000015c .LASF73
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1408   .debug_str:000000000000026a .LASF74
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1458   .debug_str:000000000000041d .LASF75
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1366   .debug_str:0000000000000110 .LASF76
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1478   .debug_str:0000000000000490 .LASF77
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1344   .debug_str:0000000000000090 .LASF78
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1490   .debug_str:00000000000004db .LASF79
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1404   .debug_str:0000000000000239 .LASF80
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1400   .debug_str:0000000000000211 .LASF81
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:1320   .debug_str:0000000000000000 .LASF82
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:145    .text.SetMotorA:0000000000000000 .LVL11
+GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s 			page 9
 
 
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3174   .debug_str:0000000000000080 .LASF70
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:537    .text.MoveServoA:0000000000000000 .LFB7
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:570    .text.MoveServoA:0000000000000038 .LFE7
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2855   .debug_loc:0000000000000056 .LLST12
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2869   .debug_loc:0000000000000077 .LLST13
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:568    .text.MoveServoA:0000000000000038 .LVL59
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3262   .debug_str:00000000000002d9 .LASF73
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:410    .text.initServoA:0000000000000000 .LFB6
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:530    .text.initServoA:00000000000000dc .LFE6
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2900   .debug_loc:00000000000000ac .LLST11
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3194   .debug_str:000000000000010b .LASF74
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3282   .debug_str:00000000000003bb .LASF75
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:427    .text.initServoA:0000000000000012 .LVL44
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:431    .text.initServoA:000000000000001e .LVL45
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:439    .text.initServoA:0000000000000036 .LVL46
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:464    .text.initServoA:000000000000005c .LVL47
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:486    .text.initServoA:0000000000000074 .LVL48
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:492    .text.initServoA:0000000000000086 .LVL49
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:498    .text.initServoA:0000000000000098 .LVL50
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:504    .text.initServoA:00000000000000a8 .LVL51
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:510    .text.initServoA:00000000000000ba .LVL52
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:515    .text.initServoA:00000000000000c8 .LVL53
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:519    .text.initServoA:00000000000000d4 .LVL54
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3340   .debug_str:000000000000053c .LASF76
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:258    .text.motorStartupSeq:0000000000000000 .LFB5
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:403    .text.motorStartupSeq:0000000000000098 .LFE5
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2918   .debug_loc:00000000000000d8 .LLST3
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3250   .debug_str:0000000000000273 .LASF77
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2936   .debug_loc:0000000000000104 .LLST4
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:263    .text.motorStartupSeq:0000000000000000 .LBB14
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2966   .debug_loc:000000000000014c .LLST5
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:299    .text.motorStartupSeq:000000000000001c .LVL34
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:303    .text.motorStartupSeq:000000000000001c .LBB22
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:312    .text.motorStartupSeq:000000000000002e .LBE22
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2975   .debug_loc:0000000000000162 .LLST6
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:310    .text.motorStartupSeq:000000000000002e .LVL35
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:319    .text.motorStartupSeq:000000000000003c .LBB24
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:328    .text.motorStartupSeq:000000000000004e .LBE24
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2984   .debug_loc:0000000000000178 .LLST7
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:326    .text.motorStartupSeq:000000000000004e .LVL37
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:330    .text.motorStartupSeq:000000000000004e .LBB26
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:339    .text.motorStartupSeq:0000000000000060 .LBE26
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:2993   .debug_loc:000000000000018e .LLST8
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:337    .text.motorStartupSeq:0000000000000060 .LVL38
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:345    .text.motorStartupSeq:000000000000006c .LBB28
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3002   .debug_loc:00000000000001a4 .LLST9
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:360    .text.motorStartupSeq:0000000000000080 .LVL41
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:364    .text.motorStartupSeq:0000000000000080 .LBB32
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3015   .debug_loc:00000000000001c5 .LLST10
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:399    .text.motorStartupSeq:0000000000000098 .LVL43
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:317    .text.motorStartupSeq:000000000000003c .LVL36
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:343    .text.motorStartupSeq:000000000000006c .LVL39
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3278   .debug_str:00000000000003a8 .LASF78
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3190   .debug_str:00000000000000e7 .LASF80
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3286   .debug_str:00000000000003d6 .LASF79
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3266   .debug_str:00000000000002ed .LASF81
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:14     .text.InitPWM:0000000000000000 .LFB2
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 22
-
-
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:213    .text.InitPWM:00000000000001b0 .LFE2
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3035   .debug_loc:00000000000001f4 .LLST0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:32     .text.InitPWM:0000000000000010 .LVL0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:36     .text.InitPWM:000000000000001c .LVL1
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:44     .text.InitPWM:0000000000000032 .LVL2
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:48     .text.InitPWM:000000000000003e .LVL3
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:52     .text.InitPWM:000000000000004a .LVL4
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:56     .text.InitPWM:0000000000000054 .LVL5
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:81     .text.InitPWM:0000000000000076 .LVL6
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:85     .text.InitPWM:0000000000000080 .LVL7
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:106    .text.InitPWM:0000000000000098 .LVL8
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:112    .text.InitPWM:00000000000000a8 .LVL9
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:118    .text.InitPWM:00000000000000b8 .LVL10
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:124    .text.InitPWM:00000000000000ca .LVL11
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:130    .text.InitPWM:00000000000000da .LVL12
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:136    .text.InitPWM:00000000000000ea .LVL13
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:142    .text.InitPWM:00000000000000fa .LVL14
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:148    .text.InitPWM:000000000000010a .LVL15
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:154    .text.InitPWM:000000000000011c .LVL16
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:160    .text.InitPWM:000000000000012c .LVL17
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:166    .text.InitPWM:000000000000013c .LVL18
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:172    .text.InitPWM:000000000000014e .LVL19
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:178    .text.InitPWM:000000000000015e .LVL20
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:184    .text.InitPWM:0000000000000170 .LVL21
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:190    .text.InitPWM:0000000000000182 .LVL22
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:196    .text.InitPWM:0000000000000192 .LVL23
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:200    .text.InitPWM:000000000000019e .LVL24
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:204    .text.InitPWM:00000000000001aa .LVL25
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:220    .text.SetMotorA:0000000000000000 .LFB3
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:232    .text.SetMotorA:0000000000000010 .LFE3
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3053   .debug_loc:0000000000000220 .LLST1
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:230    .text.SetMotorA:0000000000000010 .LVL28
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:239    .text.SetMotorB:0000000000000000 .LFB4
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:251    .text.SetMotorB:0000000000000010 .LFE4
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3071   .debug_loc:000000000000024c .LLST2
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:249    .text.SetMotorB:0000000000000010 .LVL31
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3232   .debug_str:00000000000001c7 .LASF82
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3256   .debug_str:00000000000002b0 .LASF83
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3318   .debug_str:00000000000004a9 .LASF84
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3216   .debug_str:0000000000000179 .LASF85
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3342   .debug_str:000000000000054c .LASF86
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3192   .debug_str:00000000000000ed .LASF87
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3358   .debug_str:00000000000005a6 .LASF88
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3252   .debug_str:000000000000027f .LASF89
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3248   .debug_str:0000000000000257 .LASF90
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3162   .debug_str:0000000000000041 .LASF91
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3316   .debug_str:000000000000049f .LASF92
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3348   .debug_str:0000000000000578 .LASF93
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3290   .debug_str:00000000000003f3 .LASF94
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3236   .debug_str:00000000000001fa .LASF95
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:3336   .debug_str:0000000000000511 .LASF96
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:580    .text.MoveServoB:0000000000000000 .LVL60
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:605    .text.MoveServoB:000000000000002c .LVL63
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:596    .text.MoveServoB:000000000000001a .LVL61
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:601    .text.MoveServoB:0000000000000026 .LVL62
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:540    .text.MoveServoA:0000000000000000 .LVL55
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:564    .text.MoveServoA:000000000000002a .LVL58
-GAS LISTING /var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s 			page 23
-
-
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:556    .text.MoveServoA:000000000000001a .LVL56
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:561    .text.MoveServoA:0000000000000026 .LVL57
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:416    .text.initServoA:0000000000000002 .LCFI4
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:526    .text.initServoA:00000000000000da .LCFI5
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:270    .text.motorStartupSeq:0000000000000002 .LCFI2
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:393    .text.motorStartupSeq:0000000000000090 .LCFI3
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:261    .text.motorStartupSeq:0000000000000000 .LVL32
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:287    .text.motorStartupSeq:0000000000000010 .LVL33
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:352    .text.motorStartupSeq:0000000000000070 .LVL40
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:373    .text.motorStartupSeq:0000000000000084 .LVL42
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:23     .text.InitPWM:0000000000000002 .LCFI0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:209    .text.InitPWM:00000000000001ae .LCFI1
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:223    .text.SetMotorA:0000000000000000 .LVL26
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:228    .text.SetMotorA:0000000000000008 .LVL27
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:242    .text.SetMotorB:0000000000000000 .LVL29
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:247    .text.SetMotorB:0000000000000008 .LVL30
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:622    .debug_info:0000000000000000 .Ldebug_info0
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:267    .text.motorStartupSeq:0000000000000000 .LBE14
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:273    .text.motorStartupSeq:0000000000000004 .LBB19
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:279    .text.motorStartupSeq:0000000000000008 .LBE19
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:282    .text.motorStartupSeq:000000000000000a .LBB20
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:289    .text.motorStartupSeq:0000000000000010 .LBE20
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:295    .text.motorStartupSeq:0000000000000014 .LBB21
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:301    .text.motorStartupSeq:000000000000001c .LBE21
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:349    .text.motorStartupSeq:000000000000006c .LBE28
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:353    .text.motorStartupSeq:0000000000000070 .LBB31
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:362    .text.motorStartupSeq:0000000000000080 .LBE31
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:369    .text.motorStartupSeq:0000000000000082 .LBE32
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:378    .text.motorStartupSeq:0000000000000088 .LBB37
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:383    .text.motorStartupSeq:000000000000008a .LBE37
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:385    .text.motorStartupSeq:000000000000008a .LBB38
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:390    .text.motorStartupSeq:000000000000008e .LBE38
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:395    .text.motorStartupSeq:0000000000000090 .LBB39
-/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccyRZC5x.s:401    .text.motorStartupSeq:0000000000000098 .LBE39
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:149    .text.SetMotorA:0000000000000008 .LVL12
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:21     .text.initMotorA:0000000000000002 .LCFI0
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:131    .text.initMotorA:00000000000000da .LCFI1
+/var/folders/v8/5w7qrjpd37x60gtz_mwnrxpr0000gn/T//ccVa9wQ9.s:167    .debug_info:0000000000000000 .Ldebug_info0
 
 UNDEFINED SYMBOLS
 rcu_periph_clock_enable
 gpio_init
-timer_deinit
-timer_struct_para_init
 timer_init
-timer_channel_output_struct_para_init
 timer_channel_output_config
 timer_autoreload_value_config
-timer_channel_output_pulse_value_config
 timer_channel_output_mode_config
 timer_channel_output_shadow_config
-timer_auto_reload_shadow_enable
-timer_enable
-delay_1ms
+timer_channel_output_pulse_value_config
 timer_primary_output_config
+timer_enable

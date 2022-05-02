@@ -14,7 +14,11 @@ int main(void){
     while(1){
         adcr = ADC_RDATA(ADC0);
         adcr = (adcr*1000)/4096;
-        SetServoA(adcr);
+        if(adcr>500){
+            SetMotorA(100);
+        }else{
+            SetMotorA(0);
+        }   
     }
 }
 

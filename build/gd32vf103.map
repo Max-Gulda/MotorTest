@@ -1,7 +1,5 @@
 Archive member included to satisfy reference by file (symbol)
 
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
-                              build/main.o (__adddf3)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
                               build/delay.o (__divdf3)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
@@ -10,32 +8,16 @@ Archive member included to satisfy reference by file (symbol)
                               build/delay.o (__muldf3)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
                               build/delay.o (__fixdfsi)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
-                              build/gd32v_mpu6500_if.o (__floatsidf)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
                               build/delay.o (__floatunsidf)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
                               build/delay.o (__floatundidf)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
-                              build/PID.o (__addsf3)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
-                              build/PID.o (__gtsf2)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
-                              build/PID.o (__ltsf2)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
-                              build/PID.o (__mulsf3)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
-                              build/PID.o (__subsf3)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
-                              build/main.o (__fixsfsi)
-/Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
-                              build/mpu6500_driver.o (__floatsisf)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
                               /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o) (__lshrdi3)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
                               /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o) (__ashldi3)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
-                              /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o) (__clzsi2)
+                              /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o) (__clzsi2)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
                               /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o) (__clz_tab)
 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-atexit.o)
@@ -75,8 +57,6 @@ Allocating common symbols
 Common symbol       size              file
 
 errno               0x4               /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-reent.o)
-cb                  0x10              build/mpu6500_driver.o
-i2c_port            0x4               build/gd32v_mpu6500_if.o
 
 Discarded input sections
 
@@ -669,17 +649,33 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 build/gd32vf103_i2c.o
  .text.i2c_deinit
                 0x0000000000000000       0x5a build/gd32vf103_i2c.o
+ .text.i2c_clock_config
+                0x0000000000000000      0x16c build/gd32vf103_i2c.o
  .text.i2c_mode_addr_config
                 0x0000000000000000       0x12 build/gd32vf103_i2c.o
  .text.i2c_smbus_type_config
                 0x0000000000000000       0x18 build/gd32vf103_i2c.o
+ .text.i2c_ack_config
+                0x0000000000000000       0x1a build/gd32vf103_i2c.o
  .text.i2c_ackpos_config
                 0x0000000000000000       0x1c build/gd32vf103_i2c.o
+ .text.i2c_master_addressing
+                0x0000000000000000       0x12 build/gd32vf103_i2c.o
  .text.i2c_dualaddr_enable
                 0x0000000000000000        0xc build/gd32vf103_i2c.o
  .text.i2c_dualaddr_disable
                 0x0000000000000000        0x8 build/gd32vf103_i2c.o
+ .text.i2c_enable
+                0x0000000000000000        0xa build/gd32vf103_i2c.o
  .text.i2c_disable
+                0x0000000000000000        0x8 build/gd32vf103_i2c.o
+ .text.i2c_start_on_bus
+                0x0000000000000000        0xa build/gd32vf103_i2c.o
+ .text.i2c_stop_on_bus
+                0x0000000000000000        0xa build/gd32vf103_i2c.o
+ .text.i2c_data_transmit
+                0x0000000000000000        0x4 build/gd32vf103_i2c.o
+ .text.i2c_data_receive
                 0x0000000000000000        0x8 build/gd32vf103_i2c.o
  .text.i2c_dma_enable
                 0x0000000000000000       0x10 build/gd32vf103_i2c.o
@@ -701,6 +697,10 @@ Discarded input sections
                 0x0000000000000000        0xe build/gd32vf103_i2c.o
  .text.i2c_smbus_arp_enable
                 0x0000000000000000        0xa build/gd32vf103_i2c.o
+ .text.i2c_flag_get
+                0x0000000000000000       0x14 build/gd32vf103_i2c.o
+ .text.i2c_flag_clear
+                0x0000000000000000       0x2a build/gd32vf103_i2c.o
  .text.i2c_interrupt_enable
                 0x0000000000000000       0x18 build/gd32vf103_i2c.o
  .text.i2c_interrupt_disable
@@ -709,6 +709,18 @@ Discarded input sections
                 0x0000000000000000       0x56 build/gd32vf103_i2c.o
  .text.i2c_interrupt_flag_clear
                 0x0000000000000000       0x2c build/gd32vf103_i2c.o
+ .debug_info    0x0000000000000000      0xc21 build/gd32vf103_i2c.o
+ .debug_abbrev  0x0000000000000000      0x20a build/gd32vf103_i2c.o
+ .debug_loc     0x0000000000000000      0x96a build/gd32vf103_i2c.o
+ .debug_aranges
+                0x0000000000000000      0x110 build/gd32vf103_i2c.o
+ .debug_ranges  0x0000000000000000      0x100 build/gd32vf103_i2c.o
+ .debug_line    0x0000000000000000     0x107f build/gd32vf103_i2c.o
+ .debug_str     0x0000000000000000      0x9d2 build/gd32vf103_i2c.o
+ .comment       0x0000000000000000       0x29 build/gd32vf103_i2c.o
+ .debug_frame   0x0000000000000000      0x260 build/gd32vf103_i2c.o
+ .riscv.attributes
+                0x0000000000000000       0x2b build/gd32vf103_i2c.o
  .text          0x0000000000000000        0x0 build/gd32vf103_pmu.o
  .data          0x0000000000000000        0x0 build/gd32vf103_pmu.o
  .bss           0x0000000000000000        0x0 build/gd32vf103_pmu.o
@@ -823,6 +835,8 @@ Discarded input sections
                 0x0000000000000000       0x16 build/gd32vf103_rcu.o
  .text.rcu_deepsleep_voltage_set
                 0x0000000000000000        0xa build/gd32vf103_rcu.o
+ .text.rcu_clock_freq_get
+                0x0000000000000000      0x13c build/gd32vf103_rcu.o
  .text          0x0000000000000000        0x0 build/gd32vf103_rtc.o
  .data          0x0000000000000000        0x0 build/gd32vf103_rtc.o
  .bss           0x0000000000000000        0x0 build/gd32vf103_rtc.o
@@ -958,8 +972,14 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 build/gd32vf103_timer.o
  .text.timer_channel_input_capture_prescaler_config.part.0
                 0x0000000000000000       0x16 build/gd32vf103_timer.o
+ .text.timer_deinit
+                0x0000000000000000      0x10e build/gd32vf103_timer.o
+ .text.timer_struct_para_init
+                0x0000000000000000       0x18 build/gd32vf103_timer.o
  .text.timer_disable
                 0x0000000000000000        0x8 build/gd32vf103_timer.o
+ .text.timer_auto_reload_shadow_enable
+                0x0000000000000000        0xa build/gd32vf103_timer.o
  .text.timer_auto_reload_shadow_disable
                 0x0000000000000000        0xa build/gd32vf103_timer.o
  .text.timer_update_event_enable
@@ -1012,6 +1032,8 @@ Discarded input sections
                 0x0000000000000000       0x18 build/gd32vf103_timer.o
  .text.timer_channel_control_shadow_update_config
                 0x0000000000000000       0x1c build/gd32vf103_timer.o
+ .text.timer_channel_output_struct_para_init
+                0x0000000000000000       0x1a build/gd32vf103_timer.o
  .text.timer_channel_output_fast_config
                 0x0000000000000000       0x56 build/gd32vf103_timer.o
  .text.timer_channel_output_clear_config
@@ -1376,203 +1398,51 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/init.o
  .data          0x0000000000000000        0x0 build/init.o
  .bss           0x0000000000000000        0x0 build/init.o
- .text          0x0000000000000000        0x0 build/cordic-math.o
- .data          0x0000000000000000        0x0 build/cordic-math.o
- .bss           0x0000000000000000        0x0 build/cordic-math.o
- .text.cordic_cos
-                0x0000000000000000       0x84 build/cordic-math.o
- .text.cordic_sin
-                0x0000000000000000       0x84 build/cordic-math.o
- .text.cordic_asin
-                0x0000000000000000       0x4c build/cordic-math.o
- .text.cordic_acos
-                0x0000000000000000       0x50 build/cordic-math.o
- .text.cordic_tan
-                0x0000000000000000       0x2c build/cordic-math.o
- .text.ssqrt    0x0000000000000000       0x42 build/cordic-math.o
- .text.power    0x0000000000000000       0x40 build/cordic-math.o
- .text.absolute
-                0x0000000000000000        0xa build/cordic-math.o
- .text.isEven   0x0000000000000000        0x8 build/cordic-math.o
- .text.isOdd    0x0000000000000000        0x4 build/cordic-math.o
- .text.to_degree
-                0x0000000000000000        0xe build/cordic-math.o
- .text.to_radians
-                0x0000000000000000        0xe build/cordic-math.o
- .text          0x0000000000000000        0x0 build/dac.o
- .data          0x0000000000000000        0x0 build/dac.o
- .bss           0x0000000000000000        0x0 build/dac.o
- .text.DAC0powerUpInit
-                0x0000000000000000       0x78 build/dac.o
- .text.DAC0set  0x0000000000000000       0x12 build/dac.o
- .debug_info    0x0000000000000000      0x366 build/dac.o
- .debug_abbrev  0x0000000000000000      0x10b build/dac.o
- .debug_loc     0x0000000000000000       0x4d build/dac.o
- .debug_aranges
-                0x0000000000000000       0x28 build/dac.o
- .debug_ranges  0x0000000000000000       0x18 build/dac.o
- .debug_line    0x0000000000000000      0x252 build/dac.o
- .debug_str     0x0000000000000000      0x39c build/dac.o
- .comment       0x0000000000000000       0x29 build/dac.o
- .debug_frame   0x0000000000000000       0x3c build/dac.o
- .riscv.attributes
-                0x0000000000000000       0x2b build/dac.o
  .text          0x0000000000000000        0x0 build/delay.o
  .data          0x0000000000000000        0x0 build/delay.o
  .bss           0x0000000000000000        0x0 build/delay.o
+ .text.millis   0x0000000000000000       0x62 build/delay.o
  .text.delay_1us
                 0x0000000000000000       0xce build/delay.o
  .rodata.delay_1us.cst8
                 0x0000000000000000        0x8 build/delay.o
- .text          0x0000000000000000        0x0 build/gd32v_mpu6500_if.o
- .data          0x0000000000000000        0x0 build/gd32v_mpu6500_if.o
- .bss           0x0000000000000000        0x0 build/gd32v_mpu6500_if.o
- .text.i2c_master_init
-                0x0000000000000000       0x28 build/gd32v_mpu6500_if.o
- .text          0x0000000000000000        0x0 build/mpu6500_driver.o
- .data          0x0000000000000000        0x0 build/mpu6500_driver.o
- .bss           0x0000000000000000        0x0 build/mpu6500_driver.o
- .text.read_mpu
-                0x0000000000000000       0x1a build/mpu6500_driver.o
- .text.write_mpu
-                0x0000000000000000       0x1a build/mpu6500_driver.o
- .text.flip_bytes
-                0x0000000000000000       0x16 build/mpu6500_driver.o
- .text          0x0000000000000000        0x0 build/PID.o
- .data          0x0000000000000000        0x0 build/PID.o
- .bss           0x0000000000000000        0x0 build/PID.o
- .text.PIDController_Init
-                0x0000000000000000       0x2e build/PID.o
- .text.PIDController_Update
-                0x0000000000000000       0xf2 build/PID.o
- .rodata.PIDController_Init.cst4
-                0x0000000000000000        0xc build/PID.o
- .debug_info    0x0000000000000000      0x193 build/PID.o
- .debug_abbrev  0x0000000000000000       0xe6 build/PID.o
- .debug_loc     0x0000000000000000      0x136 build/PID.o
- .debug_aranges
-                0x0000000000000000       0x28 build/PID.o
- .debug_ranges  0x0000000000000000       0x18 build/PID.o
- .debug_line    0x0000000000000000      0x2bb build/PID.o
- .debug_str     0x0000000000000000      0x17b build/PID.o
- .comment       0x0000000000000000       0x29 build/PID.o
- .debug_frame   0x0000000000000000       0x60 build/PID.o
- .riscv.attributes
-                0x0000000000000000       0x2b build/PID.o
  .text          0x0000000000000000        0x0 build/main.o
  .data          0x0000000000000000        0x0 build/main.o
  .bss           0x0000000000000000        0x0 build/main.o
  .text          0x0000000000000000        0x0 build/pwm.o
  .data          0x0000000000000000        0x0 build/pwm.o
  .bss           0x0000000000000000        0x0 build/pwm.o
- .text.SetMotorA
-                0x0000000000000000       0x10 build/pwm.o
- .text.SetMotorB
-                0x0000000000000000       0x10 build/pwm.o
- .text.MoveServoB
-                0x0000000000000000       0x34 build/pwm.o
  .text          0x0000000000000000        0x0 build/start.o
  .data          0x0000000000000000        0x0 build/start.o
  .bss           0x0000000000000000        0x0 build/start.o
  .text          0x0000000000000000        0x0 build/entry.o
  .data          0x0000000000000000        0x0 build/entry.o
  .bss           0x0000000000000000        0x0 build/entry.o
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .text          0x0000000000000000       0x64 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
+ .debug_info    0x0000000000000000      0x217 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_abbrev  0x0000000000000000      0x18a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_loc     0x0000000000000000      0x16d /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_ranges  0x0000000000000000       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_line    0x0000000000000000      0x221 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_str     0x0000000000000000      0x2a8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .comment       0x0000000000000000       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .debug_frame   0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .text          0x0000000000000000      0x312 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_info    0x0000000000000000      0x351 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_abbrev  0x0000000000000000      0x191 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_loc     0x0000000000000000      0x83c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_aranges
-                0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_ranges  0x0000000000000000      0x140 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_line    0x0000000000000000      0x931 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_str     0x0000000000000000      0x354 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .comment       0x0000000000000000       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .debug_frame   0x0000000000000000       0x40 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .riscv.attributes
-                0x0000000000000000       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
- .text          0x0000000000000000       0x78 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_info    0x0000000000000000      0x264 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_abbrev  0x0000000000000000      0x188 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_loc     0x0000000000000000      0x125 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_aranges
-                0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_ranges  0x0000000000000000       0x60 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_line    0x0000000000000000      0x2e9 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_str     0x0000000000000000      0x2b3 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .comment       0x0000000000000000       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .debug_frame   0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .riscv.attributes
-                0x0000000000000000       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
- .text          0x0000000000000000       0x78 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_info    0x0000000000000000      0x264 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_abbrev  0x0000000000000000      0x188 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_loc     0x0000000000000000      0x125 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_aranges
-                0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_ranges  0x0000000000000000       0x60 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_line    0x0000000000000000      0x2e9 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_str     0x0000000000000000      0x2b3 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .comment       0x0000000000000000       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .debug_frame   0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .riscv.attributes
-                0x0000000000000000       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
- .text          0x0000000000000000      0x228 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .rodata        0x0000000000000000       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_info    0x0000000000000000      0x3ac /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_abbrev  0x0000000000000000      0x17a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_loc     0x0000000000000000      0x5e4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_aranges
-                0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_ranges  0x0000000000000000       0xa8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_line    0x0000000000000000      0x666 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_str     0x0000000000000000      0x379 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .comment       0x0000000000000000       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .debug_frame   0x0000000000000000       0x48 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .riscv.attributes
-                0x0000000000000000       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
- .text          0x0000000000000000      0x322 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_info    0x0000000000000000      0x351 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_abbrev  0x0000000000000000      0x191 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_loc     0x0000000000000000      0xbdf /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_aranges
-                0x0000000000000000       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_ranges  0x0000000000000000      0x140 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_line    0x0000000000000000      0x97e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_str     0x0000000000000000      0x354 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .comment       0x0000000000000000       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .debug_frame   0x0000000000000000       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .riscv.attributes
-                0x0000000000000000       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
  .bss           0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
  .data          0x0000000000000000        0x0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
@@ -1685,12 +1555,7 @@ LOAD build/write_hex.o
 LOAD build/n200_func.o
 LOAD build/handlers.o
 LOAD build/init.o
-LOAD build/cordic-math.o
-LOAD build/dac.o
 LOAD build/delay.o
-LOAD build/gd32v_mpu6500_if.o
-LOAD build/mpu6500_driver.o
-LOAD build/PID.o
 LOAD build/main.o
 LOAD build/pwm.o
 LOAD build/start.o
@@ -1717,7 +1582,7 @@ LOAD /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-un
 .ialign         0x0000000008000254        0x0
                 [!provide]                        PROVIDE (_ilm = .)
 
-.text           0x0000000008000280     0x3796
+.text           0x0000000008000280     0x20a8
  *(.rodata .rodata.*)
  .rodata._exit.str1.4
                 0x0000000008000280       0x1f build/_exit.o
@@ -1735,321 +1600,218 @@ LOAD /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-un
  *fill*         0x00000000080002b4        0x4 
  .rodata.delay_1ms.cst8
                 0x00000000080002b8        0x8 build/delay.o
- .rodata.mpu_delay.cst8
-                0x00000000080002c0        0x8 build/gd32v_mpu6500_if.o
- .rodata.main.cst8
-                0x00000000080002c0       0x10 build/main.o
- .rodata        0x00000000080002d0       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .rodata        0x000000000800030c       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .rodata        0x0000000008000348      0x100 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
-                0x0000000008000348                __clz_tab
+ .rodata        0x00000000080002c0       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .rodata        0x00000000080002fc       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .rodata        0x0000000008000338      0x100 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+                0x0000000008000338                __clz_tab
  *(.text.unlikely .text.unlikely.*)
  *(.text.startup .text.startup.*)
  .text.startup.main
-                0x0000000008000448      0x13c build/main.o
-                0x0000000008000448                main
- .text.startup  0x0000000008000584       0x1c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
+                0x0000000008000438       0x44 build/main.o
+                0x0000000008000438                main
+ .text.startup  0x000000000800047c       0x1c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
  *(.text .text.*)
  .text.adc_deinit
-                0x00000000080005a0       0x5a build/gd32vf103_adc.o
-                0x00000000080005a0                adc_deinit
+                0x0000000008000498       0x5a build/gd32vf103_adc.o
+                0x0000000008000498                adc_deinit
  .text.adc_mode_config
-                0x00000000080005fa       0x20 build/gd32vf103_adc.o
-                0x00000000080005fa                adc_mode_config
+                0x00000000080004f2       0x20 build/gd32vf103_adc.o
+                0x00000000080004f2                adc_mode_config
  .text.adc_special_function_config
-                0x000000000800061a       0x52 build/gd32vf103_adc.o
-                0x000000000800061a                adc_special_function_config
+                0x0000000008000512       0x52 build/gd32vf103_adc.o
+                0x0000000008000512                adc_special_function_config
  .text.adc_data_alignment_config
-                0x000000000800066c       0x1c build/gd32vf103_adc.o
-                0x000000000800066c                adc_data_alignment_config
+                0x0000000008000564       0x1c build/gd32vf103_adc.o
+                0x0000000008000564                adc_data_alignment_config
  .text.adc_enable
-                0x0000000008000688       0x10 build/gd32vf103_adc.o
-                0x0000000008000688                adc_enable
+                0x0000000008000580       0x10 build/gd32vf103_adc.o
+                0x0000000008000580                adc_enable
  .text.adc_calibration_enable
-                0x0000000008000698       0x22 build/gd32vf103_adc.o
-                0x0000000008000698                adc_calibration_enable
+                0x0000000008000590       0x22 build/gd32vf103_adc.o
+                0x0000000008000590                adc_calibration_enable
  .text.adc_channel_length_config
-                0x00000000080006ba       0x4a build/gd32vf103_adc.o
-                0x00000000080006ba                adc_channel_length_config
+                0x00000000080005b2       0x4a build/gd32vf103_adc.o
+                0x00000000080005b2                adc_channel_length_config
  .text.adc_regular_channel_config
-                0x0000000008000704       0xbc build/gd32vf103_adc.o
-                0x0000000008000704                adc_regular_channel_config
+                0x00000000080005fc       0xbc build/gd32vf103_adc.o
+                0x00000000080005fc                adc_regular_channel_config
  .text.adc_external_trigger_source_config
-                0x00000000080007c0       0x34 build/gd32vf103_adc.o
-                0x00000000080007c0                adc_external_trigger_source_config
+                0x00000000080006b8       0x34 build/gd32vf103_adc.o
+                0x00000000080006b8                adc_external_trigger_source_config
  .text.adc_external_trigger_config
-                0x00000000080007f4       0x44 build/gd32vf103_adc.o
-                0x00000000080007f4                adc_external_trigger_config
+                0x00000000080006ec       0x44 build/gd32vf103_adc.o
+                0x00000000080006ec                adc_external_trigger_config
  .text.adc_software_trigger_enable
-                0x0000000008000838       0x20 build/gd32vf103_adc.o
-                0x0000000008000838                adc_software_trigger_enable
+                0x0000000008000730       0x20 build/gd32vf103_adc.o
+                0x0000000008000730                adc_software_trigger_enable
  .text.gpio_init
-                0x0000000008000858       0xa8 build/gd32vf103_gpio.o
-                0x0000000008000858                gpio_init
- .text.i2c_clock_config
-                0x0000000008000900      0x16c build/gd32vf103_i2c.o
-                0x0000000008000900                i2c_clock_config
- .text.i2c_ack_config
-                0x0000000008000a6c       0x1a build/gd32vf103_i2c.o
-                0x0000000008000a6c                i2c_ack_config
- .text.i2c_master_addressing
-                0x0000000008000a86       0x12 build/gd32vf103_i2c.o
-                0x0000000008000a86                i2c_master_addressing
- .text.i2c_enable
-                0x0000000008000a98        0xa build/gd32vf103_i2c.o
-                0x0000000008000a98                i2c_enable
- .text.i2c_start_on_bus
-                0x0000000008000aa2        0xa build/gd32vf103_i2c.o
-                0x0000000008000aa2                i2c_start_on_bus
- .text.i2c_stop_on_bus
-                0x0000000008000aac        0xa build/gd32vf103_i2c.o
-                0x0000000008000aac                i2c_stop_on_bus
- .text.i2c_data_transmit
-                0x0000000008000ab6        0x4 build/gd32vf103_i2c.o
-                0x0000000008000ab6                i2c_data_transmit
- .text.i2c_data_receive
-                0x0000000008000aba        0x8 build/gd32vf103_i2c.o
-                0x0000000008000aba                i2c_data_receive
- .text.i2c_flag_get
-                0x0000000008000ac2       0x14 build/gd32vf103_i2c.o
-                0x0000000008000ac2                i2c_flag_get
- .text.i2c_flag_clear
-                0x0000000008000ad6       0x2a build/gd32vf103_i2c.o
-                0x0000000008000ad6                i2c_flag_clear
+                0x0000000008000750       0xa8 build/gd32vf103_gpio.o
+                0x0000000008000750                gpio_init
  .text.rcu_periph_clock_enable
-                0x0000000008000b00       0x18 build/gd32vf103_rcu.o
-                0x0000000008000b00                rcu_periph_clock_enable
+                0x00000000080007f8       0x18 build/gd32vf103_rcu.o
+                0x00000000080007f8                rcu_periph_clock_enable
  .text.rcu_periph_reset_enable
-                0x0000000008000b18       0x18 build/gd32vf103_rcu.o
-                0x0000000008000b18                rcu_periph_reset_enable
+                0x0000000008000810       0x18 build/gd32vf103_rcu.o
+                0x0000000008000810                rcu_periph_reset_enable
  .text.rcu_periph_reset_disable
-                0x0000000008000b30       0x1c build/gd32vf103_rcu.o
-                0x0000000008000b30                rcu_periph_reset_disable
+                0x0000000008000828       0x1c build/gd32vf103_rcu.o
+                0x0000000008000828                rcu_periph_reset_disable
  .text.rcu_adc_clock_config
-                0x0000000008000b4c       0x46 build/gd32vf103_rcu.o
-                0x0000000008000b4c                rcu_adc_clock_config
- .text.rcu_clock_freq_get
-                0x0000000008000b92      0x13c build/gd32vf103_rcu.o
-                0x0000000008000b92                rcu_clock_freq_get
- .text.timer_deinit
-                0x0000000008000cce      0x10e build/gd32vf103_timer.o
-                0x0000000008000cce                timer_deinit
- .text.timer_struct_para_init
-                0x0000000008000ddc       0x18 build/gd32vf103_timer.o
-                0x0000000008000ddc                timer_struct_para_init
+                0x0000000008000844       0x46 build/gd32vf103_rcu.o
+                0x0000000008000844                rcu_adc_clock_config
  .text.timer_init
-                0x0000000008000df4       0xc0 build/gd32vf103_timer.o
-                0x0000000008000df4                timer_init
+                0x000000000800088a       0xc0 build/gd32vf103_timer.o
+                0x000000000800088a                timer_init
  .text.timer_enable
-                0x0000000008000eb4        0xa build/gd32vf103_timer.o
-                0x0000000008000eb4                timer_enable
- .text.timer_auto_reload_shadow_enable
-                0x0000000008000ebe        0xa build/gd32vf103_timer.o
-                0x0000000008000ebe                timer_auto_reload_shadow_enable
+                0x000000000800094a        0xa build/gd32vf103_timer.o
+                0x000000000800094a                timer_enable
  .text.timer_autoreload_value_config
-                0x0000000008000ec8        0x4 build/gd32vf103_timer.o
-                0x0000000008000ec8                timer_autoreload_value_config
+                0x0000000008000954        0x4 build/gd32vf103_timer.o
+                0x0000000008000954                timer_autoreload_value_config
  .text.timer_primary_output_config
-                0x0000000008000ecc       0x1c build/gd32vf103_timer.o
-                0x0000000008000ecc                timer_primary_output_config
- .text.timer_channel_output_struct_para_init
-                0x0000000008000ee8       0x1a build/gd32vf103_timer.o
-                0x0000000008000ee8                timer_channel_output_struct_para_init
+                0x0000000008000958       0x1c build/gd32vf103_timer.o
+                0x0000000008000958                timer_primary_output_config
  .text.timer_channel_output_config
-                0x0000000008000f02      0x25c build/gd32vf103_timer.o
-                0x0000000008000f02                timer_channel_output_config
+                0x0000000008000974      0x25c build/gd32vf103_timer.o
+                0x0000000008000974                timer_channel_output_config
  .text.timer_channel_output_mode_config
-                0x000000000800115e       0x5e build/gd32vf103_timer.o
-                0x000000000800115e                timer_channel_output_mode_config
+                0x0000000008000bd0       0x5e build/gd32vf103_timer.o
+                0x0000000008000bd0                timer_channel_output_mode_config
  .text.timer_channel_output_pulse_value_config
-                0x00000000080011bc       0x26 build/gd32vf103_timer.o
-                0x00000000080011bc                timer_channel_output_pulse_value_config
+                0x0000000008000c2e       0x26 build/gd32vf103_timer.o
+                0x0000000008000c2e                timer_channel_output_pulse_value_config
  .text.timer_channel_output_shadow_config
-                0x00000000080011e2       0x5e build/gd32vf103_timer.o
-                0x00000000080011e2                timer_channel_output_shadow_config
+                0x0000000008000c54       0x5e build/gd32vf103_timer.o
+                0x0000000008000c54                timer_channel_output_shadow_config
  .text.usart_data_transmit
-                0x0000000008001240        0x8 build/gd32vf103_usart.o
-                0x0000000008001240                usart_data_transmit
+                0x0000000008000cb2        0x8 build/gd32vf103_usart.o
+                0x0000000008000cb2                usart_data_transmit
  .text.usart_flag_get
-                0x0000000008001248       0x14 build/gd32vf103_usart.o
-                0x0000000008001248                usart_flag_get
+                0x0000000008000cba       0x14 build/gd32vf103_usart.o
+                0x0000000008000cba                usart_flag_get
  .text.SystemInit
-                0x000000000800125c      0x11e build/system_gd32vf103.o
-                0x000000000800125c                SystemInit
- .text._exit    0x000000000800137a       0x78 build/_exit.o
-                0x000000000800137a                _exit
+                0x0000000008000cce      0x11e build/system_gd32vf103.o
+                0x0000000008000cce                SystemInit
+ .text._exit    0x0000000008000dec       0x78 build/_exit.o
+                0x0000000008000dec                _exit
  .text._put_char
-                0x00000000080013f2       0x3c build/write.o
-                0x00000000080013f2                _put_char
- .text._write   0x000000000800142e       0x52 build/write.o
-                0x000000000800142e                _write
+                0x0000000008000e64       0x3c build/write.o
+                0x0000000008000e64                _put_char
+ .text._write   0x0000000008000ea0       0x52 build/write.o
+                0x0000000008000ea0                _write
  .text.write_hex
-                0x0000000008001480       0x9a build/write_hex.o
-                0x0000000008001480                write_hex
+                0x0000000008000ef2       0x9a build/write_hex.o
+                0x0000000008000ef2                write_hex
  .text.get_timer_value
-                0x000000000800151a       0x10 build/n200_func.o
-                0x000000000800151a                get_timer_value
+                0x0000000008000f8c       0x10 build/n200_func.o
+                0x0000000008000f8c                get_timer_value
  .text.eclic_init
-                0x000000000800152a       0x24 build/n200_func.o
-                0x000000000800152a                eclic_init
+                0x0000000008000f9c       0x24 build/n200_func.o
+                0x0000000008000f9c                eclic_init
  .text.eclic_mode_enable
-                0x000000000800154e       0x12 build/n200_func.o
-                0x000000000800154e                eclic_mode_enable
+                0x0000000008000fc0       0x12 build/n200_func.o
+                0x0000000008000fc0                eclic_mode_enable
  .text.handle_nmi
-                0x0000000008001560       0x22 build/handlers.o
-                0x0000000008001560                handle_nmi
+                0x0000000008000fd2       0x22 build/handlers.o
+                0x0000000008000fd2                handle_nmi
  .text.handle_trap
-                0x0000000008001582       0x3a build/handlers.o
-                0x0000000008001582                handle_trap
- .text._init    0x00000000080015bc       0x2c build/init.o
-                0x00000000080015bc                _init
- .text._fini    0x00000000080015e8        0x2 build/init.o
-                0x00000000080015e8                _fini
- .text.cordic_atan
-                0x00000000080015ea       0x82 build/cordic-math.o
-                0x00000000080015ea                cordic_atan
+                0x0000000008000ff4       0x3a build/handlers.o
+                0x0000000008000ff4                handle_trap
+ .text._init    0x000000000800102e       0x2c build/init.o
+                0x000000000800102e                _init
+ .text._fini    0x000000000800105a        0x2 build/init.o
+                0x000000000800105a                _fini
  .text.delay_1ms
-                0x000000000800166c       0xce build/delay.o
-                0x000000000800166c                delay_1ms
- .text.millis   0x000000000800173a       0x62 build/delay.o
-                0x000000000800173a                millis
- .text.mpu_delay
-                0x000000000800179c       0xce build/gd32v_mpu6500_if.o
-                0x000000000800179c                mpu_delay
- .text.i2c_master_read_register
-                0x000000000800186a      0x144 build/gd32v_mpu6500_if.o
-                0x000000000800186a                i2c_master_read_register
- .text.i2c_master_write_register
-                0x00000000080019ae       0xea build/gd32v_mpu6500_if.o
-                0x00000000080019ae                i2c_master_write_register
- .text.mpu6500_install
-                0x0000000008001a98       0x58 build/gd32v_mpu6500_if.o
-                0x0000000008001a98                mpu6500_install
- .text.mpu6500_init
-                0x0000000008001af0      0x144 build/mpu6500_driver.o
-                0x0000000008001af0                mpu6500_init
- .text.mpu6500_getAccel
-                0x0000000008001c34       0x88 build/mpu6500_driver.o
-                0x0000000008001c34                mpu6500_getAccel
- .text.mpu6500_getGyro
-                0x0000000008001cbc       0x88 build/mpu6500_driver.o
-                0x0000000008001cbc                mpu6500_getGyro
- .text.mpu6500_getGyroAccel
-                0x0000000008001d44       0x26 build/mpu6500_driver.o
-                0x0000000008001d44                mpu6500_getGyroAccel
+                0x000000000800105c       0xce build/delay.o
+                0x000000000800105c                delay_1ms
  .text.init_ADC_B0
-                0x0000000008001d6a       0xf0 build/main.o
-                0x0000000008001d6a                init_ADC_B0
- .text.initCMG  0x0000000008001e5a       0x6c build/main.o
-                0x0000000008001e5a                initCMG
- .text.InitPWM  0x0000000008001ec6      0x1b0 build/pwm.o
-                0x0000000008001ec6                InitPWM
- .text.motorStartupSeq
-                0x0000000008002076       0x98 build/pwm.o
-                0x0000000008002076                motorStartupSeq
- .text.initServoA
-                0x000000000800210e       0xdc build/pwm.o
-                0x000000000800210e                initServoA
- .text.MoveServoA
-                0x00000000080021ea       0x38 build/pwm.o
-                0x00000000080021ea                MoveServoA
- *fill*         0x0000000008002222       0x1e 
- .text.trap     0x0000000008002240       0x82 build/entry.o
-                0x0000000008002240                trap_entry
- *fill*         0x00000000080022c2        0x2 
- .text.irq      0x00000000080022c4       0x72 build/entry.o
-                0x00000000080022c4                irq_entry
- .text          0x0000000008002336      0x5fa /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
-                0x0000000008002336                __adddf3
- .text          0x0000000008002930      0x546 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
-                0x0000000008002930                __divdf3
- .text          0x0000000008002e76       0xa4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
-                0x0000000008002e76                __ltdf2
-                0x0000000008002e76                __ledf2
- .text          0x0000000008002f1a      0x44c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
-                0x0000000008002f1a                __muldf3
- .text          0x0000000008003366       0x64 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
-                0x0000000008003366                __fixdfsi
- .text          0x00000000080033ca       0x70 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
-                0x00000000080033ca                __floatsidf
- .text          0x000000000800343a       0x56 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
-                0x000000000800343a                __floatunsidf
- .text          0x0000000008003490      0x166 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
-                0x0000000008003490                __floatundidf
- .text          0x00000000080035f6       0x60 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
-                0x00000000080035f6                __fixsfsi
- .text          0x0000000008003656       0xc0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
-                0x0000000008003656                __floatsisf
- .text          0x0000000008003716       0x2a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
-                0x0000000008003716                __lshrdi3
- .text          0x0000000008003740       0x2a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
-                0x0000000008003740                __ashldi3
- .text          0x000000000800376a       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
-                0x000000000800376a                __clzsi2
- .text          0x00000000080037a6       0x10 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-atexit.o)
-                0x00000000080037a6                atexit
- .text          0x00000000080037b6       0x2c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-exit.o)
-                0x00000000080037b6                exit
- .text          0x00000000080037e2       0x3a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
-                0x00000000080037e2                __libc_fini_array
- .text          0x000000000800381c       0x6a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
-                0x000000000800381c                __libc_init_array
- .text          0x0000000008003886       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-syswrite.o)
-                0x0000000008003886                write
- .text          0x000000000800389e       0x44 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-writer.o)
-                0x000000000800389e                _write_r
- .text          0x00000000080038e2       0x72 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__atexit.o)
-                0x00000000080038e2                __register_exitproc
- .text          0x0000000008003954       0xc2 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
-                0x0000000008003954                __call_exitprocs
+                0x000000000800112a       0xf0 build/main.o
+                0x000000000800112a                init_ADC_B0
+ .text.initMotorA
+                0x000000000800121a       0xdc build/pwm.o
+                0x000000000800121a                initMotorA
+ .text.SetMotorA
+                0x00000000080012f6       0x16 build/pwm.o
+                0x00000000080012f6                SetMotorA
+ *fill*         0x000000000800130c       0x34 
+ .text.trap     0x0000000008001340       0x82 build/entry.o
+                0x0000000008001340                trap_entry
+ *fill*         0x00000000080013c2        0x2 
+ .text.irq      0x00000000080013c4       0x72 build/entry.o
+                0x00000000080013c4                irq_entry
+ .text          0x0000000008001436      0x546 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+                0x0000000008001436                __divdf3
+ .text          0x000000000800197c       0xa4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+                0x000000000800197c                __ltdf2
+                0x000000000800197c                __ledf2
+ .text          0x0000000008001a20      0x44c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+                0x0000000008001a20                __muldf3
+ .text          0x0000000008001e6c       0x56 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+                0x0000000008001e6c                __floatunsidf
+ .text          0x0000000008001ec2      0x166 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+                0x0000000008001ec2                __floatundidf
+ .text          0x0000000008002028       0x2a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+                0x0000000008002028                __lshrdi3
+ .text          0x0000000008002052       0x2a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+                0x0000000008002052                __ashldi3
+ .text          0x000000000800207c       0x3c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+                0x000000000800207c                __clzsi2
+ .text          0x00000000080020b8       0x10 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-atexit.o)
+                0x00000000080020b8                atexit
+ .text          0x00000000080020c8       0x2c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-exit.o)
+                0x00000000080020c8                exit
+ .text          0x00000000080020f4       0x3a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
+                0x00000000080020f4                __libc_fini_array
+ .text          0x000000000800212e       0x6a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
+                0x000000000800212e                __libc_init_array
+ .text          0x0000000008002198       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-syswrite.o)
+                0x0000000008002198                write
+ .text          0x00000000080021b0       0x44 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-writer.o)
+                0x00000000080021b0                _write_r
+ .text          0x00000000080021f4       0x72 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__atexit.o)
+                0x00000000080021f4                __register_exitproc
+ .text          0x0000000008002266       0xc2 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
+                0x0000000008002266                __call_exitprocs
  *(.gnu.linkonce.t.*)
 
-.rela.dyn       0x0000000008003a18        0x0
+.rela.dyn       0x0000000008002328        0x0
  .rela.text._write
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
+                0x0000000008002328        0x0 build/gd32vf103_adc.o
  .rela.text.handle_trap
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
- .rela.text.mpu6500_install
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
- .rela.text.mpu6500_init
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
- .rela.text.mpu6500_getAccel
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
- .rela.text.mpu6500_getGyro
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
- .rela.init     0x0000000008003a18        0x0 build/gd32vf103_adc.o
+                0x0000000008002328        0x0 build/gd32vf103_adc.o
+ .rela.init     0x0000000008002328        0x0 build/gd32vf103_adc.o
  .rela.text.trap
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
- .rela.text     0x0000000008003a18        0x0 build/gd32vf103_adc.o
+                0x0000000008002328        0x0 build/gd32vf103_adc.o
+ .rela.text     0x0000000008002328        0x0 build/gd32vf103_adc.o
  .rela.text.startup
-                0x0000000008003a18        0x0 build/gd32vf103_adc.o
+                0x0000000008002328        0x0 build/gd32vf103_adc.o
 
 .fini
  *(SORT_NONE(.fini))
-                0x0000000008003a18                . = ALIGN (0x4)
+                0x0000000008002328                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
                 [!provide]                        PROVIDE (_eilm = .)
 
-.preinit_array  0x0000000008003a16        0x0
-                0x0000000008003a16                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008002328        0x0
+                0x0000000008002328                PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
-                0x0000000008003a16                PROVIDE (__preinit_array_end = .)
+                0x0000000008002328                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0000000008003a18        0x4
-                0x0000000008003a18                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008002328        0x4
+                0x0000000008002328                PROVIDE (__init_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
  .init_array.00000
-                0x0000000008003a18        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
+                0x0000000008002328        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
-                0x0000000008003a1c                PROVIDE (__init_array_end = .)
+                0x000000000800232c                PROVIDE (__init_array_end = .)
 
-.fini_array     0x0000000008003a1c        0x0
-                0x0000000008003a1c                PROVIDE (__fini_array_start = .)
+.fini_array     0x000000000800232c        0x0
+                0x000000000800232c                PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
-                0x0000000008003a1c                PROVIDE (__fini_array_end = .)
+                0x000000000800232c                PROVIDE (__fini_array_end = .)
 
 .ctors
  *crtbegin.o(.ctors)
@@ -2064,400 +1826,310 @@ LOAD /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-un
  *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x0000000008003a1c                . = ALIGN (0x4)
+                0x000000000800232c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_eilm = .)
 
-.lalign         0x0000000008003a1c        0x0
-                0x0000000008003a1c                . = ALIGN (0x4)
-                0x0000000008003a1c                PROVIDE (_data_lma = .)
+.lalign         0x000000000800232c        0x0
+                0x000000000800232c                . = ALIGN (0x4)
+                0x000000000800232c                PROVIDE (_data_lma = .)
 
-.dalign         0x0000000020000000        0x0 load address 0x0000000008003a1c
+.dalign         0x0000000020000000        0x0 load address 0x000000000800232c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                PROVIDE (_data = .)
 
-.data           0x0000000020000000      0x474 load address 0x0000000008003a1c
+.data           0x0000000020000000      0x434 load address 0x000000000800232c
  *(.rdata)
  *(.gnu.linkonce.r.*)
  *(.data .data.*)
- .data.LUT_CORDIC_ATAN
-                0x0000000020000000       0x3c build/cordic-math.o
-                0x0000000020000000                LUT_CORDIC_ATAN
- *fill*         0x000000002000003c        0x4 
- .data          0x0000000020000040      0x428 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
+ .data          0x0000000020000000      0x428 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
  *(.gnu.linkonce.d.*)
-                0x0000000020000468                . = ALIGN (0x8)
-                0x0000000020000c68                PROVIDE (__global_pointer$ = (. + 0x800))
+                0x0000000020000428                . = ALIGN (0x8)
+                0x0000000020000c28                PROVIDE (__global_pointer$ = (. + 0x800))
  *(.sdata .sdata.*)
  .sdata.SystemCoreClock
-                0x0000000020000468        0x4 build/system_gd32vf103.o
-                0x0000000020000468                SystemCoreClock
- .sdata         0x000000002000046c        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
-                0x000000002000046c                _impure_ptr
+                0x0000000020000428        0x4 build/system_gd32vf103.o
+                0x0000000020000428                SystemCoreClock
+ .sdata         0x000000002000042c        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
+                0x000000002000042c                _impure_ptr
  *(.gnu.linkonce.s.*)
-                0x0000000020000470                . = ALIGN (0x8)
+                0x0000000020000430                . = ALIGN (0x8)
  *(.srodata.cst16)
  *(.srodata.cst8)
  *(.srodata.cst4)
  *(.srodata.cst2)
  *(.srodata .srodata.*)
- .srodata       0x0000000020000470        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
-                0x0000000020000470                _global_impure_ptr
-                0x0000000020000474                . = ALIGN (0x4)
-                0x0000000020000474                PROVIDE (_edata = .)
+ .srodata       0x0000000020000430        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
+                0x0000000020000430                _global_impure_ptr
+                0x0000000020000434                . = ALIGN (0x4)
+                0x0000000020000434                PROVIDE (_edata = .)
                 [!provide]                        PROVIDE (edata = .)
                 [!provide]                        PROVIDE (_fbss = .)
-                0x0000000020000474                PROVIDE (__bss_start = .)
+                0x0000000020000434                PROVIDE (__bss_start = .)
 
-.bss            0x0000000020000474       0x18
+.bss            0x0000000020000434        0x4
  *(.sbss*)
  *(.gnu.linkonce.sb.*)
  *(.bss .bss.*)
  *(.gnu.linkonce.b.*)
  *(COMMON)
- COMMON         0x0000000020000474        0x4 build/gd32v_mpu6500_if.o
-                0x0000000020000474                i2c_port
- COMMON         0x0000000020000478       0x10 build/mpu6500_driver.o
-                0x0000000020000478                cb
- COMMON         0x0000000020000488        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-reent.o)
-                0x0000000020000488                errno
-                0x000000002000048c                . = ALIGN (0x4)
-                0x0000000020000490                . = ALIGN (0x8)
-                0x0000000020000490                PROVIDE (_end = .)
+ COMMON         0x0000000020000434        0x4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-reent.o)
+                0x0000000020000434                errno
+                0x0000000020000438                . = ALIGN (0x4)
+                0x0000000020000438                . = ALIGN (0x8)
+                0x0000000020000438                PROVIDE (_end = .)
                 [!provide]                        PROVIDE (end = .)
 
-.stack          0x0000000020007800      0x800 load address 0x000000002000048c
+.stack          0x0000000020007800      0x800 load address 0x0000000020000438
                 0x0000000020007800                PROVIDE (_heap_end = .)
                 0x0000000000000800                . = __stack_size
  *fill*         0x0000000020007800      0x800 
                 0x0000000020008000                PROVIDE (_sp = .)
 OUTPUT(build/gd32vf103.elf elf32-littleriscv)
 
-.debug_info     0x0000000000000000    0x137d1
+.debug_info     0x0000000000000000     0xe04e
  .debug_info    0x0000000000000000      0xbbe build/gd32vf103_adc.o
  .debug_info    0x0000000000000bbe      0x758 build/gd32vf103_gpio.o
- .debug_info    0x0000000000001316      0xc21 build/gd32vf103_i2c.o
- .debug_info    0x0000000000001f37     0x10b4 build/gd32vf103_rcu.o
- .debug_info    0x0000000000002feb     0x1852 build/gd32vf103_timer.o
- .debug_info    0x000000000000483d      0xd4a build/gd32vf103_usart.o
- .debug_info    0x0000000000005587      0x1ff build/system_gd32vf103.o
- .debug_info    0x0000000000005786      0x1a4 build/_exit.o
- .debug_info    0x000000000000592a      0xcc6 build/write.o
- .debug_info    0x00000000000065f0      0x1da build/write_hex.o
- .debug_info    0x00000000000067ca     0x197f build/n200_func.o
- .debug_info    0x0000000000008149      0xb53 build/handlers.o
- .debug_info    0x0000000000008c9c      0xcb0 build/init.o
- .debug_info    0x000000000000994c      0x5d2 build/cordic-math.o
- .debug_info    0x0000000000009f1e      0x1e2 build/delay.o
- .debug_info    0x000000000000a100     0x1188 build/gd32v_mpu6500_if.o
- .debug_info    0x000000000000b288     0x133f build/mpu6500_driver.o
- .debug_info    0x000000000000c5c7     0x10bb build/main.o
- .debug_info    0x000000000000d682      0xb55 build/pwm.o
- .debug_info    0x000000000000e1d7       0x26 build/start.o
- .debug_info    0x000000000000e1fd       0x22 build/entry.o
- .debug_info    0x000000000000e21f      0x5a5 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .debug_info    0x000000000000e7c4      0x734 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .debug_info    0x000000000000eef8      0x286 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
- .debug_info    0x000000000000f17e      0x76c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .debug_info    0x000000000000f8ea      0x217 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_info    0x000000000000fb01      0x2c0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_info    0x000000000000fdc1      0x2af /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_info    0x0000000000010070      0x2e8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_info    0x0000000000010358      0x1f7 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_info    0x000000000001054f      0x25d /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_info    0x00000000000107ac      0xc72 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
- .debug_info    0x000000000001141e      0xc72 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
- .debug_info    0x0000000000012090      0xbd7 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
- .debug_info    0x0000000000012c67      0xb6a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+ .debug_info    0x0000000000001316     0x10b4 build/gd32vf103_rcu.o
+ .debug_info    0x00000000000023ca     0x1852 build/gd32vf103_timer.o
+ .debug_info    0x0000000000003c1c      0xd4a build/gd32vf103_usart.o
+ .debug_info    0x0000000000004966      0x1ff build/system_gd32vf103.o
+ .debug_info    0x0000000000004b65      0x1a4 build/_exit.o
+ .debug_info    0x0000000000004d09      0xcc6 build/write.o
+ .debug_info    0x00000000000059cf      0x1da build/write_hex.o
+ .debug_info    0x0000000000005ba9     0x197f build/n200_func.o
+ .debug_info    0x0000000000007528      0xb53 build/handlers.o
+ .debug_info    0x000000000000807b      0xcb0 build/init.o
+ .debug_info    0x0000000000008d2b      0x1e2 build/delay.o
+ .debug_info    0x0000000000008f0d      0x4e2 build/main.o
+ .debug_info    0x00000000000093ef      0x535 build/pwm.o
+ .debug_info    0x0000000000009924       0x26 build/start.o
+ .debug_info    0x000000000000994a       0x22 build/entry.o
+ .debug_info    0x000000000000996c      0x734 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_info    0x000000000000a0a0      0x286 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_info    0x000000000000a326      0x76c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_info    0x000000000000aa92      0x2af /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_info    0x000000000000ad41      0x2e8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_info    0x000000000000b029      0xc72 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+ .debug_info    0x000000000000bc9b      0xc72 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+ .debug_info    0x000000000000c90d      0xbd7 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_info    0x000000000000d4e4      0xb6a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
 
-.debug_abbrev   0x0000000000000000     0x426f
+.debug_abbrev   0x0000000000000000     0x2efe
  .debug_abbrev  0x0000000000000000      0x21b build/gd32vf103_adc.o
  .debug_abbrev  0x000000000000021b      0x21f build/gd32vf103_gpio.o
- .debug_abbrev  0x000000000000043a      0x20a build/gd32vf103_i2c.o
- .debug_abbrev  0x0000000000000644      0x2c4 build/gd32vf103_rcu.o
- .debug_abbrev  0x0000000000000908      0x308 build/gd32vf103_timer.o
- .debug_abbrev  0x0000000000000c10      0x1f0 build/gd32vf103_usart.o
- .debug_abbrev  0x0000000000000e00       0xde build/system_gd32vf103.o
- .debug_abbrev  0x0000000000000ede       0xda build/_exit.o
- .debug_abbrev  0x0000000000000fb8      0x292 build/write.o
- .debug_abbrev  0x000000000000124a      0x107 build/write_hex.o
- .debug_abbrev  0x0000000000001351      0x4c9 build/n200_func.o
- .debug_abbrev  0x000000000000181a      0x234 build/handlers.o
- .debug_abbrev  0x0000000000001a4e      0x22b build/init.o
- .debug_abbrev  0x0000000000001c79      0x154 build/cordic-math.o
- .debug_abbrev  0x0000000000001dcd       0xe9 build/delay.o
- .debug_abbrev  0x0000000000001eb6      0x31a build/gd32v_mpu6500_if.o
- .debug_abbrev  0x00000000000021d0      0x31e build/mpu6500_driver.o
- .debug_abbrev  0x00000000000024ee      0x2b7 build/main.o
- .debug_abbrev  0x00000000000027a5      0x1ff build/pwm.o
- .debug_abbrev  0x00000000000029a4       0x14 build/start.o
- .debug_abbrev  0x00000000000029b8       0x12 build/entry.o
- .debug_abbrev  0x00000000000029ca      0x196 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .debug_abbrev  0x0000000000002b60      0x187 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .debug_abbrev  0x0000000000002ce7      0x199 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
- .debug_abbrev  0x0000000000002e80      0x197 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .debug_abbrev  0x0000000000003017      0x18a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_abbrev  0x00000000000031a1      0x181 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_abbrev  0x0000000000003322      0x178 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_abbrev  0x000000000000349a      0x19f /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_abbrev  0x0000000000003639      0x18a /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_abbrev  0x00000000000037c3      0x198 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_abbrev  0x000000000000395b      0x275 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
- .debug_abbrev  0x0000000000003bd0      0x275 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
- .debug_abbrev  0x0000000000003e45      0x242 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
- .debug_abbrev  0x0000000000004087      0x1e8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+ .debug_abbrev  0x000000000000043a      0x2c4 build/gd32vf103_rcu.o
+ .debug_abbrev  0x00000000000006fe      0x308 build/gd32vf103_timer.o
+ .debug_abbrev  0x0000000000000a06      0x1f0 build/gd32vf103_usart.o
+ .debug_abbrev  0x0000000000000bf6       0xde build/system_gd32vf103.o
+ .debug_abbrev  0x0000000000000cd4       0xda build/_exit.o
+ .debug_abbrev  0x0000000000000dae      0x292 build/write.o
+ .debug_abbrev  0x0000000000001040      0x107 build/write_hex.o
+ .debug_abbrev  0x0000000000001147      0x4c9 build/n200_func.o
+ .debug_abbrev  0x0000000000001610      0x234 build/handlers.o
+ .debug_abbrev  0x0000000000001844      0x22b build/init.o
+ .debug_abbrev  0x0000000000001a6f       0xe9 build/delay.o
+ .debug_abbrev  0x0000000000001b58      0x129 build/main.o
+ .debug_abbrev  0x0000000000001c81      0x175 build/pwm.o
+ .debug_abbrev  0x0000000000001df6       0x14 build/start.o
+ .debug_abbrev  0x0000000000001e0a       0x12 build/entry.o
+ .debug_abbrev  0x0000000000001e1c      0x187 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_abbrev  0x0000000000001fa3      0x199 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_abbrev  0x000000000000213c      0x197 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_abbrev  0x00000000000022d3      0x178 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_abbrev  0x000000000000244b      0x19f /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_abbrev  0x00000000000025ea      0x275 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+ .debug_abbrev  0x000000000000285f      0x275 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+ .debug_abbrev  0x0000000000002ad4      0x242 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_abbrev  0x0000000000002d16      0x1e8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
 
-.debug_loc      0x0000000000000000     0xa522
+.debug_loc      0x0000000000000000     0x6aab
  .debug_loc     0x0000000000000000      0x936 build/gd32vf103_adc.o
  .debug_loc     0x0000000000000936      0x519 build/gd32vf103_gpio.o
- .debug_loc     0x0000000000000e4f      0x96a build/gd32vf103_i2c.o
- .debug_loc     0x00000000000017b9      0xbe4 build/gd32vf103_rcu.o
- .debug_loc     0x000000000000239d     0x1094 build/gd32vf103_timer.o
- .debug_loc     0x0000000000003431      0x824 build/gd32vf103_usart.o
- .debug_loc     0x0000000000003c55      0x1e4 build/system_gd32vf103.o
- .debug_loc     0x0000000000003e39       0x3e build/_exit.o
- .debug_loc     0x0000000000003e77      0x1d0 build/write.o
- .debug_loc     0x0000000000004047       0xd0 build/write_hex.o
- .debug_loc     0x0000000000004117      0x914 build/n200_func.o
- .debug_loc     0x0000000000004a2b       0x98 build/handlers.o
- .debug_loc     0x0000000000004ac3       0x2c build/init.o
- .debug_loc     0x0000000000004aef      0x9d4 build/cordic-math.o
- .debug_loc     0x00000000000054c3      0x154 build/delay.o
- .debug_loc     0x0000000000005617      0x3ba build/gd32v_mpu6500_if.o
- .debug_loc     0x00000000000059d1      0x877 build/mpu6500_driver.o
- .debug_loc     0x0000000000006248      0x1ae build/main.o
- .debug_loc     0x00000000000063f6      0x278 build/pwm.o
- .debug_loc     0x000000000000666e     0x1207 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .debug_loc     0x0000000000007875     0x129b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .debug_loc     0x0000000000008b10      0x156 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
- .debug_loc     0x0000000000008c66      0xd6e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .debug_loc     0x00000000000099d4      0x16d /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_loc     0x0000000000009b41      0x159 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_loc     0x0000000000009c9a      0x15c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_loc     0x0000000000009df6      0x2ec /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_loc     0x000000000000a0e2      0x12d /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_loc     0x000000000000a20f      0x1ac /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_loc     0x000000000000a3bb       0x7e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
- .debug_loc     0x000000000000a439       0x7e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
- .debug_loc     0x000000000000a4b7       0x6b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_loc     0x0000000000000e4f      0xbe4 build/gd32vf103_rcu.o
+ .debug_loc     0x0000000000001a33     0x1094 build/gd32vf103_timer.o
+ .debug_loc     0x0000000000002ac7      0x824 build/gd32vf103_usart.o
+ .debug_loc     0x00000000000032eb      0x1e4 build/system_gd32vf103.o
+ .debug_loc     0x00000000000034cf       0x3e build/_exit.o
+ .debug_loc     0x000000000000350d      0x1d0 build/write.o
+ .debug_loc     0x00000000000036dd       0xd0 build/write_hex.o
+ .debug_loc     0x00000000000037ad      0x914 build/n200_func.o
+ .debug_loc     0x00000000000040c1       0x98 build/handlers.o
+ .debug_loc     0x0000000000004159       0x2c build/init.o
+ .debug_loc     0x0000000000004185      0x154 build/delay.o
+ .debug_loc     0x00000000000042d9       0x69 build/main.o
+ .debug_loc     0x0000000000004342       0x5b build/pwm.o
+ .debug_loc     0x000000000000439d     0x129b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_loc     0x0000000000005638      0x156 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_loc     0x000000000000578e      0xd6e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_loc     0x00000000000064fc      0x15c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_loc     0x0000000000006658      0x2ec /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_loc     0x0000000000006944       0x7e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+ .debug_loc     0x00000000000069c2       0x7e /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+ .debug_loc     0x0000000000006a40       0x6b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
 
-.debug_aranges  0x0000000000000000      0xde8
+.debug_aranges  0x0000000000000000      0xaf8
  .debug_aranges
                 0x0000000000000000      0x140 build/gd32vf103_adc.o
  .debug_aranges
                 0x0000000000000140       0xa0 build/gd32vf103_gpio.o
  .debug_aranges
-                0x00000000000001e0      0x110 build/gd32vf103_i2c.o
+                0x00000000000001e0      0x160 build/gd32vf103_rcu.o
  .debug_aranges
-                0x00000000000002f0      0x160 build/gd32vf103_rcu.o
+                0x0000000000000340      0x240 build/gd32vf103_timer.o
  .debug_aranges
-                0x0000000000000450      0x240 build/gd32vf103_timer.o
+                0x0000000000000580      0x170 build/gd32vf103_usart.o
  .debug_aranges
-                0x0000000000000690      0x170 build/gd32vf103_usart.o
+                0x00000000000006f0       0x28 build/system_gd32vf103.o
  .debug_aranges
-                0x0000000000000800       0x28 build/system_gd32vf103.o
+                0x0000000000000718       0x20 build/_exit.o
  .debug_aranges
-                0x0000000000000828       0x20 build/_exit.o
+                0x0000000000000738       0x30 build/write.o
  .debug_aranges
-                0x0000000000000848       0x30 build/write.o
+                0x0000000000000768       0x20 build/write_hex.o
  .debug_aranges
-                0x0000000000000878       0x20 build/write_hex.o
+                0x0000000000000788      0x140 build/n200_func.o
  .debug_aranges
-                0x0000000000000898      0x140 build/n200_func.o
+                0x00000000000008c8       0x28 build/handlers.o
  .debug_aranges
-                0x00000000000009d8       0x28 build/handlers.o
+                0x00000000000008f0       0x28 build/init.o
  .debug_aranges
-                0x0000000000000a00       0x28 build/init.o
+                0x0000000000000918       0x30 build/delay.o
  .debug_aranges
-                0x0000000000000a28       0x80 build/cordic-math.o
+                0x0000000000000948       0x28 build/main.o
  .debug_aranges
-                0x0000000000000aa8       0x30 build/delay.o
+                0x0000000000000970       0x28 build/pwm.o
  .debug_aranges
-                0x0000000000000ad8       0x40 build/gd32v_mpu6500_if.o
+                0x0000000000000998       0x20 build/start.o
  .debug_aranges
-                0x0000000000000b18       0x50 build/mpu6500_driver.o
+                0x00000000000009b8       0x28 build/entry.o
  .debug_aranges
-                0x0000000000000b68       0x30 build/main.o
+                0x00000000000009e0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
  .debug_aranges
-                0x0000000000000b98       0x50 build/pwm.o
+                0x0000000000000a00       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
  .debug_aranges
-                0x0000000000000be8       0x20 build/start.o
+                0x0000000000000a20       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
  .debug_aranges
-                0x0000000000000c08       0x28 build/entry.o
+                0x0000000000000a40       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
  .debug_aranges
-                0x0000000000000c30       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
+                0x0000000000000a60       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
  .debug_aranges
-                0x0000000000000c50       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+                0x0000000000000a80       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
  .debug_aranges
-                0x0000000000000c70       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+                0x0000000000000aa0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
  .debug_aranges
-                0x0000000000000c90       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+                0x0000000000000ac0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
  .debug_aranges
-                0x0000000000000cb0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_aranges
-                0x0000000000000cd0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_aranges
-                0x0000000000000cf0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_aranges
-                0x0000000000000d10       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_aranges
-                0x0000000000000d30       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_aranges
-                0x0000000000000d50       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_aranges
-                0x0000000000000d70       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
- .debug_aranges
-                0x0000000000000d90       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
- .debug_aranges
-                0x0000000000000db0       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
- .debug_aranges
-                0x0000000000000dd0       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+                0x0000000000000ae0       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
 
-.debug_ranges   0x0000000000000000     0x1858
+.debug_ranges   0x0000000000000000     0x1128
  .debug_ranges  0x0000000000000000      0x130 build/gd32vf103_adc.o
  .debug_ranges  0x0000000000000130       0x90 build/gd32vf103_gpio.o
- .debug_ranges  0x00000000000001c0      0x100 build/gd32vf103_i2c.o
- .debug_ranges  0x00000000000002c0      0x270 build/gd32vf103_rcu.o
- .debug_ranges  0x0000000000000530      0x280 build/gd32vf103_timer.o
- .debug_ranges  0x00000000000007b0      0x160 build/gd32vf103_usart.o
- .debug_ranges  0x0000000000000910       0x38 build/system_gd32vf103.o
- .debug_ranges  0x0000000000000948       0x10 build/_exit.o
- .debug_ranges  0x0000000000000958       0x40 build/write.o
- .debug_ranges  0x0000000000000998       0x30 build/write_hex.o
- .debug_ranges  0x00000000000009c8      0x328 build/n200_func.o
- .debug_ranges  0x0000000000000cf0       0x18 build/handlers.o
- .debug_ranges  0x0000000000000d08       0x18 build/init.o
- .debug_ranges  0x0000000000000d20       0xa8 build/cordic-math.o
- .debug_ranges  0x0000000000000dc8       0x20 build/delay.o
- .debug_ranges  0x0000000000000de8       0x68 build/gd32v_mpu6500_if.o
- .debug_ranges  0x0000000000000e50      0x1a8 build/mpu6500_driver.o
- .debug_ranges  0x0000000000000ff8       0x20 build/main.o
- .debug_ranges  0x0000000000001018       0xa8 build/pwm.o
- .debug_ranges  0x00000000000010c0       0x20 build/entry.o
- .debug_ranges  0x00000000000010e0      0x210 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .debug_ranges  0x00000000000012f0      0x180 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .debug_ranges  0x0000000000001470       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
- .debug_ranges  0x00000000000014d8      0x1c0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .debug_ranges  0x0000000000001698       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_ranges  0x00000000000016b0       0x50 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_ranges  0x0000000000001700       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_ranges  0x0000000000001768       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_ranges  0x00000000000017d0       0x18 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_ranges  0x00000000000017e8       0x50 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_ranges  0x0000000000001838       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_ranges  0x00000000000001c0      0x270 build/gd32vf103_rcu.o
+ .debug_ranges  0x0000000000000430      0x280 build/gd32vf103_timer.o
+ .debug_ranges  0x00000000000006b0      0x160 build/gd32vf103_usart.o
+ .debug_ranges  0x0000000000000810       0x38 build/system_gd32vf103.o
+ .debug_ranges  0x0000000000000848       0x10 build/_exit.o
+ .debug_ranges  0x0000000000000858       0x40 build/write.o
+ .debug_ranges  0x0000000000000898       0x30 build/write_hex.o
+ .debug_ranges  0x00000000000008c8      0x328 build/n200_func.o
+ .debug_ranges  0x0000000000000bf0       0x18 build/handlers.o
+ .debug_ranges  0x0000000000000c08       0x18 build/init.o
+ .debug_ranges  0x0000000000000c20       0x20 build/delay.o
+ .debug_ranges  0x0000000000000c40       0x18 build/main.o
+ .debug_ranges  0x0000000000000c58       0x18 build/pwm.o
+ .debug_ranges  0x0000000000000c70       0x20 build/entry.o
+ .debug_ranges  0x0000000000000c90      0x180 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_ranges  0x0000000000000e10       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_ranges  0x0000000000000e78      0x1c0 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_ranges  0x0000000000001038       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_ranges  0x00000000000010a0       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_ranges  0x0000000000001108       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
 
-.debug_line     0x0000000000000000    0x127d4
+.debug_line     0x0000000000000000     0xdd3e
  .debug_line    0x0000000000000000     0x1573 build/gd32vf103_adc.o
  .debug_line    0x0000000000001573      0xc13 build/gd32vf103_gpio.o
- .debug_line    0x0000000000002186     0x107f build/gd32vf103_i2c.o
- .debug_line    0x0000000000003205     0x1684 build/gd32vf103_rcu.o
- .debug_line    0x0000000000004889     0x2df3 build/gd32vf103_timer.o
- .debug_line    0x000000000000767c      0xec8 build/gd32vf103_usart.o
- .debug_line    0x0000000000008544      0x75d build/system_gd32vf103.o
- .debug_line    0x0000000000008ca1      0x14f build/_exit.o
- .debug_line    0x0000000000008df0      0x43d build/write.o
- .debug_line    0x000000000000922d      0x251 build/write_hex.o
- .debug_line    0x000000000000947e     0x135e build/n200_func.o
- .debug_line    0x000000000000a7dc      0x24c build/handlers.o
- .debug_line    0x000000000000aa28      0x28b build/init.o
- .debug_line    0x000000000000acb3      0xaaf build/cordic-math.o
- .debug_line    0x000000000000b762      0x3f7 build/delay.o
- .debug_line    0x000000000000bb59      0x8e7 build/gd32v_mpu6500_if.o
- .debug_line    0x000000000000c440      0x858 build/mpu6500_driver.o
- .debug_line    0x000000000000cc98      0x600 build/main.o
- .debug_line    0x000000000000d298      0x63e build/pwm.o
- .debug_line    0x000000000000d8d6      0x187 build/start.o
- .debug_line    0x000000000000da5d       0xe3 build/entry.o
- .debug_line    0x000000000000db40      0xefa /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .debug_line    0x000000000000ea3a      0xe35 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .debug_line    0x000000000000f86f      0x303 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
- .debug_line    0x000000000000fb72      0xbf8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .debug_line    0x000000000001076a      0x221 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_line    0x000000000001098b      0x21f /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_line    0x0000000000010baa      0x239 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_line    0x0000000000010de3      0x3f5 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_line    0x00000000000111d8      0x207 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_line    0x00000000000113df      0x2fb /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_line    0x00000000000116da      0x488 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
- .debug_line    0x0000000000011b62      0x488 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
- .debug_line    0x0000000000011fea      0x436 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
- .debug_line    0x0000000000012420      0x3b4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+ .debug_line    0x0000000000002186     0x1684 build/gd32vf103_rcu.o
+ .debug_line    0x000000000000380a     0x2df3 build/gd32vf103_timer.o
+ .debug_line    0x00000000000065fd      0xec8 build/gd32vf103_usart.o
+ .debug_line    0x00000000000074c5      0x75d build/system_gd32vf103.o
+ .debug_line    0x0000000000007c22      0x14f build/_exit.o
+ .debug_line    0x0000000000007d71      0x43d build/write.o
+ .debug_line    0x00000000000081ae      0x251 build/write_hex.o
+ .debug_line    0x00000000000083ff     0x135e build/n200_func.o
+ .debug_line    0x000000000000975d      0x24c build/handlers.o
+ .debug_line    0x00000000000099a9      0x28b build/init.o
+ .debug_line    0x0000000000009c34      0x3f7 build/delay.o
+ .debug_line    0x000000000000a02b      0x34e build/main.o
+ .debug_line    0x000000000000a379      0x303 build/pwm.o
+ .debug_line    0x000000000000a67c      0x187 build/start.o
+ .debug_line    0x000000000000a803       0xe3 build/entry.o
+ .debug_line    0x000000000000a8e6      0xe35 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_line    0x000000000000b71b      0x303 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_line    0x000000000000ba1e      0xbf8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_line    0x000000000000c616      0x239 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_line    0x000000000000c84f      0x3f5 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_line    0x000000000000cc44      0x488 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+ .debug_line    0x000000000000d0cc      0x488 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+ .debug_line    0x000000000000d554      0x436 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_line    0x000000000000d98a      0x3b4 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
 
-.debug_str      0x0000000000000000     0x4772
+.debug_str      0x0000000000000000     0x3ca0
  .debug_str     0x0000000000000000      0x839 build/gd32vf103_adc.o
                                         0x8b2 (size before relaxing)
- .debug_str     0x0000000000000839      0x1e8 build/gd32vf103_gpio.o
+ .debug_str     0x0000000000000839      0x1ee build/gd32vf103_gpio.o
                                         0x59a (size before relaxing)
- .debug_str     0x0000000000000a21      0x64e build/gd32vf103_i2c.o
-                                        0x9d2 (size before relaxing)
- .debug_str     0x000000000000106f      0xa45 build/gd32vf103_rcu.o
+ .debug_str     0x0000000000000a27      0xa7f build/gd32vf103_rcu.o
                                         0xe01 (size before relaxing)
- .debug_str     0x0000000000001ab4      0xb10 build/gd32vf103_timer.o
+ .debug_str     0x00000000000014a6      0xb10 build/gd32vf103_timer.o
                                         0xede (size before relaxing)
- .debug_str     0x00000000000025c4      0x589 build/gd32vf103_usart.o
+ .debug_str     0x0000000000001fb6      0x59e build/gd32vf103_usart.o
                                         0x961 (size before relaxing)
- .debug_str     0x0000000000002b4d       0xa4 build/system_gd32vf103.o
+ .debug_str     0x0000000000002554       0xa4 build/system_gd32vf103.o
                                         0x26c (size before relaxing)
- .debug_str     0x0000000000002bf1       0x66 build/_exit.o
+ .debug_str     0x00000000000025f8       0x66 build/_exit.o
                                         0x1c3 (size before relaxing)
- .debug_str     0x0000000000002c57      0x41b build/write.o
+ .debug_str     0x000000000000265e      0x41b build/write.o
                                         0x6ce (size before relaxing)
- .debug_str     0x0000000000003072       0x35 build/write_hex.o
+ .debug_str     0x0000000000002a79       0x35 build/write_hex.o
                                         0x1d4 (size before relaxing)
- .debug_str     0x00000000000030a7      0x388 build/n200_func.o
+ .debug_str     0x0000000000002aae      0x388 build/n200_func.o
                                         0x978 (size before relaxing)
- .debug_str     0x000000000000342f       0x56 build/handlers.o
+ .debug_str     0x0000000000002e36       0x56 build/handlers.o
                                         0x5d1 (size before relaxing)
- .debug_str     0x0000000000003485      0x3e5 build/init.o
+ .debug_str     0x0000000000002e8c      0x3e5 build/init.o
                                         0x9a1 (size before relaxing)
- .debug_str     0x000000000000386a       0xf4 build/cordic-math.o
-                                        0x291 (size before relaxing)
- .debug_str     0x000000000000395e       0x31 build/delay.o
+ .debug_str     0x0000000000003271       0x31 build/delay.o
                                         0x1e8 (size before relaxing)
- .debug_str     0x000000000000398f       0x92 build/gd32v_mpu6500_if.o
-                                        0x858 (size before relaxing)
- .debug_str     0x0000000000003a21      0x102 build/mpu6500_driver.o
-                                        0x687 (size before relaxing)
- .debug_str     0x0000000000003b23       0xa0 build/main.o
-                                        0x922 (size before relaxing)
- .debug_str     0x0000000000003bc3       0x56 build/pwm.o
-                                        0x5d1 (size before relaxing)
- .debug_str     0x0000000000003c19       0x35 build/start.o
+ .debug_str     0x00000000000032a2       0x72 build/main.o
+                                        0x469 (size before relaxing)
+ .debug_str     0x0000000000003314       0x2f build/pwm.o
+                                        0x50f (size before relaxing)
+ .debug_str     0x0000000000003343       0x35 build/start.o
                                          0x76 (size before relaxing)
- .debug_str     0x0000000000003c4e       0x29 build/entry.o
+ .debug_str     0x0000000000003378       0x29 build/entry.o
                                          0x76 (size before relaxing)
- .debug_str     0x0000000000003c77      0x306 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
-                                        0x391 (size before relaxing)
- .debug_str     0x0000000000003f7d      0x1e2 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_str     0x00000000000033a1      0x3c8 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
                                         0x453 (size before relaxing)
- .debug_str     0x000000000000415f       0x7b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_str     0x0000000000003769       0x7b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
                                         0x2cf (size before relaxing)
- .debug_str     0x00000000000041da      0x15f /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_str     0x00000000000037e4      0x15f /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
                                         0x4ab (size before relaxing)
- .debug_str     0x0000000000004339       0x57 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
-                                        0x2a8 (size before relaxing)
- .debug_str     0x0000000000004390       0x6d /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
-                                        0x33e (size before relaxing)
- .debug_str     0x00000000000043fd       0x44 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_str     0x0000000000003943       0xfd /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
                                         0x33b (size before relaxing)
- .debug_str     0x0000000000004441       0x4c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_str     0x0000000000003a40       0x4c /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
                                         0x345 (size before relaxing)
- .debug_str     0x000000000000448d       0x69 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
-                                        0x296 (size before relaxing)
- .debug_str     0x00000000000044f6       0x68 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
-                                        0x31f (size before relaxing)
- .debug_str     0x000000000000455e      0x1fc /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+ .debug_str     0x0000000000003a8c      0x1fc /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
                                         0x861 (size before relaxing)
- .debug_str     0x000000000000475a        0xa /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+ .debug_str     0x0000000000003c88        0xa /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
                                         0x861 (size before relaxing)
- .debug_str     0x0000000000004764        0xe /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_str     0x0000000000003c92        0xe /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
                                         0x82f (size before relaxing)
- .debug_str     0x0000000000004772      0x812 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+ .debug_str     0x0000000000003ca0      0x812 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
 
 .comment        0x0000000000000000       0x28
  .comment       0x0000000000000000       0x28 build/gd32vf103_adc.o
                                          0x29 (size before relaxing)
  .comment       0x0000000000000028       0x29 build/gd32vf103_gpio.o
- .comment       0x0000000000000028       0x29 build/gd32vf103_i2c.o
  .comment       0x0000000000000028       0x29 build/gd32vf103_rcu.o
  .comment       0x0000000000000028       0x29 build/gd32vf103_timer.o
  .comment       0x0000000000000028       0x29 build/gd32vf103_usart.o
@@ -2468,22 +2140,14 @@ OUTPUT(build/gd32vf103.elf elf32-littleriscv)
  .comment       0x0000000000000028       0x29 build/n200_func.o
  .comment       0x0000000000000028       0x29 build/handlers.o
  .comment       0x0000000000000028       0x29 build/init.o
- .comment       0x0000000000000028       0x29 build/cordic-math.o
  .comment       0x0000000000000028       0x29 build/delay.o
- .comment       0x0000000000000028       0x29 build/gd32v_mpu6500_if.o
- .comment       0x0000000000000028       0x29 build/mpu6500_driver.o
  .comment       0x0000000000000028       0x29 build/main.o
  .comment       0x0000000000000028       0x29 build/pwm.o
- .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
  .comment       0x0000000000000028       0x29 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
@@ -2506,125 +2170,98 @@ OUTPUT(build/gd32vf103.elf elf32-littleriscv)
  .riscv.attributes
                 0x000000000000002b       0x2b build/gd32vf103_gpio.o
  .riscv.attributes
-                0x0000000000000056       0x2b build/gd32vf103_i2c.o
+                0x0000000000000056       0x2b build/gd32vf103_rcu.o
  .riscv.attributes
-                0x0000000000000081       0x2b build/gd32vf103_rcu.o
+                0x0000000000000081       0x2b build/gd32vf103_timer.o
  .riscv.attributes
-                0x00000000000000ac       0x2b build/gd32vf103_timer.o
+                0x00000000000000ac       0x2b build/gd32vf103_usart.o
  .riscv.attributes
-                0x00000000000000d7       0x2b build/gd32vf103_usart.o
+                0x00000000000000d7       0x2b build/system_gd32vf103.o
  .riscv.attributes
-                0x0000000000000102       0x2b build/system_gd32vf103.o
+                0x0000000000000102       0x2b build/_exit.o
  .riscv.attributes
-                0x000000000000012d       0x2b build/_exit.o
+                0x000000000000012d       0x2b build/write.o
  .riscv.attributes
-                0x0000000000000158       0x2b build/write.o
+                0x0000000000000158       0x2b build/write_hex.o
  .riscv.attributes
-                0x0000000000000183       0x2b build/write_hex.o
+                0x0000000000000183       0x2b build/n200_func.o
  .riscv.attributes
-                0x00000000000001ae       0x2b build/n200_func.o
+                0x00000000000001ae       0x2b build/handlers.o
  .riscv.attributes
-                0x00000000000001d9       0x2b build/handlers.o
+                0x00000000000001d9       0x2b build/init.o
  .riscv.attributes
-                0x0000000000000204       0x2b build/init.o
+                0x0000000000000204       0x2b build/delay.o
  .riscv.attributes
-                0x000000000000022f       0x2b build/cordic-math.o
+                0x000000000000022f       0x2b build/main.o
  .riscv.attributes
-                0x000000000000025a       0x2b build/delay.o
+                0x000000000000025a       0x2b build/pwm.o
  .riscv.attributes
-                0x0000000000000285       0x2b build/gd32v_mpu6500_if.o
+                0x0000000000000285       0x29 build/start.o
  .riscv.attributes
-                0x00000000000002b0       0x2b build/mpu6500_driver.o
+                0x00000000000002ae       0x29 build/entry.o
  .riscv.attributes
-                0x00000000000002db       0x2b build/main.o
+                0x00000000000002d7       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
  .riscv.attributes
-                0x0000000000000306       0x2b build/pwm.o
+                0x0000000000000302       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
  .riscv.attributes
-                0x0000000000000331       0x29 build/start.o
+                0x000000000000032d       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
  .riscv.attributes
-                0x000000000000035a       0x29 build/entry.o
+                0x0000000000000358       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
  .riscv.attributes
-                0x0000000000000383       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
+                0x0000000000000383       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
  .riscv.attributes
-                0x00000000000003ae       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+                0x00000000000003ae       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
  .riscv.attributes
-                0x00000000000003d9       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+                0x00000000000003d9       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
  .riscv.attributes
-                0x0000000000000404       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+                0x0000000000000404       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
  .riscv.attributes
-                0x000000000000042f       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
+                0x000000000000042f       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
  .riscv.attributes
-                0x000000000000045a       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
+                0x000000000000045a       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-atexit.o)
  .riscv.attributes
-                0x0000000000000485       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+                0x0000000000000485       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-exit.o)
  .riscv.attributes
-                0x00000000000004b0       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+                0x00000000000004b0       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
  .riscv.attributes
-                0x00000000000004db       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
+                0x00000000000004db       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
  .riscv.attributes
-                0x0000000000000506       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
+                0x0000000000000506       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
  .riscv.attributes
-                0x0000000000000531       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+                0x0000000000000531       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-syswrite.o)
  .riscv.attributes
-                0x000000000000055c       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+                0x000000000000055c       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-writer.o)
  .riscv.attributes
-                0x0000000000000587       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+                0x0000000000000587       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__atexit.o)
  .riscv.attributes
-                0x00000000000005b2       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
+                0x00000000000005b2       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
  .riscv.attributes
-                0x00000000000005dd       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-atexit.o)
- .riscv.attributes
-                0x0000000000000608       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-exit.o)
- .riscv.attributes
-                0x0000000000000633       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
- .riscv.attributes
-                0x000000000000065e       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-impure.o)
- .riscv.attributes
-                0x0000000000000689       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
- .riscv.attributes
-                0x00000000000006b4       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-syswrite.o)
- .riscv.attributes
-                0x00000000000006df       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-writer.o)
- .riscv.attributes
-                0x000000000000070a       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__atexit.o)
- .riscv.attributes
-                0x0000000000000735       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
- .riscv.attributes
-                0x0000000000000760       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-reent.o)
+                0x00000000000005dd       0x2b /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-reent.o)
 
-.debug_frame    0x0000000000000000     0x1ce8
+.debug_frame    0x0000000000000000     0x15dc
  .debug_frame   0x0000000000000000      0x290 build/gd32vf103_adc.o
  .debug_frame   0x0000000000000290      0x164 build/gd32vf103_gpio.o
- .debug_frame   0x00000000000003f4      0x260 build/gd32vf103_i2c.o
- .debug_frame   0x0000000000000654      0x2b4 build/gd32vf103_rcu.o
- .debug_frame   0x0000000000000908      0x4f0 build/gd32vf103_timer.o
- .debug_frame   0x0000000000000df8      0x314 build/gd32vf103_usart.o
- .debug_frame   0x000000000000110c       0x30 build/system_gd32vf103.o
- .debug_frame   0x000000000000113c       0x2c build/_exit.o
- .debug_frame   0x0000000000001168       0x8c build/write.o
- .debug_frame   0x00000000000011f4       0x4c build/write_hex.o
- .debug_frame   0x0000000000001240      0x26c build/n200_func.o
- .debug_frame   0x00000000000014ac       0x44 build/handlers.o
- .debug_frame   0x00000000000014f0       0x3c build/init.o
- .debug_frame   0x000000000000152c      0x114 build/cordic-math.o
- .debug_frame   0x0000000000001640       0xd8 build/delay.o
- .debug_frame   0x0000000000001718      0x11c build/gd32v_mpu6500_if.o
- .debug_frame   0x0000000000001834       0xd8 build/mpu6500_driver.o
- .debug_frame   0x000000000000190c       0x8c build/main.o
- .debug_frame   0x0000000000001998       0xbc build/pwm.o
- .debug_frame   0x0000000000001a54       0x44 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
- .debug_frame   0x0000000000001a98       0x54 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
- .debug_frame   0x0000000000001aec       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
- .debug_frame   0x0000000000001b0c       0x54 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
- .debug_frame   0x0000000000001b60       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
- .debug_frame   0x0000000000001b80       0x38 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
- .debug_frame   0x0000000000001bb8       0x34 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
- .debug_frame   0x0000000000001bec       0x44 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
- .debug_frame   0x0000000000001c30       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
- .debug_frame   0x0000000000001c50       0x38 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
- .debug_frame   0x0000000000001c88       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
- .debug_frame   0x0000000000001ca8       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
- .debug_frame   0x0000000000001cc8       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
+ .debug_frame   0x00000000000003f4      0x2b4 build/gd32vf103_rcu.o
+ .debug_frame   0x00000000000006a8      0x4f0 build/gd32vf103_timer.o
+ .debug_frame   0x0000000000000b98      0x314 build/gd32vf103_usart.o
+ .debug_frame   0x0000000000000eac       0x30 build/system_gd32vf103.o
+ .debug_frame   0x0000000000000edc       0x2c build/_exit.o
+ .debug_frame   0x0000000000000f08       0x8c build/write.o
+ .debug_frame   0x0000000000000f94       0x4c build/write_hex.o
+ .debug_frame   0x0000000000000fe0      0x26c build/n200_func.o
+ .debug_frame   0x000000000000124c       0x44 build/handlers.o
+ .debug_frame   0x0000000000001290       0x3c build/init.o
+ .debug_frame   0x00000000000012cc       0xd8 build/delay.o
+ .debug_frame   0x00000000000013a4       0x54 build/main.o
+ .debug_frame   0x00000000000013f8       0x44 build/pwm.o
+ .debug_frame   0x000000000000143c       0x54 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
+ .debug_frame   0x0000000000001490       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
+ .debug_frame   0x00000000000014b0       0x54 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
+ .debug_frame   0x0000000000001504       0x34 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
+ .debug_frame   0x0000000000001538       0x44 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
+ .debug_frame   0x000000000000157c       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
+ .debug_frame   0x000000000000159c       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
+ .debug_frame   0x00000000000015bc       0x20 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
 
 Cross Reference Table
 
@@ -2638,8 +2275,6 @@ CAN1_EWMC_IRQHandler                              build/start.o
 CAN1_RX0_IRQHandler                               build/start.o
 CAN1_RX1_IRQHandler                               build/start.o
 CAN1_TX_IRQHandler                                build/start.o
-DAC0powerUpInit                                   build/dac.o
-DAC0set                                           build/dac.o
 DMA0_Channel0_IRQHandler                          build/start.o
 DMA0_Channel1_IRQHandler                          build/start.o
 DMA0_Channel2_IRQHandler                          build/start.o
@@ -2665,15 +2300,7 @@ I2C0_ER_IRQHandler                                build/start.o
 I2C0_EV_IRQHandler                                build/start.o
 I2C1_ER_IRQHandler                                build/start.o
 I2C1_EV_IRQHandler                                build/start.o
-InitPWM                                           build/pwm.o
-                                                  build/main.o
-LUT_CORDIC_ATAN                                   build/cordic-math.o
 LVD_IRQHandler                                    build/start.o
-MoveServoA                                        build/pwm.o
-                                                  build/main.o
-MoveServoB                                        build/pwm.o
-PIDController_Init                                build/PID.o
-PIDController_Update                              build/PID.o
 RCU_IRQHandler                                    build/start.o
 RTC_Alarm_IRQHandler                              build/start.o
 RTC_IRQHandler                                    build/start.o
@@ -2681,9 +2308,8 @@ SPI0_IRQHandler                                   build/start.o
 SPI1_IRQHandler                                   build/start.o
 SPI2_IRQHandler                                   build/start.o
 SetMotorA                                         build/pwm.o
-SetMotorB                                         build/pwm.o
+                                                  build/main.o
 SystemCoreClock                                   build/system_gd32vf103.o
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
                                                   build/n200_func.o
 SystemCoreClockUpdate                             build/system_gd32vf103.o
@@ -2708,10 +2334,6 @@ USART2_IRQHandler                                 build/start.o
 USBFS_IRQHandler                                  build/start.o
 USBFS_WKUP_IRQHandler                             build/start.o
 WWDGT_IRQHandler                                  build/start.o
-__adddf3                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
-                                                  build/main.o
-__addsf3                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
-                                                  build/PID.o
 __ashldi3                                         /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_ashldi3.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
 __bss_start                                       build/start.o
@@ -2720,45 +2342,24 @@ __call_exitprocs                                  /Users/gulda/Desktop/toolchain
 __clz_tab                                         /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clz.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
 __clzsi2                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_clzsi2.o)
-                                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
-                                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
-                                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
-                                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(addsf3.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
-                                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
-                                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(adddf3.o)
 __divdf3                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(divdf3.o)
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
 __fini_array_end                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
 __fini_array_start                                /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
 __fixdfsi                                         /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixdfsi.o)
-                                                  build/main.o
                                                   build/delay.o
-__fixsfsi                                         /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(fixsfsi.o)
-                                                  build/main.o
-__floatsidf                                       /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsidf.o)
-                                                  build/main.o
-                                                  build/gd32v_mpu6500_if.o
-__floatsisf                                       /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatsisf.o)
-                                                  build/mpu6500_driver.o
 __floatundidf                                     /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
 __floatunsidf                                     /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatunsidf.o)
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
-__gesf2                                           /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
 __global_pointer$                                 build/start.o
-__gtsf2                                           /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(gesf2.o)
-                                                  build/PID.o
 __init_array_end                                  /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
 __init_array_start                                /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
 __ledf2                                           /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
-__lesf2                                           /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
 __libc_fini                                       /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
 __libc_fini_array                                 /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-fini.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__call_atexit.o)
@@ -2768,10 +2369,7 @@ __libc_init_array                                 /Users/gulda/Desktop/toolchain
 __lshrdi3                                         /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(_lshrdi3.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(floatundidf.o)
 __ltdf2                                           /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(ledf2.o)
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
-__ltsf2                                           /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(lesf2.o)
-                                                  build/PID.o
 __malloc_av_                                      /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-mallocr.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-freer.o)
 __malloc_current_mallinfo                         /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-mallocr.o)
@@ -2791,17 +2389,11 @@ __malloc_unlock                                   /Users/gulda/Desktop/toolchain
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-mallocr.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-freer.o)
 __muldf3                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(muldf3.o)
-                                                  build/main.o
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
-__mulsf3                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(mulsf3.o)
-                                                  build/PID.o
 __preinit_array_end                               /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
 __preinit_array_start                             /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-init.o)
 __register_exitproc                               /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-__atexit.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-atexit.o)
-__subsf3                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32/libgcc.a(subsf3.o)
-                                                  build/PID.o
 _close                                            build/close.o
 _data                                             build/start.o
 _data_lma                                         build/start.o
@@ -2845,7 +2437,6 @@ _write                                            build/write.o
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-writer.o)
 _write_r                                          /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-writer.o)
                                                   /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-syswrite.o)
-absolute                                          build/cordic-math.o
 adc_calibration_enable                            build/gd32vf103_adc.o
                                                   build/main.o
 adc_channel_length_config                         build/gd32vf103_adc.o
@@ -2942,15 +2533,7 @@ can_transmit_error_number_get                     build/gd32vf103_can.o
 can_transmit_states                               build/gd32vf103_can.o
 can_wakeup                                        build/gd32vf103_can.o
 can_working_mode_set                              build/gd32vf103_can.o
-cb                                                build/mpu6500_driver.o
 cleanup_glue                                      /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-reent.o)
-cordic_acos                                       build/cordic-math.o
-cordic_asin                                       build/cordic-math.o
-cordic_atan                                       build/cordic-math.o
-                                                  build/main.o
-cordic_cos                                        build/cordic-math.o
-cordic_sin                                        build/cordic-math.o
-cordic_tan                                        build/cordic-math.o
 crc_block_data_calculate                          build/gd32vf103_crc.o
 crc_data_register_read                            build/gd32vf103_crc.o
 crc_data_register_reset                           build/gd32vf103_crc.o
@@ -2966,29 +2549,23 @@ dac_concurrent_output_buffer_enable               build/gd32vf103_dac.o
 dac_concurrent_software_trigger_disable           build/gd32vf103_dac.o
 dac_concurrent_software_trigger_enable            build/gd32vf103_dac.o
 dac_data_set                                      build/gd32vf103_dac.o
-                                                  build/dac.o
 dac_deinit                                        build/gd32vf103_dac.o
-                                                  build/dac.o
 dac_disable                                       build/gd32vf103_dac.o
 dac_dma_disable                                   build/gd32vf103_dac.o
 dac_dma_enable                                    build/gd32vf103_dac.o
 dac_enable                                        build/gd32vf103_dac.o
-                                                  build/dac.o
 dac_lfsr_noise_config                             build/gd32vf103_dac.o
 dac_output_buffer_disable                         build/gd32vf103_dac.o
 dac_output_buffer_enable                          build/gd32vf103_dac.o
-                                                  build/dac.o
 dac_output_value_get                              build/gd32vf103_dac.o
 dac_software_trigger_disable                      build/gd32vf103_dac.o
 dac_software_trigger_enable                       build/gd32vf103_dac.o
 dac_triangle_noise_config                         build/gd32vf103_dac.o
 dac_trigger_disable                               build/gd32vf103_dac.o
-                                                  build/dac.o
 dac_trigger_enable                                build/gd32vf103_dac.o
 dac_trigger_source_config                         build/gd32vf103_dac.o
 dac_wave_bit_width_config                         build/gd32vf103_dac.o
 dac_wave_mode_config                              build/gd32vf103_dac.o
-                                                  build/dac.o
 dbg_id_get                                        build/gd32vf103_dbg.o
 dbg_low_power_disable                             build/gd32vf103_dbg.o
 dbg_low_power_enable                              build/gd32vf103_dbg.o
@@ -2997,7 +2574,6 @@ dbg_periph_disable                                build/gd32vf103_dbg.o
 dbg_periph_enable                                 build/gd32vf103_dbg.o
                                                   build/gd32vf103_can.o
 delay_1ms                                         build/delay.o
-                                                  build/pwm.o
                                                   build/main.o
 delay_1us                                         build/delay.o
 disable_mcycle_minstret                           build/start.o
@@ -3097,7 +2673,6 @@ exti_interrupt_flag_clear                         build/gd32vf103_exti.o
 exti_interrupt_flag_get                           build/gd32vf103_exti.o
 exti_software_interrupt_disable                   build/gd32vf103_exti.o
 exti_software_interrupt_enable                    build/gd32vf103_exti.o
-flip_bytes                                        build/mpu6500_driver.o
 fmc_flag_clear                                    build/gd32vf103_fmc.o
 fmc_flag_get                                      build/gd32vf103_fmc.o
 fmc_halfword_program                              build/gd32vf103_fmc.o
@@ -3124,7 +2699,6 @@ get_cycle_value                                   build/n200_func.o
 get_instret_value                                 build/n200_func.o
 get_timer_freq                                    build/n200_func.o
 get_timer_value                                   build/n200_func.o
-                                                  build/gd32v_mpu6500_if.o
                                                   build/delay.o
 gpio_afio_deinit                                  build/gd32vf103_gpio.o
 gpio_bit_reset                                    build/gd32vf103_gpio.o
@@ -3138,7 +2712,6 @@ gpio_exti_source_select                           build/gd32vf103_gpio.o
 gpio_init                                         build/gd32vf103_gpio.o
                                                   build/pwm.o
                                                   build/main.o
-                                                  build/dac.o
 gpio_input_bit_get                                build/gd32vf103_gpio.o
 gpio_input_port_get                               build/gd32vf103_gpio.o
 gpio_output_bit_get                               build/gd32vf103_gpio.o
@@ -3150,14 +2723,10 @@ handle_nmi                                        build/handlers.o
 handle_trap                                       build/handlers.o
                                                   build/entry.o
 i2c_ack_config                                    build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_ackpos_config                                 build/gd32vf103_i2c.o
 i2c_clock_config                                  build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_data_receive                                  build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_data_transmit                                 build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_deinit                                        build/gd32vf103_i2c.o
 i2c_disable                                       build/gd32vf103_i2c.o
 i2c_dma_enable                                    build/gd32vf103_i2c.o
@@ -3165,47 +2734,34 @@ i2c_dma_last_transfer_config                      build/gd32vf103_i2c.o
 i2c_dualaddr_disable                              build/gd32vf103_i2c.o
 i2c_dualaddr_enable                               build/gd32vf103_i2c.o
 i2c_enable                                        build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_flag_clear                                    build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_flag_get                                      build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_interrupt_disable                             build/gd32vf103_i2c.o
 i2c_interrupt_enable                              build/gd32vf103_i2c.o
 i2c_interrupt_flag_clear                          build/gd32vf103_i2c.o
 i2c_interrupt_flag_get                            build/gd32vf103_i2c.o
 i2c_master_addressing                             build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
-i2c_master_init                                   build/gd32v_mpu6500_if.o
-i2c_master_read_register                          build/gd32v_mpu6500_if.o
-i2c_master_write_register                         build/gd32v_mpu6500_if.o
 i2c_mode_addr_config                              build/gd32vf103_i2c.o
 i2c_pec_enable                                    build/gd32vf103_i2c.o
 i2c_pec_transfer_enable                           build/gd32vf103_i2c.o
 i2c_pec_value_get                                 build/gd32vf103_i2c.o
-i2c_port                                          build/gd32v_mpu6500_if.o
 i2c_slave_response_to_gcall_config                build/gd32vf103_i2c.o
 i2c_smbus_arp_enable                              build/gd32vf103_i2c.o
 i2c_smbus_issue_alert                             build/gd32vf103_i2c.o
 i2c_smbus_type_config                             build/gd32vf103_i2c.o
 i2c_software_reset_config                         build/gd32vf103_i2c.o
 i2c_start_on_bus                                  build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_stop_on_bus                                   build/gd32vf103_i2c.o
-                                                  build/gd32v_mpu6500_if.o
 i2c_stretch_scl_low_config                        build/gd32vf103_i2c.o
 i2s_disable                                       build/gd32vf103_spi.o
 i2s_enable                                        build/gd32vf103_spi.o
 i2s_init                                          build/gd32vf103_spi.o
 i2s_psc_config                                    build/gd32vf103_spi.o
-initCMG                                           build/main.o
-initServoA                                        build/pwm.o
+initMotorA                                        build/pwm.o
                                                   build/main.o
 init_ADC_B0                                       build/main.o
 irq_entry                                         build/entry.o
                                                   build/start.o
-isEven                                            build/cordic-math.o
-isOdd                                             build/cordic-math.o
 isatty                                            /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-sysisatty.o)
                                                   build/lseek.o
                                                   build/fstat.o
@@ -3213,18 +2769,6 @@ main                                              build/main.o
                                                   build/start.o
 measure_cpu_freq                                  build/n200_func.o
 millis                                            build/delay.o
-                                                  build/main.o
-motorStartupSeq                                   build/pwm.o
-                                                  build/main.o
-mpu6500_getAccel                                  build/mpu6500_driver.o
-mpu6500_getGyro                                   build/mpu6500_driver.o
-mpu6500_getGyroAccel                              build/mpu6500_driver.o
-                                                  build/main.o
-mpu6500_init                                      build/mpu6500_driver.o
-                                                  build/gd32v_mpu6500_if.o
-mpu6500_install                                   build/gd32v_mpu6500_if.o
-                                                  build/main.o
-mpu_delay                                         build/gd32v_mpu6500_if.o
 mtime_hi                                          build/n200_func.o
 mtime_lo                                          build/n200_func.o
 ob_data_get                                       build/gd32vf103_fmc.o
@@ -3251,7 +2795,6 @@ pmu_to_sleepmode                                  build/gd32vf103_pmu.o
 pmu_to_standbymode                                build/gd32vf103_pmu.o
 pmu_wakeup_pin_disable                            build/gd32vf103_pmu.o
 pmu_wakeup_pin_enable                             build/gd32vf103_pmu.o
-power                                             build/cordic-math.o
 puts                                              build/write.o
 rcu_adc_clock_config                              build/gd32vf103_rcu.o
                                                   build/main.o
@@ -3289,7 +2832,6 @@ rcu_periph_clock_disable                          build/gd32vf103_rcu.o
 rcu_periph_clock_enable                           build/gd32vf103_rcu.o
                                                   build/pwm.o
                                                   build/main.o
-                                                  build/dac.o
 rcu_periph_clock_sleep_disable                    build/gd32vf103_rcu.o
 rcu_periph_clock_sleep_enable                     build/gd32vf103_rcu.o
 rcu_periph_reset_disable                          build/gd32vf103_rcu.o
@@ -3323,7 +2865,6 @@ rcu_rtc_clock_config                              build/gd32vf103_rcu.o
 rcu_system_clock_source_config                    build/gd32vf103_rcu.o
 rcu_system_clock_source_get                       build/gd32vf103_rcu.o
 rcu_usb_clock_config                              build/gd32vf103_rcu.o
-read_mpu                                          build/mpu6500_driver.o
 rtc_alarm_config                                  build/gd32vf103_rtc.o
 rtc_configuration_mode_enter                      build/gd32vf103_rtc.o
 rtc_configuration_mode_exit                       build/gd32vf103_rtc.o
@@ -3369,13 +2910,11 @@ spi_nssp_mode_enable                              build/gd32vf103_spi.o
 spi_struct_para_init                              build/gd32vf103_spi.o
 spi_ti_mode_disable                               build/gd32vf103_spi.o
 spi_ti_mode_enable                                build/gd32vf103_spi.o
-ssqrt                                             build/cordic-math.o
 strlen                                            /Users/gulda/Desktop/toolchain-gd32v-osx/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32/libc.a(lib_a-strlen.o)
                                                   build/write.o
 switch_m2u_mode                                   build/n200_func.o
 timer_auto_reload_shadow_disable                  build/gd32vf103_timer.o
 timer_auto_reload_shadow_enable                   build/gd32vf103_timer.o
-                                                  build/pwm.o
 timer_automatic_output_disable                    build/gd32vf103_timer.o
 timer_automatic_output_enable                     build/gd32vf103_timer.o
 timer_autoreload_value_config                     build/gd32vf103_timer.o
@@ -3405,14 +2944,12 @@ timer_channel_output_shadow_config                build/gd32vf103_timer.o
                                                   build/pwm.o
 timer_channel_output_state_config                 build/gd32vf103_timer.o
 timer_channel_output_struct_para_init             build/gd32vf103_timer.o
-                                                  build/pwm.o
 timer_counter_alignment                           build/gd32vf103_timer.o
 timer_counter_down_direction                      build/gd32vf103_timer.o
 timer_counter_read                                build/gd32vf103_timer.o
 timer_counter_up_direction                        build/gd32vf103_timer.o
 timer_counter_value_config                        build/gd32vf103_timer.o
 timer_deinit                                      build/gd32vf103_timer.o
-                                                  build/pwm.o
 timer_disable                                     build/gd32vf103_timer.o
 timer_dma_disable                                 build/gd32vf103_timer.o
 timer_dma_enable                                  build/gd32vf103_timer.o
@@ -3450,12 +2987,9 @@ timer_repetition_value_config                     build/gd32vf103_timer.o
 timer_single_pulse_mode_config                    build/gd32vf103_timer.o
 timer_slave_mode_select                           build/gd32vf103_timer.o
 timer_struct_para_init                            build/gd32vf103_timer.o
-                                                  build/pwm.o
 timer_update_event_disable                        build/gd32vf103_timer.o
 timer_update_event_enable                         build/gd32vf103_timer.o
 timer_update_source_config                        build/gd32vf103_timer.o
-to_degree                                         build/cordic-math.o
-to_radians                                        build/cordic-math.o
 trap_entry                                        build/entry.o
                                                   build/start.o
 usart_address_config                              build/gd32vf103_usart.o
@@ -3509,7 +3043,6 @@ write                                             /Users/gulda/Desktop/toolchain
                                                   build/_exit.o
 write_hex                                         build/write_hex.o
                                                   build/_exit.o
-write_mpu                                         build/mpu6500_driver.o
 wwdgt_config                                      build/gd32vf103_wwdgt.o
 wwdgt_counter_update                              build/gd32vf103_wwdgt.o
 wwdgt_deinit                                      build/gd32vf103_wwdgt.o
